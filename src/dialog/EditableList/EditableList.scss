@@ -1,0 +1,46 @@
+.ic-editable-list {
+    line-height: 2em;
+    word-break: break-all;
+
+    &__item {
+        max-width: 100%;
+        display: inline-flex;
+        overflow: hidden;
+
+        white-space: nowrap;
+        line-height: 1.4em;
+        padding: 0.2em 1ex;
+        background-color: var(--yc-color-line-generic);
+        margin-right: 1ex;
+
+        &-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &_removed {
+                opacity: 0.5;
+            }
+        }
+
+        &-action {
+            padding-left: 1ex;
+            color: var(--yc-color-text-secondary);
+            cursor: pointer;
+            display: inline-block;
+            min-width: 1em;
+
+            &_icon_undo {
+                .icon {
+                    font-size: 0.85em;
+                }
+            }
+        }
+    }
+
+    &__show-all {
+        white-space: nowrap;
+        color: var(--yc-color-text-link);
+        cursor: pointer;
+        padding: 0 1ex;
+    }
+}

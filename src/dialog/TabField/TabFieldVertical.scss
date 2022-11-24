@@ -1,0 +1,33 @@
+.ic-tab-field-vertical {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+
+    &_size_s {
+        font-size: 13px;
+    }
+
+    &_size_m {
+        font-size: 15px;
+    }
+
+    &_size_l {
+        font-size: 18px;
+    }
+
+    .yc-list__item {
+        line-height: 100%;
+        padding-left: 1em;
+        border-left: 4px solid rgba(0, 0, 0, 0);
+        color: var(--yc-color-text-secondary);
+
+        &_selected {
+            color: var(--yc-color-text-primary);
+            border-color: var(--yc-color-text-primary);
+        }
+    }
+
+    .ic-dialog-tab__name-text {
+        flex-grow: 1;
+    }
+}

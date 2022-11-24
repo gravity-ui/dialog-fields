@@ -1,0 +1,37 @@
+.ic-dialog-tab {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        min-height: 40px;
+        overflow: hidden;
+
+        &_vertical {
+            flex-grow: 1;
+        }
+    }
+
+    &__name {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+
+        &-text {
+            flex-shrink: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__remove-icon {
+        margin-left: 1ex;
+        margin-right: 1ex;
+        cursor: pointer;
+    }
+
+    &__warning-icon {
+        margin-right: 1ex;
+        padding-left: 1ex;
+    }
+}

@@ -1,0 +1,38 @@
+import React, {useCallback} from 'react';
+import PropTypes from 'prop-types';
+
+import {Checkbox, CheckboxProps} from '@gravity-ui/uikit';
+
+import './CheckBoxControl.scss';
+
+export interface CheckBoxControlProps
+    extends Omit<CheckboxProps, 'value' | 'view' | 'checked' | 'onUpdate' | 'onChange'> {
+    value: boolean;
+    onChange: (value: CheckBoxControlProps['value']) => void;
+}
+
+function CheckBoxControl({value, onChange, ...props}: CheckBoxControlProps) {
+    const onCheckBoxChange = useCallback(() => onChange(!value), [onChange, value]);
+    const {children, ...rest} = props || {};
+
+    return (
+        <Checkbox onChange={onCheckBoxChange} checked={value} size="l" {...rest}>
+            {children}
+        </Checkbox>
+    );
+}
+
+CheckBoxControl.getDefaultValue = function () {
+    return false;
+};
+
+CheckBoxControl.isEmpty = function (value: CheckBoxControlProps['value']) {
+    return typeof value !== 'boolean' || !value;
+};
+
+CheckBoxControl.propTypes = {
+    value: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
+export default CheckBoxControl;

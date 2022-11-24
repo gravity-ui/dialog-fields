@@ -1,9 +1,24 @@
-# IDE settings
-.idea
-.vscode
-
-# Dependencies
+#npm
+npm-debug.log*
 node_modules
 
-# Artifacts
-dist
+#temporary
+tmp/
+temp/
+*~
+
+#personal
+.idea/
+.DS_Store
+
+# git merge leftovers
+*.orig
+
+# storybook
+.cache
+build/
+storybook-static/
+
+# package
+lib/
+

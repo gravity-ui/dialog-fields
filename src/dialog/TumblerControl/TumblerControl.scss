@@ -1,0 +1,18 @@
+.ic-tumbler-control {
+    white-space: nowrap;
+    font-size: var(--yc-text-body-2-font-size);
+
+    &_size_l {
+        font-size: var(--yc-text-body-3-font-size);
+    }
+
+    &__switch {
+        &_label-left {
+            padding-left: 1ex;
+        }
+
+        &_label-right {
+            padding-right: 1ex;
+        }
+    }
+}

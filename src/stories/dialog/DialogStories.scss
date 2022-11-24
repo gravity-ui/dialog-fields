@@ -1,0 +1,9 @@
+.dialog-demo {
+    &__section {
+        padding: 20px 20px 0;
+
+        & + & {
+            margin-top: 20px;
+        }
+    }
+}
