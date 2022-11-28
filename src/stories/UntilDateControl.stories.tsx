@@ -6,7 +6,7 @@ type Props = Omit<UntilDateControlProps, 'value' | 'onChange'> & {
     initialValue?: UntilDateControlProps['value'];
 };
 
-class IdmDatePickerDemoItem extends React.Component<Props, any> {
+class UntilDateControlDemoItem extends React.Component<Props, any> {
     static getDerivedStateFromProps({initialValue}: Props, state: any) {
         if (state.initialized) {
             return null;
@@ -25,7 +25,6 @@ class IdmDatePickerDemoItem extends React.Component<Props, any> {
     };
 
     render() {
-        console.log(this.state.data);
         return (
             <React.Fragment>
                 <UntilDateControl
@@ -44,12 +43,12 @@ class IdmDatePickerDemoItem extends React.Component<Props, any> {
 }
 
 export default {
-    title: 'Components/IdmDatePicker',
-    component: IdmDatePickerDemoItem,
-} as ComponentMeta<typeof IdmDatePickerDemoItem>;
+    title: 'Components/UntilDateControl',
+    component: UntilDateControlDemoItem,
+} as ComponentMeta<typeof UntilDateControlDemoItem>;
 
-const Template: ComponentStory<typeof IdmDatePickerDemoItem> = (args) => (
-    <IdmDatePickerDemoItem {...args} />
+const Template: ComponentStory<typeof UntilDateControlDemoItem> = (args) => (
+    <UntilDateControlDemoItem {...args} />
 );
 
 export const WithNull = Template.bind({});

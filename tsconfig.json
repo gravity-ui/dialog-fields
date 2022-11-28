@@ -7,7 +7,6 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "styles/*": ["styles/*"],
       "assets/*": ["assets/*"]
     },
     "isolatedModules": true

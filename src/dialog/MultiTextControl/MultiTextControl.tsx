@@ -108,7 +108,7 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
                 />
                 <LabelsGroup
                     items={labels}
-                    itemsCount={4}
+                    visibleCount={4}
                     disabled={disabled}
                     onRemoveAll={this.handleClear}
                     onRemove={this.handleRemove}

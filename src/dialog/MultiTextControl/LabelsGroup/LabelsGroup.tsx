@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import cn from 'bem-cn-lite';
 import _ from 'lodash';
 import {Button, Label} from '@gravity-ui/uikit';
@@ -12,34 +11,19 @@ const block = cn('df-labels-group');
 
 type Props = {
     items: Array<{name: string; isDefault?: boolean}>;
+    visibleCount: number;
     disabled?: boolean;
 
     onClick?: (item: ItemType) => void;
     onRemove?: (item: ItemType) => void;
     onRemoveAll?: () => void;
 
-    renderToggler: () => React.ReactNode;
+    renderToggler?: () => React.ReactNode;
 };
 
 type ItemType = ArrayElement<Props['items']>;
 
 class LabelsGroup extends Component<Props> {
-    static propTypes = {
-        // from parent
-        onClick: PropTypes.func,
-        onRemove: PropTypes.func,
-        onRemoveAll: PropTypes.func,
-
-        // from hoc
-        items: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string.isRequired,
-                isDefault: PropTypes.bool,
-            }).isRequired,
-        ).isRequired,
-        renderToggler: PropTypes.func.isRequired,
-    };
-
     handleLabelClick = (label: ItemType) => {
         const {onClick} = this.props;
         if (typeof onClick === 'function') {
@@ -85,7 +69,7 @@ class LabelsGroup extends Component<Props> {
         return (
             <div className={block()}>
                 {_.map(items, (label) => this.renderLabel(label))}
-                {renderToggler()}
+                {renderToggler?.()}
                 {onRemoveAll && items.length > 0 && (
                     <Button
                         size="s"

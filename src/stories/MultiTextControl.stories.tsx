@@ -21,14 +21,6 @@ class MultiText extends React.Component<Props> {
         ],
     };
 
-    getDerivedStateFromProps({initialValue}: any, state: any) {
-        if (state.date !== undefined) {
-            return null;
-        }
-
-        return {data: initialValue};
-    }
-
     onChange = (data: MultiTextControlProps['value']) => {
         this.setState({data});
     };
