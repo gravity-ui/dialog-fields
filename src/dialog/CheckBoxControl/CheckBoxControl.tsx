@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
 
 import {Checkbox, CheckboxProps} from '@gravity-ui/uikit';
 
@@ -28,11 +27,6 @@ CheckBoxControl.getDefaultValue = function () {
 
 CheckBoxControl.isEmpty = function (value: CheckBoxControlProps['value']) {
     return typeof value !== 'boolean' || !value;
-};
-
-CheckBoxControl.propTypes = {
-    value: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
 };
 
 export default CheckBoxControl;

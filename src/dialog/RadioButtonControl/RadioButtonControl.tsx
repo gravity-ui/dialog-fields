@@ -1,12 +1,6 @@
 import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
 import _map from 'lodash/map';
 import {RadioButton, RadioButtonProps} from '@gravity-ui/uikit';
-
-RadioButtonControl.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
 
 RadioButtonControl.defaultProps = {
     extras: {},

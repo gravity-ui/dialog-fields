@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
 import _reduce from 'lodash/reduce';
 import _find from 'lodash/find';
 import _findIndex from 'lodash/findIndex';
@@ -114,13 +113,9 @@ function getControl<V, P>(type?: string): ControlStaticApi<V> & React.ComponentT
 }
 
 // TODO: in future, different tab types may be supported, but for a single form only only type of tabs should be used
-function checkTabSpecCorrectness(
-    fields: Array<{type?: string; multiple?: boolean}>,
-    propName: string,
-    componentName: string,
-) {
+function checkTabSpecCorrectness(fields: Array<{type?: string; multiple?: boolean}>) {
     const topLevelTabs: typeof fields = fields.filter(isTabbedField);
-    const preamble = `Invalid prop '${propName}' passed to '${componentName}'.`;
+    const preamble = `Invalid prop '${fields}' passed to '${DFDialog.name || 'DFDialog'}'.`;
     if (0 < topLevelTabs.length && topLevelTabs.length < fields.length) {
         return new Error(
             `${preamble} No top level real fields are allowed if there are tab fields on top-level.`,
@@ -135,22 +130,8 @@ function checkTabSpecCorrectness(
     return undefined;
 }
 
-function correctFieldsSpec(props: any, propName: string, componentName: string) {
-    const basicPropType = {
-        [propName]: PropTypes.arrayOf(
-            PropTypes.oneOfType([
-                Dialog.FIELD_TYPE,
-                Dialog.SECTION_TYPE,
-                Dialog.SEPARATOR_TYPE,
-                Dialog.TAB_TYPE,
-            ]),
-        ).isRequired,
-    };
-    const propValue = {[propName]: props[propName]};
-
-    PropTypes.checkPropTypes(basicPropType, propValue, propName, componentName);
-
-    const error = checkTabSpecCorrectness(props[propName], propName, componentName);
+function checkFieldsSpec(props: {fields: Array<any>}) {
+    const error = checkTabSpecCorrectness(props.fields);
     if (error) {
         console.error(
             'Tab specification is wrong, please recheck provided `field` property',
@@ -326,89 +307,6 @@ class Dialog<
     TabT extends TabbedField<FieldT> = any,
     FieldT extends ControlField = never,
 > extends Component<DFDialogProps<FormValues, InitialFormValues, TabT, FieldT>, State<FormValues>> {
-    static FIELD_TYPE = PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        className: PropTypes.string,
-        required: PropTypes.bool,
-        validator: PropTypes.func,
-        caption: PropTypes.string,
-        tooltip: PropTypes.node,
-        warning: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        placeholder: PropTypes.string,
-        visibilityCondition: PropTypes.shape({
-            when: PropTypes.string,
-            isActive: PropTypes.func,
-        }),
-        subscribers: PropTypes.object,
-        extras: PropTypes.object,
-        onChange: PropTypes.func,
-        error: PropTypes.func,
-        touched: PropTypes.bool,
-    });
-
-    static SEPARATOR_TYPE = PropTypes.shape({
-        separator: PropTypes.bool.isRequired,
-    });
-
-    static SECTION_TYPE = PropTypes.shape({
-        section: PropTypes.string.isRequired,
-        fields: PropTypes.arrayOf(PropTypes.oneOfType([Dialog.FIELD_TYPE, Dialog.SEPARATOR_TYPE])),
-        wrapTo: PropTypes.func,
-    });
-
-    static TAB_TYPE = PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(tabControlTypes).isRequired,
-        fields: PropTypes.arrayOf(
-            PropTypes.oneOfType([Dialog.FIELD_TYPE, Dialog.SECTION_TYPE, Dialog.SEPARATOR_TYPE]),
-        ).isRequired,
-        multiple: PropTypes.bool,
-        onCreateTab: PropTypes.func,
-        title: PropTypes.string,
-        getTitle: PropTypes.func,
-        isRemovable: PropTypes.func,
-        renderControls: PropTypes.func,
-    });
-
-    static propTypes = {
-        // from props
-        className: PropTypes.string,
-        visible: PropTypes.bool.isRequired,
-        onClose: PropTypes.func.isRequired,
-        onAdd: PropTypes.func.isRequired,
-        validate: PropTypes.func,
-        onActiveTabChange: PropTypes.func,
-        fields: correctFieldsSpec,
-        size: PropTypes.string,
-
-        // optional, if not provided - the default field initial values will be used
-        initialValues: PropTypes.object,
-        modal: PropTypes.bool,
-        pristineSubmittable: PropTypes.bool,
-        isApplyDisabled: PropTypes.func,
-        headerProps: PropTypes.shape({
-            title: PropTypes.string,
-            insertAfter: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-            insertBefore: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        }),
-        footerProps: PropTypes.shape({
-            textApply: PropTypes.string,
-            textCancel: PropTypes.string,
-            content: PropTypes.node,
-            propsButtonCancel: PropTypes.object,
-            propsButtonApply: PropTypes.object,
-        }),
-        waitingMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-        virtualized: PropTypes.bool,
-        /**
-         * The property allows to pass additional properties which usually are not required
-         * but might be useful in some special cases
-         * See https://final-form.org/docs/react-final-form/types/FormProps
-         */
-        formExtras: PropTypes.object,
-    };
-
     static defaultProps = {
         pristineSubmittable: false,
         modal: true,
@@ -704,6 +602,12 @@ class Dialog<
     };
 
     form?: FormApi<FormValues, InitialFormValues>;
+
+    constructor(props: DFDialogProps<FormValues, InitialFormValues, TabT, FieldT>) {
+        super(props);
+
+        checkFieldsSpec(props);
+    }
 
     componentDidUpdate(_prevProps: unknown, prevState: State<FormValues>) {
         if (prevState.tabsCount !== this.state.tabsCount) {

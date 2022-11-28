@@ -2,7 +2,6 @@ import {RadioButton, TextInputSize} from '@gravity-ui/uikit';
 //import {Datepicker} from '...';
 import React from 'react';
 import cn from 'bem-cn-lite';
-import PropTypes from 'prop-types';
 
 import TextControl from '../TextControl/TextControl';
 import {FocusBlurContainer} from '../FocusBlurContainer/FocusBlurContainer';
@@ -71,11 +70,6 @@ class UntilDateControl extends React.Component<UntilDateControlProps, State> {
     static UNLIMITED = UNLIMITED;
     static PERIOD = PERIOD;
     static DATE = DATE;
-
-    static propTypes = {
-        className: PropTypes.string,
-        onChange: PropTypes.func.isRequired,
-    };
 
     static defaultProps = {
         value: null,

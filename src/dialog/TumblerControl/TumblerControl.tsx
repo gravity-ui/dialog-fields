@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react';
-import PropTypes from 'prop-types';
 import cn from 'bem-cn-lite';
 
 import {Switch} from '@gravity-ui/uikit';
@@ -47,11 +46,6 @@ TumblerControl.getDefaultValue = function () {
 
 TumblerControl.isEmpty = function (value: boolean) {
     return typeof value !== 'boolean' || !value;
-};
-
-TumblerControl.propTypes = {
-    value: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
 };
 
 export default TumblerControl;

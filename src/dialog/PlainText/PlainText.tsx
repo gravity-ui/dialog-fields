@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cn from 'bem-cn-lite';
 
 import './PlainText.scss';
@@ -13,10 +12,6 @@ export type PlainTextProps = {
 };
 
 class PlainText extends React.Component<PlainTextProps> {
-    static propTypes = {
-        value: PropTypes.string.isRequired,
-    };
-
     static getDefaultValue() {
         return '';
     }

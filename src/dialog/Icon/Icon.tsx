@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Icon as CommonIcon, IconProps} from '@gravity-ui/uikit';
 
 export {default as closeIcon} from '../../../assets/icons/close-icon.svg';
@@ -19,19 +18,6 @@ export default function Icon({iconData, height, width}: Props) {
     return <CommonIcon data={iconData} height={height} width={width} />;
 }
 
-Icon.propTypes = {
-    iconData: PropTypes.oneOfType([
-        PropTypes.shape({
-            id: PropTypes.string,
-            url: PropTypes.string,
-            viewBox: PropTypes.string,
-        }).isRequired,
-        PropTypes.elementType.isRequired,
-    ]),
-    height: PropTypes.number,
-    width: PropTypes.number,
-    viewBox: PropTypes.string,
-};
 Icon.defaultProps = {
     height: 16,
     width: 16,
