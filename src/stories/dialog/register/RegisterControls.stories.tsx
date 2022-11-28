@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-    InfraDialog,
-    InfraDialogProps,
+    DFDialog,
+    DFDialogProps,
     registerDialogControl,
-    RegisteredInfraDialogField,
-    InfraDialogField,
-    InfraDialogTabField,
+    RegisteredDialogField,
+    DFDialogField,
+    DFDialogTabField,
 } from '../../../dialog/Dialog/Dialog';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
@@ -21,21 +21,21 @@ MyControl.getDefaultValue = () => {
 registerDialogControl('my-control', MyControl);
 
 // step 2
-type MyTypedDialogField<ValuesType> = InfraDialogField<
+type MyTypedDialogField<ValuesType> = DFDialogField<
     ValuesType,
-    RegisteredInfraDialogField<'my-control', React.ComponentProps<typeof MyControl>, ValuesType>
+    RegisteredDialogField<'my-control', React.ComponentProps<typeof MyControl>, ValuesType>
 >;
 
 // step 3
 function MyDialog<ValuesType, InitialValuesType = Partial<ValuesType>>(
-    props: InfraDialogProps<
+    props: DFDialogProps<
         ValuesType,
         InitialValuesType,
-        InfraDialogTabField<MyTypedDialogField<ValuesType>>,
+        DFDialogTabField<MyTypedDialogField<ValuesType>>,
         MyTypedDialogField<ValuesType>
     >,
 ) {
-    return <InfraDialog {...(props as any)} />;
+    return <DFDialog {...(props as any)} />;
 }
 
 function Demo() {
@@ -48,10 +48,9 @@ function Demo() {
             you need to implement required control and then correctly register it.
             <br />
             <br />
-            It is impossible to modify the declaration of InfraDialogField type, but it is possible
-            to
+            It is impossible to modify the declaration of DFDialogField type, but it is possible to
             <br />
-            implement your own dialog which will wrap InfraDialog and have extended set of allowed
+            implement your own dialog which will wrap DFDialog and have extended set of allowed
             controls.
             <br />
             This example demonstrates how to create your own dialog with additional fields.
@@ -60,7 +59,7 @@ function Demo() {
             To register a custom control you need to complete 3 steps:
             <ol>
                 <li>Register a custom control with a unique type</li>
-                <li>Declare DialogField type that extends InfraDialogField</li>
+                <li>Declare DialogField type that extends DFDialogField</li>
                 <li>Implement your own Dialog which will use DialogField type from step 2</li>
             </ol>
             Please see its internals:&nbsp;

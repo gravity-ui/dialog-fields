@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {InfraDialog} from '../../../src/dialog/Dialog/Dialog';
+import {DFDialog} from '../../../src/dialog/Dialog/Dialog';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import type {FormApi} from 'final-form';
 
@@ -38,7 +38,7 @@ class ServiceDialogStories extends Component {
                     <button onClick={this.showDialog}>Show dialog</button>
                 </div>
                 <pre>{JSON.stringify(formData, null, 2)}</pre>
-                <InfraDialog
+                <DFDialog
                     visible={dialogVisible}
                     onClose={this.hideDialog}
                     headerProps={{

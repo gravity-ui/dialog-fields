@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import cn from 'bem-cn-lite';
-import {InfraDialog} from '../../../src/dialog/Dialog/Dialog';
+import {DFDialog} from '../../../src/dialog/Dialog/Dialog';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import './TabbedVerticallyServiceDialog.scss';
@@ -46,7 +46,7 @@ class ServiceDialogVerticalTabs extends Component {
                     <button onClick={this.showDialog}>Show dialog</button>
                 </div>
                 <pre>{JSON.stringify(formData, null, 2)}</pre>
-                <InfraDialog
+                <DFDialog
                     className={block()}
                     size="l"
                     visible={dialogVisible}

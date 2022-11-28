@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Button} from '@gravity-ui/uikit';
-import {InfraDialog} from '../../../src/dialog/Dialog/Dialog';
+import {DFDialog} from '../../../src/dialog/Dialog/Dialog';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 let counter = 1;
@@ -42,7 +42,7 @@ class ServiceDialog extends Component {
                     <button onClick={this.showDialog}>Show dialog</button>
                 </div>
                 <pre>{JSON.stringify(formData, null, 2)}</pre>
-                <InfraDialog
+                <DFDialog
                     visible={dialogVisible}
                     onClose={this.hideDialog}
                     headerProps={{

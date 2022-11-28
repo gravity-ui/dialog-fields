@@ -5,9 +5,9 @@ import _ from 'lodash';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import {
-    InfraDialog,
-    InfraDialogField,
-    InfraDialogTabField,
+    DFDialog,
+    DFDialogField,
+    DFDialogTabField,
 } from '../../../src/dialog/Dialog/Dialog';
 
 import './TabbedVerticallyServiceDialog.scss';
@@ -98,7 +98,7 @@ class DialogWithVirtualizedTabs extends Component {
             initials[fieldName] = {
                 name: title,
             };
-            const res: InfraDialogTabField<InfraDialogField> = {
+            const res: DFDialogTabField<DFDialogField> = {
                 type: 'tab-vertical',
                 name: fieldName,
                 title,
@@ -196,7 +196,7 @@ class DialogWithVirtualizedTabs extends Component {
                     <button onClick={this.showDialog}>Show dialog</button>
                 </div>
                 <pre>{JSON.stringify(formData, null, 2)}</pre>
-                <InfraDialog
+                <DFDialog
                     virtualized
                     className={block()}
                     size="l"

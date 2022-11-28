@@ -248,7 +248,7 @@ type FieldsType<TabT extends TabbedField<FieldT>, FieldT> =
     | Array<TabT>
     | Array<DialogField<FieldT>>;
 
-export interface InfraDialogProps<
+export interface DFDialogProps<
     FormValues = Record<string, any>,
     InitialFormValues = Partial<FormValues>,
     TabT extends TabbedField<FieldT> = any,
@@ -320,10 +320,7 @@ class Dialog<
     InitialFormValues = Partial<FormValues>,
     TabT extends TabbedField<FieldT> = any,
     FieldT extends ControlField = never,
-> extends Component<
-    InfraDialogProps<FormValues, InitialFormValues, TabT, FieldT>,
-    State<FormValues>
-> {
+> extends Component<DFDialogProps<FormValues, InitialFormValues, TabT, FieldT>, State<FormValues>> {
     static FIELD_TYPE = PropTypes.shape({
         name: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
@@ -496,7 +493,7 @@ class Dialog<
         TabT extends TabbedField<FieldT>,
         FieldT extends ControlField,
         FormValues,
-    >(props: InfraDialogProps<FormValues, unknown, TabT, FieldT>, prevState: State<FormValues>) {
+    >(props: DFDialogProps<FormValues, unknown, TabT, FieldT>, prevState: State<FormValues>) {
         const res: Partial<typeof prevState> = {};
         const {fields} = props;
         if (!prevState.defaultValues) {
@@ -1281,16 +1278,16 @@ class Dialog<
 Dialog.registerTabControl('tab', TabField);
 Dialog.registerTabControl('tab-vertical', TabFieldVertical);
 
-export type RegisteredInfraDialogTabField<
+export type RegisteredDialogTabField<
     Key extends string,
     P extends TabFieldProps,
     FieldT,
 > = TabbedField<FieldT, any, Key> &
     Omit<P, keyof TabbedField<unknown> | 'setActiveTab' | 'tabItems'>;
 
-export type InfraDialogTabField<FieldT> =
-    | RegisteredInfraDialogTabField<'tab', TabFieldProps, FieldT>
-    | RegisteredInfraDialogTabField<'tab-vertical', TabFieldVerticalProps, FieldT>;
+export type DFDialogTabField<FieldT> =
+    | RegisteredDialogTabField<'tab', TabFieldProps, FieldT>
+    | RegisteredDialogTabField<'tab-vertical', TabFieldVerticalProps, FieldT>;
 
 Dialog.registerControl('text', TextControl);
 Dialog.registerControl('textarea', TextAreaControl);
@@ -1307,44 +1304,44 @@ Dialog.registerControl('multi-text', MultiTextControl);
 
 export const DeprecatedDialog = Dialog;
 
-export type RegisteredInfraDialogField<
+export type RegisteredDialogField<
     Key extends string,
     P extends {value?: any},
     FormValues,
 > = ControlField<Key, P['value'], DistributiveOmit<P, keyof ControlProps<any>>, FormValues>;
 
-export type InfraDialogField<FormValues = any, AdditionalControlFields = never> =
-    | SectionType<InfraDialogControlField<FormValues> | AdditionalControlFields | SeparatorType>
+export type DFDialogField<FormValues = any, AdditionalControlFields = never> =
+    | SectionType<DFDialogControlField<FormValues> | AdditionalControlFields | SeparatorType>
     | SeparatorType
-    | InfraDialogControlField<FormValues>
+    | DFDialogControlField<FormValues>
     | AdditionalControlFields;
 
-type InfraDialogControlField<FormValues = any> =
-    | RegisteredInfraDialogField<'text', TextControlProps, FormValues>
-    | RegisteredInfraDialogField<'textarea', TextAreaControlProps, FormValues>
-    | RegisteredInfraDialogField<'select', SelectControlProps, FormValues>
-    | RegisteredInfraDialogField<'tumbler', TumblerControlProps, FormValues>
-    | RegisteredInfraDialogField<'block', CustomBlockProps, FormValues>
-    | RegisteredInfraDialogField<'plain', PlainTextProps, FormValues>
-    | RegisteredInfraDialogField<'checkbox', CheckBoxControlProps, FormValues>
-    | RegisteredInfraDialogField<'radio', RadioButtonControlProps, FormValues>
-    | RegisteredInfraDialogField<'until-date', UntilDateControlProps, FormValues>
-    | RegisteredInfraDialogField<'editable-list', EditableListProps<any>, FormValues>
-    | RegisteredInfraDialogField<'multi-editable-lists', EditableManyListsProps<any>, FormValues>
-    | RegisteredInfraDialogField<'multi-text', MultiTextControlProps, FormValues>;
+type DFDialogControlField<FormValues = any> =
+    | RegisteredDialogField<'text', TextControlProps, FormValues>
+    | RegisteredDialogField<'textarea', TextAreaControlProps, FormValues>
+    | RegisteredDialogField<'select', SelectControlProps, FormValues>
+    | RegisteredDialogField<'tumbler', TumblerControlProps, FormValues>
+    | RegisteredDialogField<'block', CustomBlockProps, FormValues>
+    | RegisteredDialogField<'plain', PlainTextProps, FormValues>
+    | RegisteredDialogField<'checkbox', CheckBoxControlProps, FormValues>
+    | RegisteredDialogField<'radio', RadioButtonControlProps, FormValues>
+    | RegisteredDialogField<'until-date', UntilDateControlProps, FormValues>
+    | RegisteredDialogField<'editable-list', EditableListProps<any>, FormValues>
+    | RegisteredDialogField<'multi-editable-lists', EditableManyListsProps<any>, FormValues>
+    | RegisteredDialogField<'multi-text', MultiTextControlProps, FormValues>;
 
-export function InfraDialog<FormValues, InitialValuesType = Partial<FormValues>>(
-    props: InfraDialogProps<
+export function DFDialog<FormValues, InitialValuesType = Partial<FormValues>>(
+    props: DFDialogProps<
         FormValues,
         InitialValuesType,
-        InfraDialogTabField<InfraDialogField<FormValues>>,
-        InfraDialogField<FormValues>
+        DFDialogTabField<DFDialogField<FormValues>>,
+        DFDialogField<FormValues>
     >,
 ) {
     return <Dialog {...(props as any)} />;
 }
 
-InfraDialog.FORM_ERROR = FORM_ERROR;
+DFDialog.FORM_ERROR = FORM_ERROR;
 
 export const registerDialogControl = Dialog.registerControl;
 export const registerDialogTabControl = Dialog.registerTabControl;

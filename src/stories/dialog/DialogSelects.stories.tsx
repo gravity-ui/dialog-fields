@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {InfraDialog} from '../../dialog/Dialog/Dialog';
+import {DFDialog} from '../../dialog/Dialog/Dialog';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 class DialogWithSelectStories extends Component {
@@ -20,7 +20,7 @@ class DialogWithSelectStories extends Component {
         return (
             <Fragment>
                 <pre>{JSON.stringify(formData, null, 2)}</pre>
-                <InfraDialog
+                <DFDialog
                     modal={false}
                     headerProps={{
                         title: 'With selects',
