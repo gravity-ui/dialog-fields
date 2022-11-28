@@ -10,7 +10,7 @@ import type {ArrayElement} from '../types';
 
 import './MultiTextControl.scss';
 
-const block = cn('ic-multi-text-control');
+const block = cn('df-multi-text-control');
 
 export type MultiTextControlProps = Partial<
     Omit<

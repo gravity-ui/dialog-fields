@@ -9,7 +9,7 @@ import {FocusBlurContainer} from '../FocusBlurContainer/FocusBlurContainer';
 
 import './UntilDateControl.scss';
 
-const block = cn('ic-until-date-control');
+const block = cn('df-until-date-control');
 
 const UNLIMITED = 'unlimited';
 const PERIOD = 'period';

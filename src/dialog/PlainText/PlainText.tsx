@@ -4,7 +4,7 @@ import cn from 'bem-cn-lite';
 
 import './PlainText.scss';
 
-const block = cn('ic-plain-text');
+const block = cn('df-plain-text');
 
 export type PlainTextProps = {
     value: string;

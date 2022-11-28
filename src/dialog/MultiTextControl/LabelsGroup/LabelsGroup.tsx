@@ -8,7 +8,7 @@ import withCollapsible from '../../../hoc/withCollapsible';
 import './LabelsGroup.scss';
 import {ArrayElement} from '../../types';
 
-const block = cn('ic-labels-group');
+const block = cn('df-labels-group');
 
 type Props = {
     items: Array<{name: string; isDefault?: boolean}>;

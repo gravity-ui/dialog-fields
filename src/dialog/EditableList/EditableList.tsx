@@ -5,7 +5,7 @@ import Icon, {repeatIcon, closeIcon} from '../Icon/Icon';
 
 import './EditableList.scss';
 
-const block = cn('ic-editable-list');
+const block = cn('df-editable-list');
 
 EditableListItem.defaultProps = {
     itemRenderer: (item: EditableListItemType<unknown>) => item.title,

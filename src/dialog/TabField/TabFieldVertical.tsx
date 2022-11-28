@@ -8,7 +8,7 @@ import {List, ListProps} from '@gravity-ui/uikit';
 
 import './TabFieldVertical.scss';
 
-const block = cn('ic-tab-field-vertical');
+const block = cn('df-tab-field-vertical');
 
 const ITEM_HEIGHT = {
     s: 28,

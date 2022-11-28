@@ -4,7 +4,7 @@ import cn from 'bem-cn-lite';
 
 import './TextAreaControl.scss';
 
-const block = cn('ic-field-textarea');
+const block = cn('df-field-textarea');
 
 export type TextAreaControlProps = Omit<
     React.ComponentProps<typeof TextInput>,

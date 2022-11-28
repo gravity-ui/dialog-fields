@@ -4,7 +4,7 @@ import cn from 'bem-cn-lite';
 import EditableList, {EditableListItemType, EditableListProps} from '../EditableList/EditableList';
 import './EditableManyLists.scss';
 
-const block = cn('ic-editable-many-lists');
+const block = cn('df-editable-many-lists');
 
 export interface EditableManyListsProps<T> {
     className?: string;

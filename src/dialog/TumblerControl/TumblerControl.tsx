@@ -7,7 +7,7 @@ import {ControlProps} from '../types';
 
 import './TumblerControl.scss';
 
-const block = cn('ic-tumbler-control');
+const block = cn('df-tumbler-control');
 
 export type TumblerControlProps = ControlProps<boolean> &
     Omit<React.ComponentProps<typeof Switch>, 'value' | 'checked' | 'onUpdate' | 'onChange'> & {

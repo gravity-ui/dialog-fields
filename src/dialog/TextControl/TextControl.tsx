@@ -4,7 +4,7 @@ import cn from 'bem-cn-lite';
 import {TextInput, TextInputProps} from '@gravity-ui/uikit';
 import {ControlProps} from '../types';
 
-const block = cn('ic-text-control');
+const block = cn('df-text-control');
 
 export type TextControlProps = ControlProps<string> &
     Omit<TextInputProps, keyof ControlProps<string>>;

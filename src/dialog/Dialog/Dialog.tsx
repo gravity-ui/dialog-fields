@@ -48,7 +48,7 @@ import {
     ValidatorType,
 } from '../types';
 
-const bDialog = cn('ic-dialog');
+const bDialog = cn('df-dialog');
 const bPage = cn('page-dialog');
 
 function composeValidators<T>(...validators: Array<ValidatorType<T>>) {

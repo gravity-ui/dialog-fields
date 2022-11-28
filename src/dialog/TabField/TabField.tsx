@@ -6,7 +6,7 @@ import Icon, {dangerIcon, closeIcon} from '../Icon/Icon';
 
 import './TabField.scss';
 
-const block = cn('ic-dialog-tab');
+const block = cn('df-dialog-tab');
 
 export interface TabFieldProps {
     className?: string;
