@@ -28,7 +28,11 @@ class IdmDatePickerDemoItem extends React.Component<Props, any> {
         console.log(this.state.data);
         return (
             <React.Fragment>
-                <UntilDateControl {...this.props} value={this.state.data} onChange={this.onChange} />
+                <UntilDateControl
+                    {...this.props}
+                    value={this.state.data}
+                    onChange={this.onChange}
+                />
                 <div>
                     <br />
                     <br />

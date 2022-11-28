@@ -4,11 +4,7 @@ import cn from 'bem-cn-lite';
 import _ from 'lodash';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
-import {
-    DFDialog,
-    DFDialogField,
-    DFDialogTabField,
-} from '../../../src/dialog/Dialog/Dialog';
+import {DFDialog, DFDialogField, DFDialogTabField} from '../../../src/dialog/Dialog/Dialog';
 
 import './TabbedVerticallyServiceDialog.scss';
 
