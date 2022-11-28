@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'bem-cn-lite';
 
-import _ from 'lodash';
+import _findIndex from 'lodash/findIndex';
 
 import TabField, {TabFieldProps, TabItem} from './TabField';
 import {List, ListProps} from '@gravity-ui/uikit';
@@ -52,7 +52,7 @@ class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
     render() {
         const {className, activeTab, size, sortable, tabItems, onOrderChanged, ...rest} =
             this.props;
-        const selected = _.findIndex(tabItems, ({id}) => id === activeTab);
+        const selected = _findIndex(tabItems, ({id}) => id === activeTab);
 
         return (
             <div className={block({size}, className)}>

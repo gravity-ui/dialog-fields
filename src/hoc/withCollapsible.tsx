@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 
 import {Button} from '@gravity-ui/uikit';
 import {getDisplayName} from './utils';

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import cn from 'bem-cn-lite';
-import _ from 'lodash';
+import _map from 'lodash/map';
 import {Button, Label} from '@gravity-ui/uikit';
 import withCollapsible from '../../../hoc/withCollapsible';
 
@@ -68,7 +68,7 @@ class LabelsGroup extends Component<Props> {
 
         return (
             <div className={block()}>
-                {_.map(items, (label) => this.renderLabel(label))}
+                {_map(items, (label) => this.renderLabel(label))}
                 {renderToggler?.()}
                 {onRemoveAll && items.length > 0 && (
                     <Button

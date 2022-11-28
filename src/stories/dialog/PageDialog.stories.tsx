@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import cn from 'bem-cn-lite';
-import _ from 'lodash';
 import {DFDialog} from '../../dialog/Dialog/Dialog';
 import {Card} from '@gravity-ui/uikit';
 import {ComponentStory, ComponentMeta} from '@storybook/react';

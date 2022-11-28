@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import cn from 'bem-cn-lite';
-import _ from 'lodash';
+import _debounce from 'lodash/debounce';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import {DFDialog, DFDialogField, DFDialogTabField} from '../../../src/dialog/Dialog/Dialog';
@@ -70,7 +70,7 @@ class DialogWithVirtualizedTabs extends Component {
     }
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    renameOrder = _.debounce((index, newName): void => {
+    renameOrder = _debounce((index, newName): void => {
         const {orders: oldOrders} = this.state;
         if (oldOrders[index] === newName) {
             return;

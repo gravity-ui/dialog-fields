@@ -1,5 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
+import _reduce from 'lodash/reduce';
+import _find from 'lodash/find';
+import _findIndex from 'lodash/findIndex';
+import _isEqual from 'lodash/isEqual';
+import _get from 'lodash/get';
+import _isEmpty from 'lodash/isEmpty';
 import {
     Dialog as CommonDialog,
     DialogFooterProps,
@@ -7,7 +13,6 @@ import {
     Popover,
 } from '@gravity-ui/uikit';
 import cn from 'bem-cn-lite';
-import _ from 'lodash';
 import {Decorator, FORM_ERROR, FormApi, FormState, ValidationErrors, FieldState} from 'final-form';
 import {Field, FieldInputProps, FieldMetaState, Form, FormProps, FormSpy} from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
@@ -465,7 +470,7 @@ class Dialog<
     static getDefaultValues<T extends TabbedField<F>, F>(
         fields: FieldsType<T, F> = [],
     ): Record<string, any> {
-        return _.reduce(
+        return _reduce(
             fields,
             (acc, item) => {
                 const field = item as ArrayElement<typeof fields>;
@@ -511,7 +516,7 @@ class Dialog<
             }
         }
 
-        return _.isEmpty(res) ? null : res;
+        return _isEmpty(res) ? null : res;
     }
 
     static hasTabs<TabT extends TabbedField<FieldT>, FieldT extends ControlField>(
@@ -668,7 +673,7 @@ class Dialog<
         fields: FieldsType<TabT, FieldT>,
         dst: Array<{name: Calculation['field']; subscribers: Calculation['updates']}> = [],
     ) {
-        return _.reduce(
+        return _reduce(
             fields,
             (acc, field) => {
                 const item = field as ArrayElement<typeof fields>;
@@ -959,7 +964,7 @@ class Dialog<
         if (!visibilityCondition) {
             return true;
         }
-        const value = _.get(values, visibilityCondition.when);
+        const value = _get(values, visibilityCondition.when);
         return visibilityCondition.isActive(value);
     }
 
@@ -982,7 +987,7 @@ class Dialog<
             active?: boolean,
             options: {userOptions?: any} = {},
         ) => {
-            const tabSpec = _.find(fields, (fieldSpec) => fieldSpec.name === fieldName);
+            const tabSpec = _find(fields, (fieldSpec) => fieldSpec.name === fieldName);
             const {onCreateTab} = tabSpec || {};
             if (!tabSpec?.multiple) {
                 return;
@@ -994,7 +999,7 @@ class Dialog<
 
             const {userOptions} = options;
 
-            const index = _.findIndex(values[fieldName], this.isActiveTab);
+            const index = _findIndex(values[fieldName], this.isActiveTab);
             const newTabData = onCreateTab(values[fieldName][index], {userOptions});
             checkTabId(newTabData, values[fieldName]);
             push(fieldName, newTabData);
@@ -1005,10 +1010,7 @@ class Dialog<
         };
 
         const removeTab = (tabItemToDelete: TabItem) => {
-            const tabIndexToDelete = _.findIndex(
-                tabItems,
-                (item) => item.id === tabItemToDelete.id,
-            );
+            const tabIndexToDelete = _findIndex(tabItems, (item) => item.id === tabItemToDelete.id);
             if (tabIndexToDelete < 0) {
                 return;
             }
@@ -1251,7 +1253,7 @@ class Dialog<
         // For Dialogs with tabs it is recommended to use deepEqual method
         // instead of shallowEqual method
         const equalMethod =
-            initialValuesEqual === undefined && this.hasTabs ? _.isEqual : initialValuesEqual;
+            initialValuesEqual === undefined && this.hasTabs ? _isEqual : initialValuesEqual;
         return (
             <Form
                 {...restExtras}

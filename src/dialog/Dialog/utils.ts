@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _find from 'lodash/find';
 
 const TAB_ID = 'id';
 
@@ -16,7 +16,7 @@ export function checkTabId(newTabData: TabData, tabs: TabData[]) {
         throw new Error('id field must be defined');
     }
 
-    const tab = _.find(tabs, (tab) => id === getTabId(tab));
+    const tab = _find(tabs, (tab) => id === getTabId(tab));
     if (tab) {
         throw new Error('id of a tab must be unique');
     }

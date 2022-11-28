@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import _map from 'lodash/map';
 import {RadioButton, RadioButtonProps} from '@gravity-ui/uikit';
 
 RadioButtonControl.propTypes = {
@@ -32,7 +32,7 @@ function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps
 
     return (
         <RadioButton {...rest} size={size} value={value} onChange={onRadioChange}>
-            {_.map(options, ({value, label}) => (
+            {_map(options, ({value, label}) => (
                 <RadioButton.Option value={value} key={value}>
                     {label}
                 </RadioButton.Option>

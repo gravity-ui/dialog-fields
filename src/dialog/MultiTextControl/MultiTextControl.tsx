@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import _ from 'lodash';
+import _find from 'lodash/find';
+import _findIndex from 'lodash/findIndex';
 import cn from 'bem-cn-lite';
 import {TextInput, TextInputProps} from '@gravity-ui/uikit';
 
@@ -45,7 +46,7 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
     }
 
     static remove(theItem: ItemType, items: Array<ItemType>) {
-        const index = _.findIndex(items, (anItem) => theItem.name === anItem.name);
+        const index = _findIndex(items, (anItem) => theItem.name === anItem.name);
         if (index > -1) {
             const copy = [...items];
             copy.splice(index, 1);
@@ -67,7 +68,7 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
         if (currentLabel?.length > 0) {
             const {onChange, value: labels} = this.props;
 
-            if (!_.find(labels, (label) => label.name === currentLabel)) {
+            if (!_find(labels, (label) => label.name === currentLabel)) {
                 onChange(labels.concat({name: currentLabel}));
             }
             this.setState({currentLabel: ''});
