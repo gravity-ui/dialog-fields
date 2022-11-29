@@ -13,7 +13,6 @@ export type {
     EditableManyListsItemType,
 } from './dialog/EditableManyLists/EditableManyLists';
 
-export {default as UntilDateControl} from './dialog/UntilDateControl/UntilDateControl';
 export {default as SelectControl} from './dialog/SelectControl/SelectControl';
 export {default as TextAreaControl} from './dialog/TextAreaControl/TextAreaControl';
 export {default as TextControl} from './dialog/TextControl/TextControl';

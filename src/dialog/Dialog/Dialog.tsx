@@ -31,7 +31,6 @@ import CustomBlock, {CustomBlockProps} from '../CustomBlock/CustomBlock';
 import RadioButtonControl, {
     RadioButtonControlProps,
 } from '../RadioButtonControl/RadioButtonControl';
-import UntilDateControl, {UntilDateControlProps} from '../UntilDateControl/UntilDateControl';
 import EditableList, {EditableListProps} from '../EditableList/EditableList';
 import EditableManyLists, {EditableManyListsProps} from '../EditableManyLists/EditableManyLists';
 import MultiTextControl, {MultiTextControlProps} from '../MultiTextControl/MultiTextControl';
@@ -1203,7 +1202,6 @@ Dialog.registerControl('block', CustomBlock);
 Dialog.registerControl('plain', PlainText);
 Dialog.registerControl('checkbox', CheckBoxControl);
 Dialog.registerControl('radio', RadioButtonControl);
-Dialog.registerControl('until-date', UntilDateControl);
 Dialog.registerControl('editable-list', EditableList);
 Dialog.registerControl('multi-editable-lists', EditableManyLists);
 Dialog.registerControl('multi-text', MultiTextControl);
@@ -1231,7 +1229,6 @@ type DFDialogControlField<FormValues = any> =
     | RegisteredDialogField<'plain', PlainTextProps, FormValues>
     | RegisteredDialogField<'checkbox', CheckBoxControlProps, FormValues>
     | RegisteredDialogField<'radio', RadioButtonControlProps, FormValues>
-    | RegisteredDialogField<'until-date', UntilDateControlProps, FormValues>
     | RegisteredDialogField<'editable-list', EditableListProps<any>, FormValues>
     | RegisteredDialogField<'multi-editable-lists', EditableManyListsProps<any>, FormValues>
     | RegisteredDialogField<'multi-text', MultiTextControlProps, FormValues>;
