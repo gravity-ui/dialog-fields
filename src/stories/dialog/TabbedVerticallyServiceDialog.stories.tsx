@@ -128,14 +128,6 @@ class ServiceDialogVerticalTabs extends Component {
                                         children: <span>Some content for custom block</span>,
                                     },
                                 },
-                                {
-                                    name: 'untilDate',
-                                    type: 'until-date',
-                                    caption: 'Idm date',
-                                    extras: {
-                                        size: 'm',
-                                    },
-                                },
                             ],
                         },
                         {

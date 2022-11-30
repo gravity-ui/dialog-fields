@@ -108,14 +108,6 @@ class ServiceDialog extends Component {
                                                 ),
                                             },
                                         },
-                                        {
-                                            name: 'expireDate',
-                                            type: 'until-date',
-                                            caption: 'Idm date',
-                                            extras: {
-                                                size: 'm',
-                                            },
-                                        },
                                     ],
                                 },
                             ],

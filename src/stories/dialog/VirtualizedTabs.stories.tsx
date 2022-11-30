@@ -141,14 +141,6 @@ class DialogWithVirtualizedTabs extends Component {
                             children: <span>Some content for custom block</span>,
                         },
                     },
-                    {
-                        name: 'expireDate',
-                        type: 'until-date',
-                        caption: 'Expire date',
-                        extras: {
-                            size: 'm',
-                        },
-                    },
                 ],
             };
             if (orders.length > 1) {

@@ -470,12 +470,8 @@ class Dialog<
         return <FieldWithExtras field={field} input={input} meta={meta} extras={extras} />;
     }
 
-    static renderSectionTitle<FieldT>(field: SectionType<FieldT>, index: number) {
-        return (
-            <h2 className={bDialog('section-title')} key={`title-${index}`}>
-                {field.section}
-            </h2>
-        );
+    static renderSectionTitle<FieldT>(field: SectionType<FieldT>) {
+        return <h2 className={bDialog('section-title')}>{field.section}</h2>;
     }
 
     static renderSeparator(_field: SeparatorType, index: number) {
@@ -739,21 +735,22 @@ class Dialog<
     renderSection(field: SectionType<FieldT>, index: number, fieldPrefix?: string) {
         let sectionNode: React.ReactNode;
         if (!Array.isArray(field.fields) || field.fields.length === 0) {
-            sectionNode = Dialog.renderSectionTitle(field, index);
+            sectionNode = Dialog.renderSectionTitle(field);
         } else {
             sectionNode = (
-                <section className={bDialog('section')} key={`section-field-${index}`}>
-                    {Dialog.renderSectionTitle(field, index)}
+                <section className={bDialog('section')}>
+                    {Dialog.renderSectionTitle(field)}
                     {this.renderFields(field.fields, fieldPrefix)}
                 </section>
             );
         }
 
         if (typeof field.wrapTo === 'function') {
-            return field.wrapTo(sectionNode);
+            sectionNode = field.wrapTo(sectionNode);
         }
 
-        return sectionNode;
+        const key = `section-field-${index}`;
+        return <React.Fragment key={key}>{sectionNode}</React.Fragment>;
     }
 
     renderFields(fields: Array<DialogField<FieldT>>, fieldPrefix?: string) {
@@ -1006,7 +1003,7 @@ class Dialog<
         );
     }
 
-    get hasTabs() {
+    hasTabs() {
         return Dialog.hasTabs(this.props.fields);
     }
 
@@ -1151,30 +1148,20 @@ class Dialog<
         }
 
         const renderDialog = modal ? this.renderModalDialog : this.renderPageDialog;
+        const {mutators} = formExtras ?? {};
 
-        const {initialValuesEqual, ...restExtras} = formExtras || {};
-        // For Dialogs with tabs it is recommended to use deepEqual method
-        // instead of shallowEqual method
-        const equalMethod =
-            initialValuesEqual === undefined && this.hasTabs ? _isEqual : initialValuesEqual;
         return (
             <Form
-                {...restExtras}
+                initialValuesEqual={_isEqual}
+                keepDirtyOnReinitialize={true}
+                {...formExtras}
                 onSubmit={this.onApply}
                 validate={validate}
                 subscription={Dialog.FINAL_FORM_SUBSCRIPTIONS}
-                mutators={
-                    (this.hasTabs
-                        ? {...restExtras.mutators, ...arrayMutators}
-                        : restExtras.mutators) as any
-                }
+                mutators={this.hasTabs() ? {...mutators, ...(arrayMutators as any)} : mutators}
                 initialValues={values as any}
                 decorators={decorators}
                 render={renderDialog as any}
-                // For Dialogs with tabs it is strongly recommended to use keepDirtyOnReinitialize, without
-                //  it user's input might be lost between tab's switching.
-                initialValuesEqual={equalMethod}
-                keepDirtyOnReinitialize={this.hasTabs}
             />
         );
     }

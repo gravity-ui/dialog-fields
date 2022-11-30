@@ -227,14 +227,6 @@ class PageDialogStories extends Component {
                             },
                         },
                         {
-                            name: 'expireDate',
-                            type: 'until-date' as const,
-                            caption: 'Idm date',
-                            extras: {
-                                size: 'm' as const,
-                            },
-                        },
-                        {
                             name: 'editList',
                             type: 'editable-list' as const,
                             caption: 'Edit list',

@@ -82,14 +82,6 @@ class ServiceDialogStories extends Component {
                                         };
                                     },
                                 },
-                                {
-                                    name: 'expireDate',
-                                    type: 'until-date',
-                                    caption: 'Expire date',
-                                    extras: {
-                                        size: 'm',
-                                    },
-                                },
                             ],
                         },
                     ]}
