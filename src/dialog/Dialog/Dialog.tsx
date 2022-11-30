@@ -152,7 +152,6 @@ export interface ControlField<
 
     initialValue?: V;
 
-    placeholder?: string;
     extras?: E | ((allValues: FormValues, form: FormApi<any>) => E);
     touched?: boolean;
 
@@ -1250,7 +1249,7 @@ function FieldWithExtras<FieldT extends ControlField, Value = any>({
     meta,
     input,
 }: FieldWithExtrasProps<FieldT, Value>) {
-    const {type, name, placeholder, touched} = field;
+    const {type, name, touched} = field;
 
     let error;
     if (meta.error && (touched || meta.touched || meta.dirty)) {
@@ -1267,7 +1266,6 @@ function FieldWithExtras<FieldT extends ControlField, Value = any>({
 
     const controlProps: any = {
         id: name,
-        placeholder,
         ...extras,
         ...input,
         onFocus,
