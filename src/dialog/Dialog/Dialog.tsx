@@ -233,9 +233,11 @@ type FieldsType<TabT extends TabbedField<FieldT>, FieldT> =
     | Array<TabT>
     | Array<DialogField<FieldT>>;
 
+export type DeepPartial<T> = T extends object ? {[K in keyof T]?: DeepPartial<T[K]>} : T;
+
 export interface DFDialogProps<
     FormValues = Record<string, any>,
-    InitialFormValues = Partial<FormValues>,
+    InitialFormValues = DeepPartial<FormValues>,
     TabT extends TabbedField<FieldT> = any,
     FieldT = any,
 > {
@@ -302,7 +304,7 @@ interface OperateTabInfo {
 
 class Dialog<
     FormValues = Record<string, any>,
-    InitialFormValues = Partial<FormValues>,
+    InitialFormValues = DeepPartial<FormValues>,
     TabT extends TabbedField<FieldT> = any,
     FieldT extends ControlField = never,
 > extends Component<DFDialogProps<FormValues, InitialFormValues, TabT, FieldT>, State<FormValues>> {
@@ -1220,7 +1222,7 @@ type DFDialogControlField<FormValues = any> =
     | RegisteredDialogField<'multi-editable-lists', EditableManyListsProps<any>, FormValues>
     | RegisteredDialogField<'multi-text', MultiTextControlProps, FormValues>;
 
-export function DFDialog<FormValues, InitialValuesType = Partial<FormValues>>(
+export function DFDialog<FormValues, InitialValuesType = DeepPartial<FormValues>>(
     props: DFDialogProps<
         FormValues,
         InitialValuesType,
