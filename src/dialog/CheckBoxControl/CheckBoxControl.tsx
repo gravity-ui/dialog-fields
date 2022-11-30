@@ -15,7 +15,7 @@ function CheckBoxControl({value, onChange, ...props}: CheckBoxControlProps) {
     const {children, ...rest} = props || {};
 
     return (
-        <Checkbox onChange={onCheckBoxChange} checked={value} size="l" {...rest}>
+        <Checkbox onChange={onCheckBoxChange} size="l" {...rest} checked={value}>
             {children}
         </Checkbox>
     );
