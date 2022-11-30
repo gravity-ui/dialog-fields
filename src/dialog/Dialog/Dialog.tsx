@@ -246,7 +246,7 @@ export interface DFDialogProps<
     onAdd: (
         form: FormApi<FormValues, InitialFormValues>,
     ) => Promise<ValidationErrors | undefined | void>;
-    onClose?: (values: FormValues) => void;
+    onClose?: (form: FormApi<FormValues, InitialFormValues>) => void;
     validate?: (values: FormValues) => ValidationErrors | Promise<ValidationErrors> | undefined;
     onActiveTabChange?: (tab: string) => void;
     size?: 's' | 'm' | 'l';
@@ -616,11 +616,13 @@ class Dialog<
             return;
         }
 
+        this.setState({activeTabId: undefined});
+
         const {onClose = Dialog.defaultProps.onClose, disableFormReset} = this.props;
-        onClose(this.form!.getState().values);
+        onClose(this.form!);
+
         if (!disableFormReset) {
             window.setTimeout(() => {
-                this.setState({activeTabId: undefined});
                 this.form!.reset();
             }, 0);
         }
