@@ -1,9 +1,3 @@
 {
-  "extends": "./tsconfig",
-  "compilerOptions": {
-    "declaration": true,
-    "allowJs": true,
-    "paths": {}
-  },
-  "exclude": ["src/**/__stories__", "src/demo", "src/stories"]
+  "extends": "./tsconfig"
 }
