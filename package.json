@@ -25,6 +25,7 @@
     "lint:other:fix": "prettier --write '**/*.{md,yaml,yml,json}'",
     "lint:styles": "stylelint 'src/**/*.scss'",
     "lint:styles:fix": "stylelint 'src/**/*.scss' --fix",
+    "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "typecheck": "tsc --noEmit"
   },
@@ -40,6 +41,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@gravity-ui/eslint-config": "^1.0.2",
     "@gravity-ui/i18n": "^1.0.0",
     "@gravity-ui/prettier-config": "^1.0.1",
@@ -63,7 +66,9 @@
     "@types/react-final-form-listeners": "^1.0.0",
     "bem-cn-lite": "^4.0.0",
     "eslint": "^8.23.1",
+    "husky": "^8.0.2",
     "lodash": "~4.17.13",
+    "nano-staged": "^0.8.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react": "^16.0.0",
@@ -85,11 +90,20 @@
     "bem-cn-lite": "^4.0.0",
     "react": "^16.0.0"
   },
-  "ui-core": {
-    "lib": {
-      "internalDirs": [
-        "stories"
-      ]
-    }
+  "nano-staged": {
+    "*.{scss}": [
+      "stylelint --fix --quiet"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --quiet"
+    ],
+    "*.{md,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
