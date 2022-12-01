@@ -5,6 +5,7 @@ import _findIndex from 'lodash/findIndex';
 import _isEqual from 'lodash/isEqual';
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
+import _map from 'lodash/map';
 import {
     Dialog as CommonDialog,
     DialogFooterProps,
@@ -192,7 +193,7 @@ export type TabbedField<FieldT, TabData = any, K extends string = string> = {
     renderControls?: (
         data: TabData,
         onCreate: (active?: boolean) => void,
-        onRemove: () => void,
+        onRemove?: () => void,
     ) => React.ReactNode;
     visibilityCondition?: {
         when: any;
@@ -209,7 +210,7 @@ export type MultipleTabField<TabData> =
       }
     | {
           multiple: true;
-          onCreateTab: (data: TabData, opts: CreateTabOptions) => TabData;
+          onCreateTab?: (data: TabData, opts: CreateTabOptions) => TabData;
       };
 
 interface CreateTabOptions {
@@ -377,7 +378,8 @@ class Dialog<
                         return {...acc, ...Dialog.getDefaultValues(field.fields)};
                     }
                 } else if (isTabbedField(field)) {
-                    acc[field.name] = Dialog.getDefaultValues(field.fields);
+                    const tabData = Dialog.getDefaultValues(field.fields);
+                    acc[field.name] = field.multiple ? [{...tabData, id: 1}] : tabData;
                 } else if (isControlField(field)) {
                     acc[field.name] = getControl(field.type).getDefaultValue();
                 }
@@ -409,7 +411,7 @@ class Dialog<
 
         if (Dialog.hasTabs<TabT, FieldT>(fields)) {
             const {initialValues} = props;
-            if (!prevState.activeTabId) {
+            if (prevState.activeTabId === undefined) {
                 res.activeTabId = Dialog.getFirstTabId(fields, initialValues);
             }
         }
@@ -542,7 +544,10 @@ class Dialog<
                         index: tabIndex,
                         title:
                             typeof getTitle === 'function' ? getTitle(tabValues) : `${title} ${id}`,
-                        isRemovable: typeof isRemovable === 'function' ? isRemovable : () => true,
+                        isRemovable:
+                            typeof isRemovable === 'function'
+                                ? isRemovable
+                                : (index) => index !== 0,
                         ...args,
                     });
                     tabIndex++;
@@ -823,7 +828,11 @@ class Dialog<
                                     {this.renderFormError()}
                                     {renderControls && (
                                         <div className={bDialog('extra-controls')}>
-                                            {renderControls(tabValues, onCreate, onRemove)}
+                                            {renderControls(
+                                                tabValues,
+                                                onCreate,
+                                                index !== 0 ? onRemove : undefined,
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -894,17 +903,25 @@ class Dialog<
             const {onCreateTab} = tabSpec || {};
             if (!tabSpec?.multiple) {
                 return;
-            } else if (typeof onCreateTab !== 'function') {
-                throw new Error(
-                    `Tab spec '${fieldName}' has multiple keyword, but no onCreateTab provided!`,
-                );
             }
 
             const {userOptions} = options;
 
             const index = _findIndex(values[fieldName], this.isActiveTab);
-            const newTabData = onCreateTab(values[fieldName][index], {userOptions});
-            checkTabId(newTabData, values[fieldName]);
+            const {id: _id, ...srcTabData} = values[fieldName][index === -1 ? 0 : index];
+            const newTabData = onCreateTab ? onCreateTab(srcTabData, {userOptions}) : srcTabData;
+            if (newTabData.id === undefined) {
+                const ids = new Set(_map(values[fieldName], ({id}) => String(id)));
+                for (let i = 0; i <= ids.size; ++i) {
+                    const id = String(i + 1);
+                    if (!ids.has(id)) {
+                        newTabData.id = id;
+                        break;
+                    }
+                }
+            } else {
+                checkTabId(newTabData, values[fieldName]);
+            }
             push(fieldName, newTabData);
             this.setState({tabsCount: tabItems.length + 1});
             if (active) {
@@ -937,6 +954,11 @@ class Dialog<
                 return;
             }
 
+            if (multiple && !seenMultiTab) {
+                seenMultiTab = true;
+                firstMultiTabIndex = index;
+            }
+
             tabItems.push({
                 id,
                 error,
@@ -946,10 +968,6 @@ class Dialog<
                 title,
                 removable: isRemovable(index - firstMultiTabIndex),
             });
-            if (multiple && !seenMultiTab) {
-                seenMultiTab = true;
-                firstMultiTabIndex = index;
-            }
         });
 
         if (updateActiveTab) {
