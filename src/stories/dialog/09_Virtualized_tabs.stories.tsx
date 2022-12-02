@@ -102,11 +102,12 @@ function DialogDemo({
                                 children: (
                                     <div style={{color: 'gray'}}>
                                         In rare cases it might be required to handle hundreds of
-                                        tabs and it might affect the performance. But when
-                                        virtualization is enabled then only fields of active tab are
-                                        mounted and as result field-level validation will work
-                                        correctly only for current tab. In case of virtualization it
-                                        is recommended to use form-level validation.
+                                        tabs and it will affect the performance. It is reasonable to
+                                        use virtualized tabs for such cases. But when virtualization
+                                        is enabled then only fields of active tab are mounted and as
+                                        result field-level validation will work correctly only for
+                                        current tab. In case of virtualization it is recommended to
+                                        use form-level validation.
                                     </div>
                                 ),
                             },
