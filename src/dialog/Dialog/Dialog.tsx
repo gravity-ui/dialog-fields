@@ -246,7 +246,7 @@ export interface DFDialogProps<
     fields: FieldsType<TabT, FieldT>;
     onAdd: (
         form: FormApi<FormValues, InitialFormValues>,
-    ) => Promise<ValidationErrors | undefined | void>;
+    ) => Promise<{validationErrors: ValidationErrors & {[FORM_ERROR]?: any}} | undefined | void>;
     onClose?: (form: FormApi<FormValues, InitialFormValues>) => void;
     validate?: (values: FormValues) => ValidationErrors | Promise<ValidationErrors> | undefined;
     onActiveTabChange?: (tab: string) => void;
@@ -657,7 +657,7 @@ class Dialog<
 
         return onAdd(this.form!)
             .then((response) => {
-                const validationErrors = response && response.validationErrors;
+                const {validationErrors} = response || {};
                 if (validationErrors) {
                     return validationErrors;
                 }
@@ -1251,8 +1251,6 @@ export function DFDialog<FormValues, InitialValuesType = DeepPartial<FormValues>
 ) {
     return <Dialog {...(props as any)} />;
 }
-
-DFDialog.FORM_ERROR = FORM_ERROR;
 
 export const registerDialogControl = Dialog.registerControl;
 export const registerDialogTabControl = Dialog.registerTabControl;
