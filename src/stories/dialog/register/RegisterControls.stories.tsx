@@ -65,7 +65,7 @@ function Demo() {
             Please see its internals:&nbsp;
             <a
                 href={
-                    'https://github.yandex-team.ru/data-ui/infra-components/blob/master/src/stories/dialog/register/RegisterControls.stories.tsx'
+                    'https://github.com/gravity-ui/dialog-fields/blob/main/src/stories/dialog/register/RegisterControls.stories.tsx'
                 }
             >
                 the code
