@@ -48,7 +48,7 @@
     "@gravity-ui/prettier-config": "^1.0.1",
     "@gravity-ui/stylelint-config": "^1.0.1",
     "@gravity-ui/tsconfig": "^1.0.0",
-    "@gravity-ui/uikit": "^3.0.2",
+    "@gravity-ui/uikit": "^3.18.2",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
@@ -72,6 +72,7 @@
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.7",
     "rollup-plugin-json": "^4.0.0",
@@ -88,7 +89,8 @@
   "peerDependencies": {
     "@gravity-ui/uikit": "^3.0.0",
     "bem-cn-lite": "^4.0.0",
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "nano-staged": {
     "*.{scss}": [
