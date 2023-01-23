@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'bem-cn-lite';
 
-import Icon, {repeatIcon, closeIcon} from '../Icon/Icon';
+import {RepeatIcon, CloseIcon} from '../Icon/Icon';
 
 import './EditableList.scss';
 
@@ -31,7 +31,7 @@ function EditableListItem<T>({
     const onClick = React.useCallback(() => {
         toggleRemove(item, index);
     }, [item, toggleRemove, index]);
-    const data = item.removed ? repeatIcon : closeIcon;
+    const icon = item.removed ? <RepeatIcon /> : <CloseIcon />;
     const hasActions = !frozen && !item.frozen;
 
     return (
@@ -41,7 +41,7 @@ function EditableListItem<T>({
             </span>
             {hasActions && (
                 <span className={block('item-action')} onClick={onClick}>
-                    <Icon iconData={data} />
+                    {icon}
                 </span>
             )}
         </span>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Tabs} from '@gravity-ui/uikit';
 import cn from 'bem-cn-lite';
 
-import Icon, {dangerIcon, closeIcon} from '../Icon/Icon';
+import {DangerIcon, CloseIcon} from '../Icon/Icon';
 
 import './TabField.scss';
 
@@ -63,7 +63,7 @@ class TabField extends Component<TabFieldProps> {
                             className={block('warning-icon')}
                             title="Some fields in this tab are not valid"
                         >
-                            <Icon iconData={dangerIcon} />
+                            <DangerIcon />
                         </span>
                     )}
                 </span>
@@ -75,7 +75,7 @@ class TabField extends Component<TabFieldProps> {
                             onRemoveTab!(item);
                         }}
                     >
-                        <Icon iconData={closeIcon} />
+                        <CloseIcon />
                     </span>
                 )}
             </div>

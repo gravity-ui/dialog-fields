@@ -20,7 +20,7 @@ import {FieldArray} from 'react-final-form-arrays';
 import createDecorator, {Calculation, Updates} from 'final-form-calculate';
 import {OnChange} from 'react-final-form-listeners';
 
-import Icon, {infoIcon, tooltipIcon, warningIcon} from '../Icon/Icon';
+import {InfoIcon, TooltipIcon, WarningIcon} from '../Icon/Icon';
 import TextControl, {TextControlProps} from '../TextControl/TextControl';
 import TextAreaControl, {TextAreaControlProps} from '../TextAreaControl/TextAreaControl';
 import SelectControl, {SelectControlProps} from '../SelectControl/SelectControl';
@@ -502,7 +502,7 @@ class Dialog<
                             delayClosing={150}
                             placement={['bottom', 'top', 'right']}
                         >
-                            <Icon iconData={tooltipIcon} />
+                            <TooltipIcon />
                         </Popover>
                     </div>
                 )}
@@ -711,7 +711,7 @@ class Dialog<
                             {Dialog.renderField(field, input, meta)}
                             {warning && (
                                 <div className={bDialog('field-warning')}>
-                                    <Icon iconData={warningIcon} />
+                                    <WarningIcon />
                                     <span className={bDialog('field-warning-content')}>
                                         {warning}
                                     </span>
@@ -1088,7 +1088,7 @@ class Dialog<
                 {waitingMessage && (
                     <div className={bDialog('waiting-message')}>
                         <div className={bDialog('waiting-message-inner')}>
-                            <Icon iconData={infoIcon} />
+                            <InfoIcon />
                             {waitingMessage}
                         </div>
                     </div>
