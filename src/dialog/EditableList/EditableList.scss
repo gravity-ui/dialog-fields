@@ -1,19 +1,19 @@
 .df-editable-list {
-    line-height: 2em;
     word-break: break-all;
 
     &__item {
         max-width: 100%;
         display: inline-flex;
+        align-items: center;
         overflow: hidden;
         border-radius: 4px;
 
         white-space: nowrap;
-        line-height: 1.4em;
-        height: 1.4em;
-        padding: 0.2em 1ex;
+        height: 1.8em;
         background-color: var(--yc-color-line-generic);
         margin-right: 1ex;
+        margin-bottom: 4px;
+        padding: 0 1ex;
 
         &-content {
             overflow: hidden;
@@ -30,6 +30,7 @@
             cursor: pointer;
             display: inline-block;
             min-width: 1em;
+            margin-bottom: -4px;
 
             &_icon_undo {
                 .icon {

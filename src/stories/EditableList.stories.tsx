@@ -8,14 +8,14 @@ import EditableList, {
 
 function genEditableListData() {
     return [
-        'red',
+        'Red',
         'white',
         'black',
         'green',
-        'orange',
+        'Orange',
         'magenta',
         'cyan',
-        'lime',
+        'Lime',
         'purple',
         'red white black green orange magenta cyan lime purple 1',
         'red white black green orange magenta cyan lime purple 2',
