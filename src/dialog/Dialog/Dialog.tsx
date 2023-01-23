@@ -246,7 +246,7 @@ export interface DFDialogProps<
     fields: FieldsType<TabT, FieldT>;
     onAdd: (
         form: FormApi<FormValues, InitialFormValues>,
-    ) => Promise<{validationErrors: ValidationErrors & {[FORM_ERROR]?: any}} | undefined | void>;
+    ) => Promise<{validationErrors?: ValidationErrors & {[FORM_ERROR]?: any}} | undefined | void>;
     onClose?: (form: FormApi<FormValues, InitialFormValues>) => void;
     validate?: (values: FormValues) => ValidationErrors | Promise<ValidationErrors> | undefined;
     onActiveTabChange?: (tab: string) => void;
