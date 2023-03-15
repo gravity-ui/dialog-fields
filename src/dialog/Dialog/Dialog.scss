@@ -1,6 +1,12 @@
 .df-dialog {
+    $self: &;
+
     &_with_vertical_tabs {
         display: flex;
+
+        #{$self}__field-wrapper {
+            width: 418px;
+        }
     }
 
     &__caption {
@@ -29,6 +35,7 @@
 
         &_with_vertical_tabs {
             padding: 1em;
+            padding-right: 32px;
         }
 
         &-item {
