@@ -6,6 +6,10 @@
 
         #{$self}__field-wrapper {
             width: 418px;
+
+            &_full-width {
+                width: 100%;
+            }
         }
     }
 
