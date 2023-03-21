@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/gravity-ui/dialog-fields/compare/v1.1.0...v1.1.1) (2023-03-21)
+
+
+### Bug Fixes
+
+* vertical tabs should correctly display controls with fullWidth ([675fbd5](https://github.com/gravity-ui/dialog-fields/commit/675fbd5b2aeaf069db9ca99364bd50ecb56b21ac))
+
 ## [1.1.0](https://github.com/gravity-ui/dialog-fields/compare/v1.0.1...v1.1.0) (2023-03-21)
 
 
