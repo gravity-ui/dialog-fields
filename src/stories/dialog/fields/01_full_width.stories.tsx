@@ -123,9 +123,12 @@ export default {
     component: DialogWithSelectStories,
 } as ComponentMeta<typeof DialogWithSelectStories>;
 
-const Template: ComponentStory<typeof DialogWithSelectStories> = (args) => (
-    <DialogWithSelectStories {...args} />
-);
+const Template: ComponentStory<typeof DialogWithSelectStories> = (args) => {
+    return <DialogWithSelectStories {...args} />;
+};
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const HorizontalTabs = Template.bind({});
+HorizontalTabs.args = {};
+
+export const VerticalTabs = Template.bind({});
+VerticalTabs.args = {verticalTabs: true};
