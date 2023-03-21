@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/gravity-ui/dialog-fields/compare/v1.0.1...v1.1.0) (2023-03-21)
+
+
+### Features
+
+* add ControlField.fullWidth property ([91dd461](https://github.com/gravity-ui/dialog-fields/commit/91dd461b49d3fc25d146c550ffc4105d2a23a783))
+
 ## [1.0.1](https://github.com/gravity-ui/dialog-fields/compare/v1.0.0...v1.0.1) (2023-03-15)
 
 
