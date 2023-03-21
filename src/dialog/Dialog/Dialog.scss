@@ -101,6 +101,10 @@
         &_type_block {
             min-height: 0;
         }
+
+        &_full-width {
+            flex-wrap: wrap;
+        }
     }
 
     &__field-error {
@@ -119,6 +123,11 @@
         &_type_block,
         &_type_textarea {
             width: 100%;
+        }
+
+        &_full-width {
+            width: 100%;
+            padding-top: 12px;
         }
     }
 

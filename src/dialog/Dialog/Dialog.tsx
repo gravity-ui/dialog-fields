@@ -151,6 +151,8 @@ export interface ControlField<
     name: string;
     type: T;
 
+    fullWidth?: boolean;
+
     initialValue?: V;
 
     extras?: E | ((allValues: FormValues, form: FormApi<any>) => E);
@@ -668,7 +670,7 @@ class Dialog<
     };
 
     renderFieldGroup(field: FieldT, fieldPrefix = '') {
-        const {name, type, className, warning} = field;
+        const {name, type, className, warning, fullWidth} = field;
         const fieldName = fieldPrefix ? `${fieldPrefix}.${name}` : name;
 
         const {required, validator, validateFields = [], initialValue, onChange} = field;
@@ -700,12 +702,19 @@ class Dialog<
                 formatOnBlur
             >
                 {({input, meta}) => (
-                    <div className={bDialog('field-group', {type}, className)}>
+                    <div
+                        className={bDialog(
+                            'field-group',
+                            {type, 'full-width': fullWidth},
+                            className,
+                        )}
+                    >
                         {Dialog.renderLabel(field)}
                         <div
                             className={bDialog('field-wrapper', {
                                 type,
                                 empty: Dialog.isEmptyField(field, input.value),
+                                'full-width': fullWidth,
                             })}
                         >
                             {Dialog.renderField(field, input, meta)}
