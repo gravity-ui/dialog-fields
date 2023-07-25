@@ -100,19 +100,19 @@ export function WarningIcon(props: React.SVGProps<SVGSVGElement>) {
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M1.10067 13.1764L7.25321 2.41823C7.57211 1.86059 8.4284 1.86059 8.74642 2.41823L14.899 13.1764C15.2002 13.7023 14.7915 14.3375 14.1528 14.3375H1.84772C1.20815 14.3375 0.800269 13.7023 1.10067 13.1764Z"
-                fill="var(--yc-color-promo-base-gold)"
+                fill="var(--g-color-base-warning-heavy)"
             />
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M8.87908 9.43224C8.87908 9.70838 8.65523 9.93224 8.37908 9.93224H7.61719C7.34105 9.93224 7.11719 9.70838 7.11719 9.43224V6.55078C7.11719 6.27464 7.34105 6.05078 7.61719 6.05078H8.37908C8.65522 6.05078 8.87908 6.27464 8.87908 6.55078V9.43224Z"
-                fill="var(--yc-color-text-complementary)"
+                fill="var(--g-color-text-complementary)"
             />
             <path
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M8.87908 12.0989C8.87908 12.375 8.65523 12.5989 8.37908 12.5989H7.61719C7.34105 12.5989 7.11719 12.375 7.11719 12.0989V11.5176C7.11719 11.2414 7.34105 11.0176 7.61719 11.0176H8.37908C8.65522 11.0176 8.87908 11.2414 8.87908 11.5176V12.0989Z"
-                fill="var(--yc-color-text-complementary)"
+                fill="var(--g-color-text-complementary)"
             />
         </svg>
     );
