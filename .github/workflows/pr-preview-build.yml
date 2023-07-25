@@ -13,4 +13,3 @@ jobs:
           node-version: 18
         env:
           TS_NODE_PROJECT: .storybook/tsconfig.json
-
