@@ -21,7 +21,10 @@ export interface RadioButtonControlProps extends Omit<RadioButtonProps, 'onChang
 }
 
 function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps) {
-    const onRadioChange = useCallback((evt) => onChange(evt.target.value), [onChange]);
+    const onRadioChange = useCallback(
+        (evt: React.ChangeEvent<HTMLInputElement>) => onChange(evt.target.value),
+        [onChange],
+    );
     const {options = [], size = 'm', ...rest} = props;
 
     return (
