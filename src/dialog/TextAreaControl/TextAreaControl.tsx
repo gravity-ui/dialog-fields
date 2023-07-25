@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TextInput} from '@gravity-ui/uikit';
+import {TextArea} from '@gravity-ui/uikit';
 import cn from 'bem-cn-lite';
 
 import './TextAreaControl.scss';
@@ -7,7 +7,7 @@ import './TextAreaControl.scss';
 const block = cn('df-field-textarea');
 
 export type TextAreaControlProps = Omit<
-    React.ComponentProps<typeof TextInput>,
+    React.ComponentProps<typeof TextArea>,
     'value' | 'ref' | 'onUpdate' | 'onChange' | 'error'
 > & {
     value: string;
@@ -30,7 +30,7 @@ class TextControl extends Component<TextAreaControlProps> {
         const {value, onChange, ...rest} = this.props;
 
         return (
-            <TextInput
+            <TextArea
                 className={block()}
                 autoComplete={false}
                 hasClear
@@ -38,7 +38,6 @@ class TextControl extends Component<TextAreaControlProps> {
                 {...rest}
                 value={value}
                 onUpdate={onChange}
-                multiline
             />
         );
     }

@@ -14,22 +14,22 @@
     }
 
     &__caption {
-        font-size: var(--yc-text-header-1-font-size);
-        line-height: var(--yc-text-header-1-line-height);
-        font-weight: var(--yc-text-header-font-weight);
+        font-size: var(--g-text-header-1-font-size);
+        line-height: var(--g-text-header-1-line-height);
+        font-weight: var(--g-text-header-font-weight);
     }
 
     &__body {
         &_with_vertical_tabs {
-            border-top: 1px solid var(--yc-color-line-generic);
-            border-bottom: 1px solid var(--yc-color-line-generic);
+            border-top: 1px solid var(--g-color-line-generic);
+            border-bottom: 1px solid var(--g-color-line-generic);
             --yc-dialog-body-padding: 0px;
         }
     }
 
     &__tabs-control {
         &_vertical {
-            background-color: var(--yc-color-base-generic-ultralight);
+            background-color: var(--g-color-base-generic-ultralight);
             min-width: 20%;
         }
     }
@@ -50,7 +50,7 @@
     }
 
     &__separator {
-        border-top: 1px solid var(--yc-color-line-generic);
+        border-top: 1px solid var(--g-color-line-generic);
         padding-bottom: 1ex;
     }
 
@@ -73,18 +73,18 @@
     }
 
     &__error-message {
-        color: var(--yc-color-text-danger);
+        color: var(--g-color-text-danger);
         margin-top: 2px;
-        font-size: var(--yc-text-body-1-font-size);
-        line-height: var(--yc-text-body-1-line-height);
+        font-size: var(--g-text-body-1-font-size);
+        line-height: var(--g-text-body-1-line-height);
     }
 
     &__section-title {
-        font-size: var(--yc-text-subheader-3-font-size);
-        line-height: var(--yc-text-subheader-3-line-height);
-        font-weight: var(--yc-text-subheader-font-weight);
-        margin-bottom: var(--yc-text-subheader-3-line-height);
-        margin-top: var(--yc-text-subheader-3-line-height);
+        font-size: var(--g-text-subheader-3-font-size);
+        line-height: var(--g-text-subheader-3-line-height);
+        font-weight: var(--g-text-subheader-font-weight);
+        margin-bottom: var(--g-text-subheader-3-line-height);
+        margin-top: var(--g-text-subheader-3-line-height);
 
         &:first-child {
             margin-top: 0;
@@ -113,7 +113,7 @@
 
     &__field-error {
         padding-top: 2px;
-        color: var(--yc-color-text-danger);
+        color: var(--g-color-text-danger);
     }
 
     &__field-wrapper {
@@ -121,7 +121,7 @@
         margin-bottom: 15px;
 
         &_empty {
-            color: var(--yc-color-text-secondary);
+            color: var(--g-color-text-secondary);
         }
 
         &_type_block,
@@ -137,7 +137,7 @@
 
     &__field-warning {
         margin-top: 2px; /* top offset of warning text from a control */
-        color: var(--yc-color-text-secondary);
+        color: var(--g-color-text-secondary);
 
         /*
         15px height + 2px top offset of error text from a control
@@ -150,22 +150,22 @@
 
     &__field-warning-content {
         margin-left: 7px;
-        font-size: var(--yc-text-body-1-font-size);
-        line-height: var(--yc-text-body-1-line-height);
+        font-size: var(--g-text-body-1-font-size);
+        line-height: var(--g-text-body-1-line-height);
         vertical-align: middle;
     }
 
     &__label {
         padding-top: 5px;
         display: flex;
-        font-size: var(--yc-text-body-2-font-size);
+        font-size: var(--g-text-body-2-font-size);
     }
     &__label-text {
         margin-right: 5px;
 
         &_required:after {
             content: '*';
-            color: var(--yc-color-text-danger);
+            color: var(--g-color-text-danger);
         }
     }
 
@@ -178,9 +178,9 @@
         left: 0;
         right: 0;
 
-        font-size: var(--yc-text-body-2-font-size);
-        color: var(--yc-color-text-light-primary);
-        background-color: var(--yc-color-infographics-info-medium);
+        font-size: var(--g-text-body-2-font-size);
+        color: var(--g-color-text-light-primary);
+        background-color: var(--g-color-base-info-medium);
         text-align: center;
 
         padding-top: 10px;
@@ -223,7 +223,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        color: var(--yc-color-text-primary);
+        color: var(--g-color-text-primary);
         font-size: 19px;
         font-weight: 700;
     }

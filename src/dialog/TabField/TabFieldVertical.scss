@@ -19,11 +19,11 @@
         line-height: 100%;
         padding-left: 1em;
         border-left: 4px solid rgba(0, 0, 0, 0);
-        color: var(--yc-color-text-secondary);
+        color: var(--g-color-text-secondary);
 
         &_selected {
-            color: var(--yc-color-text-primary);
-            border-color: var(--yc-color-text-primary);
+            color: var(--g-color-text-primary);
+            border-color: var(--g-color-text-primary);
         }
     }
 

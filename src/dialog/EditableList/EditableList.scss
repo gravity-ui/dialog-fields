@@ -10,7 +10,7 @@
 
         white-space: nowrap;
         height: 1.8em;
-        background-color: var(--yc-color-line-generic);
+        background-color: var(--g-color-line-generic);
         margin-right: 1ex;
         margin-bottom: 4px;
         padding: 0 1ex;
@@ -26,7 +26,7 @@
 
         &-action {
             padding-left: 1ex;
-            color: var(--yc-color-text-secondary);
+            color: var(--g-color-text-secondary);
             cursor: pointer;
             display: inline-block;
             min-width: 1em;
@@ -42,7 +42,7 @@
 
     &__show-all {
         white-space: nowrap;
-        color: var(--yc-color-text-link);
+        color: var(--g-color-text-link);
         cursor: pointer;
         padding: 0 1ex;
     }

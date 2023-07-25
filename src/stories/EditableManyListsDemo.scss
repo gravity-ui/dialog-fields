@@ -1,16 +1,16 @@
 .editable-lists-control-demo {
     &__secondary {
-        color: var(--yc-color-text-secondary);
+        color: var(--g-color-text-secondary);
     }
     &__coral {
         color: lightcoral; // stylelint-disable-line color-named
     }
 
     &__add {
-        background-color: var(--yc-color-base-positive);
+        background-color: var(--g-color-base-positive-light);
     }
 
     &__remove {
-        background-color: var(--yc-color-base-danger);
+        background-color: var(--g-color-base-danger-light);
     }
 }
