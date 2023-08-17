@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/gravity-ui/dialog-fields/compare/v2.0.0...v2.0.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* better peerDependencies ([8f9fcba](https://github.com/gravity-ui/dialog-fields/commit/8f9fcba1600580806025cd89228606f40f91c5a4))
+
 ## [2.0.0](https://github.com/gravity-ui/dialog-fields/compare/v1.1.1...v2.0.0) (2023-07-25)
 
 ### ⚠ BREAKING CHANGES
