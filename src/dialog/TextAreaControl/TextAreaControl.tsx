@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {TextArea} from '@gravity-ui/uikit';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 
 import './TextAreaControl.scss';
 
-const block = cn('df-field-textarea');
+const block = dfCN('field-textarea');
 
 export type TextAreaControlProps = Omit<
     React.ComponentProps<typeof TextArea>,

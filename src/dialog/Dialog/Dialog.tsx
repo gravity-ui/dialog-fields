@@ -12,7 +12,7 @@ import {
     ModalCloseReason,
     Popover,
 } from '@gravity-ui/uikit';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 import {Decorator, FORM_ERROR, FormApi, FormState, ValidationErrors, FieldState} from 'final-form';
 import {Field, FieldInputProps, FieldMetaState, Form, FormProps, FormSpy} from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
@@ -52,8 +52,8 @@ import {
     ValidatorType,
 } from '../types';
 
-const bDialog = cn('df-dialog');
-const bPage = cn('page-dialog');
+const bDialog = dfCN('dialog');
+const bPage = dfCN('page-dialog');
 
 function composeValidators<T>(...validators: Array<ValidatorType<T>>) {
     return async (value: T, allValues: object | undefined, state?: FieldState<T>) => {

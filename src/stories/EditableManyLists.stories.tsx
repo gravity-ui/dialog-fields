@@ -1,12 +1,12 @@
 import React from 'react';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../helpers/cn';
 import EditableManyLists, {
     EditableManyListsProps,
 } from '../dialog/EditableManyLists/EditableManyLists';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 import './EditableManyListsDemo.scss';
-const block = cn('editable-lists-control-demo');
+const b = dfCN('editable-lists-control-demo');
 
 function genEditableListData() {
     return [
@@ -26,8 +26,8 @@ function genEditableListData() {
 
 function genEditableManyListsData() {
     return [
-        {title: 'To add', data: genEditableListData(), itemClassName: block('add')},
-        {title: 'Will be removed', data: genEditableListData(), itemClassName: block('remove')},
+        {title: 'To add', data: genEditableListData(), itemClassName: b('add')},
+        {title: 'Will be removed', data: genEditableListData(), itemClassName: b('remove')},
     ];
 }
 

@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 
 import {Switch} from '@gravity-ui/uikit';
 import {ControlProps} from '../types';
 
 import './TumblerControl.scss';
 
-const block = cn('df-tumbler-control');
+const block = dfCN('tumbler-control');
 
 export type TumblerControlProps = ControlProps<boolean> &
     Omit<React.ComponentProps<typeof Switch>, 'value' | 'checked' | 'onUpdate' | 'onChange'> & {

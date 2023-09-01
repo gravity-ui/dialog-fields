@@ -1,9 +1,9 @@
 import React from 'react';
-import cn from 'bem-cn-lite';
 
+import {dfCN} from '../../helpers/cn';
 import './PlainText.scss';
 
-const block = cn('df-plain-text');
+const block = dfCN('plain-text');
 
 export type PlainTextProps = {
     value: string;

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import _find from 'lodash/find';
 import _findIndex from 'lodash/findIndex';
-import cn from 'bem-cn-lite';
 import {TextInput, TextInputProps} from '@gravity-ui/uikit';
 
+import {dfCN} from '../../helpers/cn';
 import LabelsGroup from './LabelsGroup/LabelsGroup';
 import {FocusBlurContainer} from '../FocusBlurContainer/FocusBlurContainer';
 
@@ -11,7 +11,7 @@ import type {ArrayElement} from '../types';
 
 import './MultiTextControl.scss';
 
-const block = cn('df-multi-text-control');
+const block = dfCN('multi-text-control');
 
 export type MultiTextControlProps = Partial<
     Omit<

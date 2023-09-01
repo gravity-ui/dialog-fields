@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 
 import _findIndex from 'lodash/findIndex';
 
@@ -8,7 +8,7 @@ import {List, ListProps} from '@gravity-ui/uikit';
 
 import './TabFieldVertical.scss';
 
-const block = cn('df-tab-field-vertical');
+const block = dfCN('tab-field-vertical');
 
 const ITEM_HEIGHT = {
     s: 28,
