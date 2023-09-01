@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import cn from 'bem-cn-lite';
 import _map from 'lodash/map';
 import {Button, Label} from '@gravity-ui/uikit';
+import {dfCN} from '../../../helpers/cn';
 import withCollapsible from '../../../hoc/withCollapsible';
 
 import './LabelsGroup.scss';
 import {ArrayElement} from '../../types';
 
-const block = cn('df-labels-group');
+const block = dfCN('labels-group');
 
 type Props = {
     items: Array<{name: string; isDefault?: boolean}>;

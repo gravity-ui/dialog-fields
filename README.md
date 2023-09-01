@@ -23,7 +23,7 @@ $ npm install @gravity-ui/dialog-fields
 Also you have to install all required peer-dependencies
 
 ```
-$ npm install -D  @gravity-ui/uikit@^3.0.2 bem-cn-lite@4.0.0 react@^16.0.0
+$ npm install -D  @gravity-ui/uikit@^5 @bem-react/classname@1.6 react@^17
 ```
 
 ## Usage

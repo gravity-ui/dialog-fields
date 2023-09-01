@@ -1,11 +1,11 @@
 import React from 'react';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 
 import {RepeatIcon, CloseIcon} from '../Icon/Icon';
 
 import './EditableList.scss';
 
-const block = cn('df-editable-list');
+const block = dfCN('editable-list');
 
 EditableListItem.defaultProps = {
     itemRenderer: (item: EditableListItemType<unknown>) => item.title,

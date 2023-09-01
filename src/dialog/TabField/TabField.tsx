@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Tabs} from '@gravity-ui/uikit';
-import cn from 'bem-cn-lite';
 
+import {dfCN} from '../../helpers/cn';
 import {DangerIcon, CloseIcon} from '../Icon/Icon';
 
 import './TabField.scss';
 
-const block = cn('df-dialog-tab');
+const block = dfCN('dialog-tab');
 
 export interface TabFieldProps {
     className?: string;

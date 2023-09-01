@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import cn from 'bem-cn-lite';
+import {dfCN} from '../../helpers/cn';
 
 import {TextInput, TextInputProps} from '@gravity-ui/uikit';
 import {ControlProps} from '../types';
 
-const block = cn('df-text-control');
+const block = dfCN('text-control');
 
 export type TextControlProps = ControlProps<string> &
     Omit<TextInputProps, keyof ControlProps<string>>;
