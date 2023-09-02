@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/gravity-ui/dialog-fields/compare/v2.0.1...v3.0.0) (2023-09-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename `.page-dialog` classname to `.df-page-dialog`
+
+### chore
+
+* migrate to `@bem-react/classname` ([8e4f3d0](https://github.com/gravity-ui/dialog-fields/commit/8e4f3d01b86fa19011a70a60a21e01251d7a5a27))
+
 ## [2.0.1](https://github.com/gravity-ui/dialog-fields/compare/v2.0.0...v2.0.1) (2023-08-17)
 
 
