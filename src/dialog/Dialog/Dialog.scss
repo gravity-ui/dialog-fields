@@ -7,6 +7,7 @@
         #{$self}__field-wrapper {
             width: 418px;
 
+            &.df-dialog__field-wrapper_type_textarea,
             &_full-width {
                 width: 100%;
             }
