@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/gravity-ui/dialog-fields/compare/v3.0.0...v3.0.1) (2023-10-04)
+
+
+### Bug Fixes
+
+* **buid:** babel config should be used for storybook only ([663329e](https://github.com/gravity-ui/dialog-fields/commit/663329eb67c976ca556b9ec7ce546900b4e1ec19))
+
 ## [3.0.0](https://github.com/gravity-ui/dialog-fields/compare/v2.0.1...v3.0.0) (2023-09-02)
 
 
