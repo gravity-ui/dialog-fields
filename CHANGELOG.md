@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/gravity-ui/dialog-fields/compare/v3.0.1...v3.0.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* minor style fix for 'textarea' ([71fb737](https://github.com/gravity-ui/dialog-fields/commit/71fb73712c07ece1afd73203ef8b9bea7afab1dc))
+
 ## [3.0.1](https://github.com/gravity-ui/dialog-fields/compare/v3.0.0...v3.0.1) (2023-10-04)
 
 
