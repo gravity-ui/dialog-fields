@@ -7,6 +7,12 @@
     "url": "https://github.com/gravity-ui/dialog-fields.git"
   },
   "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./build/cjs/index.js",
+      "import": "./build/esm/index.js"
+    }
+  },
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "files": [
@@ -14,7 +20,8 @@
     "assets"
   ],
   "scripts": {
-    "build": "app-builder build --config ./build.lib.config.ts",
+    "build": "DF_BUILD_LIB=true app-builder build --config ./build.lib.config.ts && npm run build:check-esm",
+    "build:check-esm": "grep -HrnEo '\\brequire\\([^)]+)?' build/esm && echo '\nrequire() should not be used for esm-modules\n' ; test $? != 0",
     "build-storybook": "storybook build -c .storybook -o storybook-static",
     "dev": "storybook dev -p 8888 -c .storybook",
     "lint": "npm run lint:code && npm run lint:styles && npm run lint:other",
