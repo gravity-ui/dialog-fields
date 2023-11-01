@@ -57,6 +57,7 @@
     "@gravity-ui/app-builder": "^0.6.2",
     "@gravity-ui/eslint-config": "^1.0.2",
     "@gravity-ui/i18n": "^1.0.0",
+    "@gravity-ui/icons": "^2.7.0",
     "@gravity-ui/prettier-config": "^1.0.1",
     "@gravity-ui/stylelint-config": "^2.0.0",
     "@gravity-ui/tsconfig": "^1.0.0",
@@ -87,6 +88,7 @@
   },
   "peerDependencies": {
     "@bem-react/classname": "^1.6.0",
+    "@gravity-ui/icons": "^2.0.0",
     "@gravity-ui/uikit": "^5.0.0",
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
