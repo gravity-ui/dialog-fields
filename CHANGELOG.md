@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/gravity-ui/dialog-fields/compare/v3.0.2...v3.1.0) (2023-11-01)
+
+
+### Features
+
+* make section collapsible ([4ebff66](https://github.com/gravity-ui/dialog-fields/commit/4ebff660534769b8e06947578a64d8c7f570f6b1))
+
+
+### Bug Fixes
+
+* **block:** block-element should be full-width with vertical tabs ([0496529](https://github.com/gravity-ui/dialog-fields/commit/0496529f697f9e5982beec6ff8650c3aa617a1f2))
+
 ## [3.0.2](https://github.com/gravity-ui/dialog-fields/compare/v3.0.1...v3.0.2) (2023-10-04)
 
 
