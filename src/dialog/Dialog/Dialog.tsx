@@ -51,6 +51,7 @@ import {
     TabControlStaticApi,
     ValidatorType,
 } from '../types';
+import {CollapsibleSection} from '../CollapsibleSection/CollapsibleSection';
 
 const bDialog = dfCN('dialog');
 const bPage = dfCN('page-dialog');
@@ -223,6 +224,9 @@ type SectionType<FieldT> = {
     section: string;
     fields?: FieldT[] | SeparatorType;
     wrapTo?: (sectionNode: React.ReactNode) => React.ReactNode;
+
+    collapsible?: boolean;
+    initialCollapsed?: boolean;
 
     type?: never;
 };
@@ -473,10 +477,6 @@ class Dialog<
         }
 
         return <FieldWithExtras field={field} input={input} meta={meta} extras={extras} />;
-    }
-
-    static renderSectionTitle<FieldT>(field: SectionType<FieldT>) {
-        return <h2 className={bDialog('section-title')}>{field.section}</h2>;
     }
 
     static renderSeparator(_field: SeparatorType, index: number) {
@@ -750,24 +750,35 @@ class Dialog<
     }
 
     renderSection(field: SectionType<FieldT>, index: number, fieldPrefix?: string) {
-        let sectionNode: React.ReactNode;
+        const {
+            wrapTo = (sectionNode) => sectionNode,
+            section,
+            collapsible,
+            initialCollapsed,
+        } = field;
+        let children: React.ReactNode;
         if (!Array.isArray(field.fields) || field.fields.length === 0) {
-            sectionNode = Dialog.renderSectionTitle(field);
+            children = [];
         } else {
-            sectionNode = (
-                <section className={bDialog('section')}>
-                    {Dialog.renderSectionTitle(field)}
-                    {this.renderFields(field.fields, fieldPrefix)}
-                </section>
-            );
-        }
-
-        if (typeof field.wrapTo === 'function') {
-            sectionNode = field.wrapTo(sectionNode);
+            children = this.renderFields(field.fields, fieldPrefix);
         }
 
         const key = `section-field-${index}`;
-        return <React.Fragment key={key}>{sectionNode}</React.Fragment>;
+        return (
+            <React.Fragment key={key}>
+                {wrapTo(
+                    <CollapsibleSection
+                        className={bDialog('section')}
+                        caption={section}
+                        captionClassName={bDialog('section-title')}
+                        initialCollapsed={initialCollapsed}
+                        alwaysExpanded={!collapsible}
+                    >
+                        {children}
+                    </CollapsibleSection>,
+                )}
+            </React.Fragment>
+        );
     }
 
     renderFields(fields: Array<DialogField<FieldT>>, fieldPrefix?: string) {
@@ -1113,9 +1124,9 @@ class Dialog<
         handleSubmit: () => void;
         form: FormApi<FormValues, InitialFormValues>;
     }): React.ReactNode => {
-        const {className} = this.props;
+        const {className, modal} = this.props;
         return (
-            <div className={bPage('wrapper', className)}>
+            <div className={bPage('wrapper', {modal}, className)}>
                 <div className={bPage()}>{this.renderDialogContent(handleSubmit, form)}</div>
             </div>
         );

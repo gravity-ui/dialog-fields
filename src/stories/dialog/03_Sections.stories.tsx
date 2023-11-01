@@ -86,10 +86,11 @@ function DialogDemo({
                             caption: 'Last name',
                         },
                     ],
-                    wrapTo: wrapTo.bind(null, 'lightgray'),
+                    wrapTo: wrapTo.bind(null, undefined),
                 },
                 {
                     section: 'Contacts',
+                    collapsible: true,
                     fields: [
                         {
                             name: 'email',
@@ -103,6 +104,24 @@ function DialogDemo({
                         },
                     ],
                     wrapTo: wrapTo.bind(null, 'cyan'),
+                },
+                {
+                    section: 'Address',
+                    collapsible: true,
+                    initialCollapsed: true,
+                    fields: [
+                        {
+                            name: 'city',
+                            type: 'text',
+                            caption: 'City',
+                        },
+                        {
+                            name: 'street',
+                            type: 'text',
+                            caption: 'Street',
+                        },
+                    ],
+                    wrapTo: wrapTo.bind(null, 'magenta'),
                 },
                 {
                     type: 'block',

@@ -1,0 +1,11 @@
+.df-collapsible-section {
+    overflow: hidden;
+
+    &__caption_collapsible {
+        cursor: pointer;
+    }
+
+    &__content_collapsed {
+        display: none;
+    }
+}
