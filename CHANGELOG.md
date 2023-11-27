@@ -1,48 +1,54 @@
 # Changelog
 
-## [3.1.0](https://github.com/gravity-ui/dialog-fields/compare/v3.0.2...v3.1.0) (2023-11-01)
-
-
-### Features
-
-* make section collapsible ([4ebff66](https://github.com/gravity-ui/dialog-fields/commit/4ebff660534769b8e06947578a64d8c7f570f6b1))
-
-
-### Bug Fixes
-
-* **block:** block-element should be full-width with vertical tabs ([0496529](https://github.com/gravity-ui/dialog-fields/commit/0496529f697f9e5982beec6ff8650c3aa617a1f2))
-
-## [3.0.2](https://github.com/gravity-ui/dialog-fields/compare/v3.0.1...v3.0.2) (2023-10-04)
-
-
-### Bug Fixes
-
-* minor style fix for 'textarea' ([71fb737](https://github.com/gravity-ui/dialog-fields/commit/71fb73712c07ece1afd73203ef8b9bea7afab1dc))
-
-## [3.0.1](https://github.com/gravity-ui/dialog-fields/compare/v3.0.0...v3.0.1) (2023-10-04)
-
-
-### Bug Fixes
-
-* **buid:** babel config should be used for storybook only ([663329e](https://github.com/gravity-ui/dialog-fields/commit/663329eb67c976ca556b9ec7ce546900b4e1ec19))
-
-## [3.0.0](https://github.com/gravity-ui/dialog-fields/compare/v2.0.1...v3.0.0) (2023-09-02)
-
+## [4.0.0](https://github.com/gravity-ui/dialog-fields/compare/v3.1.0...v4.0.0) (2023-11-27)
 
 ### ⚠ BREAKING CHANGES
 
-* rename `.page-dialog` classname to `.df-page-dialog`
+- rework ControlField.extras ([9826b75](https://github.com/gravity-ui/dialog-fields/commit/9826b758ccc166bee88aff934f5edd37fd1056e8))
+  - definition of function `extras(formValues, form)` is changed to `extras(formValues, {form, field, input})`
 
-### chore
+### Features
 
-* migrate to `@bem-react/classname` ([8e4f3d0](https://github.com/gravity-ui/dialog-fields/commit/8e4f3d01b86fa19011a70a60a21e01251d7a5a27))
+- add Select control ([4b33ffd](https://github.com/gravity-ui/dialog-fields/commit/4b33ffd6fadbf309794a484057490defc21764ef))
+- rework ControlField.extras ([9826b75](https://github.com/gravity-ui/dialog-fields/commit/9826b758ccc166bee88aff934f5edd37fd1056e8))
 
-## [2.0.1](https://github.com/gravity-ui/dialog-fields/compare/v2.0.0...v2.0.1) (2023-08-17)
+## [3.1.0](https://github.com/gravity-ui/dialog-fields/compare/v3.0.2...v3.1.0) (2023-11-01)
 
+### Features
+
+- make section collapsible ([4ebff66](https://github.com/gravity-ui/dialog-fields/commit/4ebff660534769b8e06947578a64d8c7f570f6b1))
 
 ### Bug Fixes
 
-* better peerDependencies ([8f9fcba](https://github.com/gravity-ui/dialog-fields/commit/8f9fcba1600580806025cd89228606f40f91c5a4))
+- **block:** block-element should be full-width with vertical tabs ([0496529](https://github.com/gravity-ui/dialog-fields/commit/0496529f697f9e5982beec6ff8650c3aa617a1f2))
+
+## [3.0.2](https://github.com/gravity-ui/dialog-fields/compare/v3.0.1...v3.0.2) (2023-10-04)
+
+### Bug Fixes
+
+- minor style fix for 'textarea' ([71fb737](https://github.com/gravity-ui/dialog-fields/commit/71fb73712c07ece1afd73203ef8b9bea7afab1dc))
+
+## [3.0.1](https://github.com/gravity-ui/dialog-fields/compare/v3.0.0...v3.0.1) (2023-10-04)
+
+### Bug Fixes
+
+- **buid:** babel config should be used for storybook only ([663329e](https://github.com/gravity-ui/dialog-fields/commit/663329eb67c976ca556b9ec7ce546900b4e1ec19))
+
+## [3.0.0](https://github.com/gravity-ui/dialog-fields/compare/v2.0.1...v3.0.0) (2023-09-02)
+
+### ⚠ BREAKING CHANGES
+
+- rename `.page-dialog` classname to `.df-page-dialog`
+
+### chore
+
+- migrate to `@bem-react/classname` ([8e4f3d0](https://github.com/gravity-ui/dialog-fields/commit/8e4f3d01b86fa19011a70a60a21e01251d7a5a27))
+
+## [2.0.1](https://github.com/gravity-ui/dialog-fields/compare/v2.0.0...v2.0.1) (2023-08-17)
+
+### Bug Fixes
+
+- better peerDependencies ([8f9fcba](https://github.com/gravity-ui/dialog-fields/commit/8f9fcba1600580806025cd89228606f40f91c5a4))
 
 ## [2.0.0](https://github.com/gravity-ui/dialog-fields/compare/v1.1.1...v2.0.0) (2023-07-25)
 
