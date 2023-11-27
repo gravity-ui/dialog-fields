@@ -73,6 +73,18 @@ function DialogDemo({
             pristineSubmittable
             fields={[
                 {
+                    type: 'block',
+                    name: 'block',
+                    extras: {
+                        children: (
+                            <div style={{color: 'gray'}}>
+                                It is possible to group fields and collapse such groups with
+                                sections
+                            </div>
+                        ),
+                    },
+                },
+                {
                     section: 'General',
                     fields: [
                         {
@@ -86,7 +98,6 @@ function DialogDemo({
                             caption: 'Last name',
                         },
                     ],
-                    wrapTo: wrapTo.bind(null, undefined),
                 },
                 {
                     section: 'Contacts',
@@ -103,7 +114,6 @@ function DialogDemo({
                             caption: 'Phone',
                         },
                     ],
-                    wrapTo: wrapTo.bind(null, 'cyan'),
                 },
                 {
                     section: 'Address',
@@ -121,36 +131,9 @@ function DialogDemo({
                             caption: 'Street',
                         },
                     ],
-                    wrapTo: wrapTo.bind(null, 'magenta'),
-                },
-                {
-                    type: 'block',
-                    name: 'block',
-                    extras: {
-                        children: (
-                            <div style={{color: 'gray'}}>
-                                It is possible to group and decorate fields with sections
-                            </div>
-                        ),
-                    },
                 },
             ]}
         />
-    );
-}
-
-function wrapTo(color: string, node: React.ReactNode) {
-    return (
-        <div
-            style={{
-                padding: 10,
-                borderRadius: 10,
-                border: `1px solid ${color}`,
-                marginBottom: '1ex',
-            }}
-        >
-            {node}
-        </div>
     );
 }
 
