@@ -1,5 +1,5 @@
 import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 
 import EditableList, {
     EditableListItemType,
@@ -56,11 +56,9 @@ class EditableListDemoItem extends React.Component<EditableListProps> {
 export default {
     title: 'Components/EditableList',
     component: EditableListDemoItem,
-} as ComponentMeta<typeof EditableListDemoItem>;
+} as Meta<typeof EditableListDemoItem>;
 
-const Template: ComponentStory<typeof EditableListDemoItem> = (args) => (
-    <EditableListDemoItem {...args} />
-);
+const Template: StoryFn<typeof EditableListDemoItem> = (args) => <EditableListDemoItem {...args} />;
 
 export const Frozen = Template.bind({});
 Frozen.args = {

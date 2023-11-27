@@ -3,7 +3,7 @@ import {dfCN} from '../helpers/cn';
 import EditableManyLists, {
     EditableManyListsProps,
 } from '../dialog/EditableManyLists/EditableManyLists';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 
 import './EditableManyListsDemo.scss';
 const b = dfCN('editable-lists-control-demo');
@@ -72,9 +72,9 @@ class DemoItem extends React.Component<Pick<EditableManyListsProps<any>, 'itemRe
 export default {
     title: 'Components/EditableManyList',
     component: DemoItem,
-} as ComponentMeta<typeof DemoItem>;
+} as Meta<typeof DemoItem>;
 
-const Template: ComponentStory<typeof DemoItem> = (args) => <DemoItem {...args} />;
+const Template: StoryFn<typeof DemoItem> = (args) => <DemoItem {...args} />;
 
 export const Frozen = Template.bind({});
 Frozen.args = {};
