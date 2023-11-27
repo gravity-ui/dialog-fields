@@ -1,39 +1,12 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
+import {Select, SelectProps} from '@gravity-ui/uikit';
 
-import {FocusBlurContainer} from '../FocusBlurContainer/FocusBlurContainer';
-
-export interface SelectItem {
-    value: string | number;
-    title: React.ReactNode;
-    hint?: string;
-    key?: string;
-    meta?: string;
-    icon?: React.ReactNode;
-    disabled?: boolean;
-    modifier?: string;
-    url?: string;
-}
-
-export interface SelectControlProps {
-    disabled?: boolean;
-    value: Array<string | number> | undefined;
-    items: Array<SelectItem>;
+export type SelectControlProps = Omit<SelectProps, 'onUpdate' | 'onChange'> & {
     onChange: (value: SelectControlProps['value']) => void;
-    onFocus?: () => void;
-    onBlur?: () => void;
-    showSearch?: boolean;
-    singleValueMode?: boolean;
-}
+};
 
-function SelectControl(props: SelectControlProps) {
-    const {onFocus, onBlur} = props;
-
-    return (
-        <FocusBlurContainer onFocus={onFocus} onBlur={onBlur}>
-            Select control is not implemented yet
-        </FocusBlurContainer>
-    );
+export function SelectControl(props: SelectControlProps) {
+    return <Select {...props} />;
 }
 
 SelectControl.getDefaultValue = () => {
@@ -41,10 +14,5 @@ SelectControl.getDefaultValue = () => {
 };
 
 SelectControl.isEmpty = (value: SelectControlProps['value']) => {
-    if (typeof value === 'number') {
-        return false;
-    }
-    return isEmpty(value);
+    return !value?.length;
 };
-
-export default SelectControl;
