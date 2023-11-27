@@ -5,10 +5,8 @@ import {FormApi} from '../../index';
 import {Button} from '@gravity-ui/uikit';
 
 interface FormValues {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
+    type: Array<string>;
+    choice: Array<string>;
 }
 
 class DialogWithSelectStories extends Component {
@@ -61,10 +59,10 @@ function DialogDemo({
     onClose?: () => void;
 }) {
     return (
-        <DFDialog<FormValues>
+        <DFDialog<FormValues, Partial<FormValues>>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Linked fields',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -73,23 +71,44 @@ function DialogDemo({
             pristineSubmittable
             fields={[
                 {
-                    name: 'firstName',
-                    type: 'text',
-                    caption: 'First name',
+                    name: 'type',
+                    type: 'select',
+                    caption: 'Type',
                     extras: {
-                        placeholder: 'First name',
+                        width: 'max',
+                        placeholder: 'Type',
+                        options: [
+                            {value: 'color', content: 'Color'},
+                            {value: 'fruit', content: 'Fruit'},
+                        ],
+                        hasClear: true,
                     },
                 },
                 {
-                    name: 'lastName',
-                    type: 'text',
-                    caption: 'Last name',
-                    extras: ({firstName}) => {
+                    name: 'choice',
+                    type: 'select',
+                    caption: 'Choice',
+                    extras: ({type = []}, {input}) => {
+                        const [selectedType] = type;
+                        const values =
+                            selectedType === 'color'
+                                ? ['red', 'greed', 'blue']
+                                : ['apple', 'orange', 'pear'];
+
+                        const {value, onChange} = input;
+                        if (value?.[0] && -1 === values.indexOf(value[0])) {
+                            setTimeout(() => {
+                                onChange([]);
+                            }, 200);
+                        }
+
                         return {
-                            disabled: !firstName,
-                            placeholder: !firstName
-                                ? 'Please provide "First name" to unlock it'
-                                : 'Last name',
+                            width: 'max',
+                            disabled: !selectedType,
+                            placeholder: !selectedType
+                                ? 'You have to pick a "Type" to unlock the field.'
+                                : 'Your choice...',
+                            options: values.map((i) => ({value: i, content: i})),
                         };
                     },
                 },
