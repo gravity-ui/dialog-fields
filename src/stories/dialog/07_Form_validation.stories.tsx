@@ -78,7 +78,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Form-level validation',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -92,16 +92,6 @@ function DialogDemo({
                     type: tabType,
                     fields: [
                         {
-                            name: 'firstName',
-                            type: 'text',
-                            caption: 'First name',
-                        },
-                        {
-                            name: 'lastName',
-                            type: 'text',
-                            caption: 'Last name',
-                        },
-                        {
                             type: 'block',
                             name: 'block',
                             extras: {
@@ -113,6 +103,16 @@ function DialogDemo({
                                     </div>
                                 ),
                             },
+                        },
+                        {
+                            name: 'firstName',
+                            type: 'text',
+                            caption: 'First name',
+                        },
+                        {
+                            name: 'lastName',
+                            type: 'text',
+                            caption: 'Last name',
                         },
                     ],
                 },

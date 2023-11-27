@@ -82,7 +82,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Field-level validation',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -95,21 +95,6 @@ function DialogDemo({
                     title: 'General',
                     type: tabType,
                     fields: [
-                        {
-                            name: 'firstName',
-                            type: 'text',
-                            caption: 'First name',
-                            required: true,
-                            validator: (v) => {
-                                return v !== 'John' ? 'John is a good name' : undefined;
-                            },
-                        },
-                        {
-                            name: 'lastName',
-                            type: 'text',
-                            caption: 'Last name',
-                            required: true,
-                        },
                         {
                             type: 'block',
                             name: 'block',
@@ -127,6 +112,21 @@ function DialogDemo({
                                     </div>
                                 ),
                             },
+                        },
+                        {
+                            name: 'firstName',
+                            type: 'text',
+                            caption: 'First name',
+                            required: true,
+                            validator: (v) => {
+                                return v !== 'John' ? 'John is a good name' : undefined;
+                            },
+                        },
+                        {
+                            name: 'lastName',
+                            type: 'text',
+                            caption: 'Last name',
+                            required: true,
                         },
                     ],
                 },

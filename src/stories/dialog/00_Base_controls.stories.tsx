@@ -111,8 +111,7 @@ function DialogDemo({
                     children: (
                         <div>
                             <div style={{color: 'gray', paddingBottom: '20px'}}>
-                                This page is demonstrates base set of registered field types. But
-                                you can expand it as you like.
+                                This page demonstrates base set of registered field types.
                             </div>
                             <b>block</b> is used for custom content
                         </div>

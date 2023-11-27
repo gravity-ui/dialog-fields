@@ -84,7 +84,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Visibility contdition',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -97,6 +97,18 @@ function DialogDemo({
                     title: 'General',
                     type: tabType,
                     fields: [
+                        {
+                            type: 'block',
+                            name: 'block',
+                            extras: {
+                                children: (
+                                    <div style={{color: 'gray'}}>
+                                        Some fields might be hidden depending on value of another
+                                        field. Check <b>Provide contacts</b>
+                                    </div>
+                                ),
+                            },
+                        },
                         {
                             name: 'firstName',
                             type: 'text',
@@ -114,18 +126,6 @@ function DialogDemo({
                             extras: {
                                 children:
                                     'I want to provide my contacts (check to display "Contacts" tab)',
-                            },
-                        },
-                        {
-                            type: 'block',
-                            name: 'block',
-                            extras: {
-                                children: (
-                                    <div style={{color: 'gray'}}>
-                                        There is ability to hide tabs and fields by using{' '}
-                                        <b>visibilityCondition</b>
-                                    </div>
-                                ),
                             },
                         },
                     ],

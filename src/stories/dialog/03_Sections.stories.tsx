@@ -64,7 +64,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Group of fields',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -78,8 +78,8 @@ function DialogDemo({
                     extras: {
                         children: (
                             <div style={{color: 'gray'}}>
-                                It is possible to group fields and collapse such groups with
-                                sections
+                                It is possible to group several fields and make such groups
+                                collapsible.
                             </div>
                         ),
                     },

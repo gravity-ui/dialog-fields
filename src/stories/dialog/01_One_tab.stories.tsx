@@ -64,7 +64,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'One tab',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -91,13 +91,6 @@ function DialogDemo({
                     name: 'phone',
                     type: 'text',
                     caption: 'Phone',
-                },
-                {
-                    name: 'block',
-                    type: 'block',
-                    extras: {
-                        children: <div style={{color: 'gray'}}>Just a simple one page form</div>,
-                    },
                 },
             ]}
         />

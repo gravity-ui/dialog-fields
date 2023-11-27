@@ -72,7 +72,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Virtualized tabs',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -85,16 +85,6 @@ function DialogDemo({
                     title: 'General',
                     type: 'tab-vertical',
                     fields: [
-                        {
-                            name: 'firstName',
-                            type: 'text',
-                            caption: 'First name',
-                        },
-                        {
-                            name: 'lastName',
-                            type: 'text',
-                            caption: 'Last name',
-                        },
                         {
                             type: 'block',
                             name: 'block',
@@ -111,6 +101,16 @@ function DialogDemo({
                                     </div>
                                 ),
                             },
+                        },
+                        {
+                            name: 'firstName',
+                            type: 'text',
+                            caption: 'First name',
+                        },
+                        {
+                            name: 'lastName',
+                            type: 'text',
+                            caption: 'Last name',
                         },
                     ],
                 },

@@ -62,7 +62,7 @@ function DialogDemo({
         <DFDialog<FormValues, Partial<FormValues>>
             modal={modal}
             headerProps={{
-                title: 'Linked fields',
+                title: 'Linked fields by value',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -70,6 +70,19 @@ function DialogDemo({
             initialValues={initialValues}
             pristineSubmittable
             fields={[
+                {
+                    type: 'block',
+                    name: 'block',
+                    extras: {
+                        children: (
+                            <div style={{color: 'gray'}}>
+                                It is possible to provide additional properties for controls by
+                                using <b>extras</b>. Also you can make fields depending to each
+                                other by values by using this property.
+                            </div>
+                        ),
+                    },
+                },
                 {
                     name: 'type',
                     type: 'select',
@@ -107,22 +120,9 @@ function DialogDemo({
                             disabled: !selectedType,
                             placeholder: !selectedType
                                 ? 'You have to pick a "Type" to unlock the field.'
-                                : 'Your choice...',
+                                : `Choose your ${selectedType}...`,
                             options: values.map((i) => ({value: i, content: i})),
                         };
-                    },
-                },
-                {
-                    type: 'block',
-                    name: 'block',
-                    extras: {
-                        children: (
-                            <div style={{color: 'gray'}}>
-                                It is possible to provide additional properties for controls by
-                                using <b>extras</b>. Also you can make fields depending to each
-                                other by values by using this property.
-                            </div>
-                        ),
                     },
                 },
             ]}
