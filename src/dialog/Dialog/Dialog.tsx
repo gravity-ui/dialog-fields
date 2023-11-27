@@ -714,7 +714,7 @@ class Dialog<
                     <div
                         className={bDialog(
                             'field-group',
-                            {type, 'full-width': fullWidth},
+                            {type, 'full-width': fullWidth, dirty: meta.dirty},
                             className,
                         )}
                     >
