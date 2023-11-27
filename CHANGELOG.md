@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/gravity-ui/dialog-fields/compare/v4.0.0...v4.1.0) (2023-11-27)
+
+
+### Features
+
+* add '_dirty' modifier for '.df-dialog__field-group' ([f805d4e](https://github.com/gravity-ui/dialog-fields/commit/f805d4eabe4d5c96d7061e565e4903502d15580f))
+
 ## [4.0.0](https://github.com/gravity-ui/dialog-fields/compare/v3.1.0...v4.0.0) (2023-11-27)
 
 ### ⚠ BREAKING CHANGES
