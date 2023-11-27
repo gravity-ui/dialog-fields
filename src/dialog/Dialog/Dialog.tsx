@@ -23,7 +23,7 @@ import {OnChange} from 'react-final-form-listeners';
 import {InfoIcon, TooltipIcon, WarningIcon} from '../Icon/Icon';
 import TextControl, {TextControlProps} from '../TextControl/TextControl';
 import TextAreaControl, {TextAreaControlProps} from '../TextAreaControl/TextAreaControl';
-import SelectControl, {SelectControlProps} from '../SelectControl/SelectControl';
+import {SelectControl, SelectControlProps} from '../SelectControl/SelectControl';
 import TumblerControl, {TumblerControlProps} from '../TumblerControl/TumblerControl';
 import PlainText, {PlainTextProps} from '../PlainText/PlainText';
 import CheckBoxControl, {CheckBoxControlProps} from '../CheckBoxControl/CheckBoxControl';

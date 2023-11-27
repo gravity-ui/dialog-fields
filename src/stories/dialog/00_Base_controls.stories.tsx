@@ -127,7 +127,17 @@ function DialogDemo({
                 makeField('multi-editable-lists'),
                 makeField('textarea'),
                 makeField('plain'),
-                makeField('select'),
+                makeField('select', {
+                    width: 'max',
+                    filterable: true,
+                    hasClear: true,
+                    options: ['red', 'green', 'blue'].map((i) => {
+                        return {
+                            value: i,
+                            content: i,
+                        };
+                    }),
+                }),
             ]}
         />
     );
