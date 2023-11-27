@@ -6,7 +6,8 @@ export type SelectControlProps = Omit<SelectProps, 'onUpdate' | 'onChange'> & {
 };
 
 export function SelectControl(props: SelectControlProps) {
-    return <Select {...props} />;
+    const {onChange, ...rest} = props;
+    return <Select {...rest} onUpdate={onChange} />;
 }
 
 SelectControl.getDefaultValue = () => {

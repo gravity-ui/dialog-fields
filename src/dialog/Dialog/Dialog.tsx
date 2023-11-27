@@ -156,7 +156,16 @@ export interface ControlField<
 
     initialValue?: V;
 
-    extras?: E | ((allValues: FormValues, form: FormApi<any>) => E);
+    extras?:
+        | E
+        | ((
+              allValues: FormValues,
+              options: {
+                  form: FormApi<any>;
+                  input: FieldInputProps<V>;
+                  field: ControlField<T, V, E, FormValues>;
+              },
+          ) => E);
     touched?: boolean;
 
     visibilityCondition?: {
@@ -462,7 +471,7 @@ class Dialog<
             return (
                 <FormSpy subscription={{values: true}}>
                     {({values, form}) => {
-                        const extrasValues = extras(values, form);
+                        const extrasValues = extras(values, {input, form, field});
                         return (
                             <FieldWithExtras
                                 field={field}
