@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {DeepPartial, DFDialog} from '../../dialog/Dialog/Dialog';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 import {FormApi} from '../../index';
 import {Button} from '@gravity-ui/uikit';
 
@@ -153,9 +153,9 @@ function DialogDemo({
 export default {
     title: 'Demo/08. Cloneable tabs',
     component: DialogWithSelectStories,
-} as ComponentMeta<typeof DialogWithSelectStories>;
+} as Meta<typeof DialogWithSelectStories>;
 
-const Template: ComponentStory<typeof DialogWithSelectStories> = (args) => (
+const Template: StoryFn<typeof DialogWithSelectStories> = (args) => (
     <DialogWithSelectStories {...args} />
 );
 

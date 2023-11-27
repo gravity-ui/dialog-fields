@@ -1,14 +1,14 @@
 import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 
 import {TextAreaControl} from '../index';
 
 export default {
     title: 'Components/TеxtAreaControl',
     component: TextAreaControl,
-} as ComponentMeta<typeof TextAreaControl>;
+} as Meta<typeof TextAreaControl>;
 
-const Template: ComponentStory<typeof TextAreaControl> = (args) => <TextAreaControl {...args} />;
+const Template: StoryFn<typeof TextAreaControl> = (args) => <TextAreaControl {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

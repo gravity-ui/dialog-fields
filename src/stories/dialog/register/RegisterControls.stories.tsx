@@ -7,7 +7,7 @@ import {
     DFDialogField,
     DFDialogTabField,
 } from '../../../dialog/Dialog/Dialog';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 
 function MyControl(props: {username: string; value: unknown}) {
     return <div>Hello, {props.username}!</div>;
@@ -116,9 +116,9 @@ function Demo() {
 export default {
     title: 'Tutorials/Custom control registration',
     component: Demo,
-} as ComponentMeta<typeof Demo>;
+} as Meta<typeof Demo>;
 
-const Template: ComponentStory<typeof Demo> = () => <Demo />;
+const Template: StoryFn<typeof Demo> = () => <Demo />;
 
 export const Primary = Template.bind({});
 Primary.args = {};

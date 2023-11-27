@@ -1,6 +1,6 @@
 import React from 'react';
 import MultiTextControl, {MultiTextControlProps} from '../dialog/MultiTextControl/MultiTextControl';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {StoryFn, Meta} from '@storybook/react';
 
 interface Props {
     initialValue: MultiTextControlProps['value'];
@@ -42,9 +42,9 @@ class MultiText extends React.Component<Props> {
 export default {
     title: 'Components/MultiTextControl',
     component: MultiText,
-} as ComponentMeta<typeof MultiText>;
+} as Meta<typeof MultiText>;
 
-const Template: ComponentStory<typeof MultiText> = (args) => <MultiText {...args} />;
+const Template: StoryFn<typeof MultiText> = (args) => <MultiText {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
