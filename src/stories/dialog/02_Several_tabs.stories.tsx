@@ -82,7 +82,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Person',
+                title: 'Several tabs',
             }}
             onClose={onClose ?? (() => {})}
             visible
@@ -96,6 +96,19 @@ function DialogDemo({
                     type: tabType,
                     fields: [
                         {
+                            type: 'block',
+                            name: 'block',
+                            extras: {
+                                children: (
+                                    <div style={{color: 'gray'}}>
+                                        There is ability to create forms with several tabs. By
+                                        default tabs are horizontally oriented, but it is possible
+                                        to make them vertically oriented.
+                                    </div>
+                                ),
+                            },
+                        },
+                        {
                             name: 'firstName',
                             type: 'text',
                             caption: 'First name',
@@ -104,19 +117,6 @@ function DialogDemo({
                             name: 'lastName',
                             type: 'text',
                             caption: 'Last name',
-                        },
-                        {
-                            type: 'block',
-                            name: 'block',
-                            extras: {
-                                children: (
-                                    <div style={{color: 'gray'}}>
-                                        There is ability to create forms with several tabs. By
-                                        default tabs are horizontally oriented, but it is possible
-                                        to make them vertical.
-                                    </div>
-                                ),
-                            },
                         },
                     ],
                 },
