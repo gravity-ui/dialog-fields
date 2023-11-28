@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/gravity-ui/dialog-fields/compare/v4.1.0...v4.2.0) (2023-11-28)
+
+
+### Features
+
+* **DFDialog:** add DFDialog.props.footerProps.hidden field ([325cb3d](https://github.com/gravity-ui/dialog-fields/commit/325cb3ddc0b8f55fe1f9600e632321921287e50a))
+
 ## [4.1.0](https://github.com/gravity-ui/dialog-fields/compare/v4.0.0...v4.1.0) (2023-11-27)
 
 
