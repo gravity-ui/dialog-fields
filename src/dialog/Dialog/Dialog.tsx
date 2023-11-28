@@ -278,6 +278,7 @@ export interface DFDialogProps<
         insertBefore?: React.ReactNode;
     };
     footerProps?: {
+        hidden?: boolean;
         textApply?: string;
         textCancel?: string;
         content?: React.ReactNode;
@@ -1073,6 +1074,7 @@ class Dialog<
             content,
             propsButtonCancel = {},
             propsButtonApply = {},
+            hidden,
         } = footerProps || {};
         const formState = form.getState();
         const disabled = this.isApplyDisabled(formState);
@@ -1101,18 +1103,20 @@ class Dialog<
                             )}
                         </div>
                     </CommonDialog.Body>
-                    <CommonDialog.Footer
-                        preset="default"
-                        loading={formState.submitting}
-                        textButtonCancel={textCancel}
-                        textButtonApply={textApply}
-                        propsButtonApply={{disabled, type: 'submit', ...propsButtonApply}}
-                        propsButtonCancel={propsButtonCancel}
-                        onClickButtonCancel={this.onClose}
-                        onClickButtonApply={noop}
-                    >
-                        <div className={bDialog('footer-controls')}>{content}</div>
-                    </CommonDialog.Footer>
+                    {!hidden && (
+                        <CommonDialog.Footer
+                            preset="default"
+                            loading={formState.submitting}
+                            textButtonCancel={textCancel}
+                            textButtonApply={textApply}
+                            propsButtonApply={{disabled, type: 'submit', ...propsButtonApply}}
+                            propsButtonCancel={propsButtonCancel}
+                            onClickButtonCancel={this.onClose}
+                            onClickButtonApply={noop}
+                        >
+                            <div className={bDialog('footer-controls')}>{content}</div>
+                        </CommonDialog.Footer>
+                    )}
                 </form>
                 {waitingMessage && (
                     <div className={bDialog('waiting-message')}>
