@@ -3,4 +3,8 @@
     line-height: 18px;
     font-weight: 500;
     color: var(--g-color-text-primary);
+
+    &__placeholder {
+        color: var(--g-color-text-secondary);
+    }
 }

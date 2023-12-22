@@ -9,6 +9,7 @@ export type PlainTextProps = {
     value: string;
     onChange: (value: PlainTextProps['value']) => void;
     className?: string;
+    placeholder?: React.ReactNode;
 };
 
 class PlainText extends React.Component<PlainTextProps> {
@@ -21,9 +22,13 @@ class PlainText extends React.Component<PlainTextProps> {
     }
 
     render() {
-        const {value, className} = this.props;
+        const {value, placeholder, className} = this.props;
 
-        return <div className={block(null, className)}>{value}</div>;
+        return (
+            <div className={block(null, className)}>
+                {value || <span className={block('placeholder')}>{placeholder}</span>}
+            </div>
+        );
     }
 }
 
