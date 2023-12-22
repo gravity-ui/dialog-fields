@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.3.0](https://github.com/gravity-ui/dialog-fields/compare/v4.2.0...v4.3.0) (2023-12-22)
+
+
+### Features
+
+* **PlainText:** add PlainText.props.placeholder property ([9cc5dfb](https://github.com/gravity-ui/dialog-fields/commit/9cc5dfb3b62b1df8a66556529ab21467fdf2622f))
+
+
+### Bug Fixes
+
+* **PlainText:** add padding-top ([8cb7525](https://github.com/gravity-ui/dialog-fields/commit/8cb75256d1747a92051406348098473a2afee2c5))
+
 ## [4.2.0](https://github.com/gravity-ui/dialog-fields/compare/v4.1.0...v4.2.0) (2023-11-28)
 
 
