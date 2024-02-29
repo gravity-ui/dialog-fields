@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.1](https://github.com/gravity-ui/dialog-fields/compare/v4.3.0...v4.3.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* better tab errors detection ([737fc89](https://github.com/gravity-ui/dialog-fields/commit/737fc897d3469ec2735a98eec5eb3f18fad857e7))
+
 ## [4.3.0](https://github.com/gravity-ui/dialog-fields/compare/v4.2.0...v4.3.0) (2023-12-22)
 
 
