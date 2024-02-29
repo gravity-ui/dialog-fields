@@ -4,6 +4,8 @@ import {Tabs} from '@gravity-ui/uikit';
 import {dfCN} from '../../helpers/cn';
 import {DangerIcon, CloseIcon} from '../Icon/Icon';
 
+import some from 'lodash/some';
+
 import './TabField.scss';
 
 const block = dfCN('dialog-tab');
@@ -54,11 +56,13 @@ class TabField extends Component<TabFieldProps> {
         tabNode: React.ReactNode,
         wrapperMods = {},
     ) => {
+        const hasError =
+            item.error && ('string' === typeof item.error || some(item.error, (v) => Boolean(v)));
         return (
             <div key={item.id} className={block('wrapper', wrapperMods)}>
                 <span className={block('name')}>
                     <span className={block('name-text')}>{tabNode}</span>
-                    {item.error && (
+                    {hasError && (
                         <span
                             className={block('warning-icon')}
                             title="Some fields in this tab are not valid"
