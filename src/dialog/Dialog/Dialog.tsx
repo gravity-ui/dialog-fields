@@ -624,7 +624,7 @@ class Dialog<
 
     componentDidUpdate(_prevProps: unknown, prevState: State<FormValues>) {
         if (prevState.tabsCount !== this.state.tabsCount) {
-            setTimeout(() => document.querySelector('.yc-dialog__modal')?.scrollTo(0, 0), 0); // setTimeout for safari
+            setTimeout(() => document.querySelector('.g-dialog__modal')?.scrollTo(0, 0), 0); // setTimeout for safari
         }
     }
 

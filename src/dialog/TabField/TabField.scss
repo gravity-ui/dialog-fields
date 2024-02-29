@@ -1,4 +1,8 @@
 .df-dialog-tab {
+    &__control {
+        margin-bottom: 10px;
+    }
+
     &__wrapper {
         display: flex;
         align-items: center;

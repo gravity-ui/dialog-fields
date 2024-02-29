@@ -91,7 +91,7 @@ class TabField extends Component<TabFieldProps> {
 
         return (
             <Tabs
-                className={className}
+                className={block('control', className)}
                 items={tabItems}
                 activeTab={activeTab}
                 onSelectTab={setActiveTab}
