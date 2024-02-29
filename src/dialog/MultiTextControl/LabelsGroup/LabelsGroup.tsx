@@ -54,7 +54,7 @@ class LabelsGroup extends Component<Props> {
                 className={block('label')}
                 type={onRemove && !isDefault ? 'close' : 'default'}
                 onClick={onLabelClick}
-                onClose={onRemoveClick}
+                onCloseClick={onRemoveClick}
                 size="s"
                 disabled={disabled}
             >

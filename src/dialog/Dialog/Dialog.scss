@@ -25,7 +25,8 @@
         &_with_vertical_tabs {
             border-top: 1px solid var(--g-color-line-generic);
             border-bottom: 1px solid var(--g-color-line-generic);
-            --yc-dialog-body-padding: 0px;
+
+            padding: 0px;
         }
     }
 
@@ -56,21 +57,12 @@
         padding-bottom: 1ex;
     }
 
-    .yc-tabs {
-        margin-bottom: 10px;
+    .g-tabs {
         position: relative;
 
         &__tab {
             display: flex;
             align-items: center;
-        }
-    }
-
-    .yc-field-wrapper {
-        position: relative;
-
-        &__error-text {
-            position: absolute;
         }
     }
 
@@ -193,7 +185,7 @@
         padding-bottom: 8px;
         border-radius: 5px;
 
-        .yc-icon {
+        .g-icon {
             margin-right: 8px;
         }
     }
@@ -217,6 +209,8 @@
 .df-page-dialog {
     width: 720px;
 
+    --_--side-padding: 32px;
+
     &__wrapper {
         width: 100%;
         display: flex;
@@ -224,7 +218,6 @@
     }
 
     &__title {
-        padding: var(--yc-dialog-header-padding);
         line-height: 24px;
         display: flex;
         align-items: center;
@@ -235,7 +228,11 @@
     }
 
     &__body {
-        padding: var(--yc-dialog-body-padding);
         flex: 1 1 100%;
+    }
+
+    .g-dialog-header {
+        padding-left: 32px;
+        padding-right: 32px;
     }
 }
