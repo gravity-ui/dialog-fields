@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/gravity-ui/dialog-fields/compare/v4.3.1...v5.0.0) (2024-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* update @gravity-ui/uikit v6
+
+### Features
+
+* update @gravity-ui/uikit v6 ([82689df](https://github.com/gravity-ui/dialog-fields/commit/82689df204f3df6ac40899f6f4463c66caefd961))
+
 ## [4.3.1](https://github.com/gravity-ui/dialog-fields/compare/v4.3.0...v4.3.1) (2024-02-29)
 
 
