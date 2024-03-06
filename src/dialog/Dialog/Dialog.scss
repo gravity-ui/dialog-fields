@@ -212,6 +212,11 @@
     &__tab-warning-icon {
         margin-right: 3px;
     }
+
+    &__q-icon {
+        position: relative;
+        top: 2px;
+    }
 }
 
 .df-page-dialog {
@@ -237,10 +242,5 @@
     &__body {
         padding: var(--yc-dialog-body-padding);
         flex: 1 1 100%;
-    }
-
-    &__q-icon {
-        position: relative;
-        top: 2px;
     }
 }
