@@ -204,6 +204,11 @@
     &__tab-warning-icon {
         margin-right: 3px;
     }
+
+    &__q-icon {
+        position: relative;
+        top: 2px;
+    }
 }
 
 .df-page-dialog {
@@ -234,10 +239,5 @@
     .g-dialog-header {
         padding-left: 32px;
         padding-right: 32px;
-    }
-
-    &__q-icon {
-        position: relative;
-        top: 2px;
     }
 }
