@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.1](https://github.com/gravity-ui/dialog-fields/compare/v5.0.0...v5.0.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* better question-icon position ([258f9d7](https://github.com/gravity-ui/dialog-fields/commit/258f9d7c3a26211ce96735b116e91dffbd247a6f))
+
 ## [5.0.0](https://github.com/gravity-ui/dialog-fields/compare/v4.3.1...v5.0.0) (2024-03-04)
 
 
