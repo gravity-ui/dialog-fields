@@ -47,7 +47,7 @@ class DialogWithSelectStories extends Component {
 }
 
 function makeField<T extends string, E extends object>(type: T, extras?: E) {
-    const res = {type, name: type, required: true, caption: type};
+    const res = {type, name: type, required: true, caption: type, tooltip: `Help for ${type}`};
     if (extras) {
         Object.assign(res, {extras});
     }
