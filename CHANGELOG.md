@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.3](https://github.com/gravity-ui/dialog-fields/compare/v5.0.2...v5.0.3) (2024-03-06)
+
+
+### Bug Fixes
+
+* minor fix for release.yaml ([63d962f](https://github.com/gravity-ui/dialog-fields/commit/63d962fbb065932cdccc1a3af2386425aed97165))
+
 ## [5.0.2](https://github.com/gravity-ui/dialog-fields/compare/v5.0.1...v5.0.2) (2024-03-06)
 
 
