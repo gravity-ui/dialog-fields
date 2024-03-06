@@ -514,7 +514,7 @@ class Dialog<
                             delayClosing={150}
                             placement={['bottom', 'top', 'right']}
                         >
-                            <TooltipIcon />
+                            <TooltipIcon className={bDialog('q-icon')} />
                         </Popover>
                     </div>
                 )}
