@@ -66,8 +66,18 @@ function MyForm() {
         return Promise.resolve();
       }}
       fields={[
-        {name: 'firstName', type: 'text', caption: 'First name'},
-        {name: 'lastName', type: 'text', caption: 'LastName'},
+        {
+          name: 'firstName',
+          type: 'text',
+          caption: 'First name',
+          tooltip: 'Description for first name field',
+        },
+        {
+          name: 'lastName',
+          type: 'text',
+          caption: 'LastName',
+          tooltip: 'Description for last name field',
+        },
       ]}
     />
   );
