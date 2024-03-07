@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.4](https://github.com/gravity-ui/dialog-fields/compare/v4.3.3...v4.3.4) (2024-03-07)
+
+
+### Bug Fixes
+
+* better vertical align for labels ([611b6a1](https://github.com/gravity-ui/dialog-fields/commit/611b6a1477398236b580c9fdf0f06100f52155c6))
+
 ## [4.3.3](https://github.com/gravity-ui/dialog-fields/compare/v4.3.2...v4.3.3) (2024-03-06)
 
 
