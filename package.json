@@ -1,6 +1,6 @@
 {
   "name": "@gravity-ui/dialog-fields",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "The library helps to create dialogs with forms by using registered field-types. Also it is possible to extend it with your own field-types.",
   "repository": {
     "type": "arc",

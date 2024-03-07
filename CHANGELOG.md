@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.5](https://github.com/gravity-ui/dialog-fields/compare/v5.0.4...v5.0.5) (2024-03-07)
+
+
+### Bug Fixes
+
+* better vertical align for labels ([4060084](https://github.com/gravity-ui/dialog-fields/commit/4060084953f1d66435cfb45feb4312a136313319))
+
 ## [5.0.4](https://github.com/gravity-ui/dialog-fields/compare/v5.0.3...v5.0.4) (2024-03-06)
 
 
