@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.0.6](https://github.com/gravity-ui/dialog-fields/compare/v5.0.5...v5.0.6) (2024-03-11)
+
+
+### Bug Fixes
+
+* better styles for size:'s' ([b4c7ebd](https://github.com/gravity-ui/dialog-fields/commit/b4c7ebde579fe0f57a455611c1bec928d53be1cb))
+* better type for textApply property ([dbacf6f](https://github.com/gravity-ui/dialog-fields/commit/dbacf6f4d8c4bb42445482c8cf89c1e2d3ed14b1))
+
 ## [5.0.5](https://github.com/gravity-ui/dialog-fields/compare/v5.0.4...v5.0.5) (2024-03-07)
 
 
