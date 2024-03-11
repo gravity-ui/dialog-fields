@@ -5,13 +5,16 @@ import '@gravity-ui/uikit/styles/styles.scss';
 
 import {ThemeProvider, MobileProvider, configure as uikitConfigure} from '@gravity-ui/uikit';
 import {configure} from '../src/configure';
+import {SizeProvider} from '../src/stories/SizeContext';
 
 export const withContextProvider: Decorator = (StoryItem, context) => {
     return (
         <React.StrictMode>
             <ThemeProvider theme={context.globals.theme}>
                 <MobileProvider>
-                    <StoryItem {...context} />
+                    <SizeProvider value={context.globals.size}>
+                        <StoryItem {...context} />
+                    </SizeProvider>
                 </MobileProvider>
             </ThemeProvider>
         </React.StrictMode>
@@ -59,6 +62,18 @@ const preview: Preview = {
                     {title: 'dark', value: 'dark'},
                     {title: 'light-hc', value: 'light-hc'},
                     {title: 'dark-hc', value: 'dark-hc'},
+                ],
+            },
+        },
+        size: {
+            name: 'Size',
+            defaultValue: 'm',
+            toolbar: {
+                icon: 'apple',
+                items: [
+                    {title: 's', value: 's'},
+                    {title: 'm', value: 'm'},
+                    {title: 'l', value: 'l'},
                 ],
             },
         },
