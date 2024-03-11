@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.6](https://github.com/gravity-ui/dialog-fields/compare/v4.3.5...v4.3.6) (2024-03-11)
+
+
+### Bug Fixes
+
+* better type for textApply property ([bb8c3b0](https://github.com/gravity-ui/dialog-fields/commit/bb8c3b091f332e61725760dcfe3eba7426c271f6))
+
 ## [4.3.5](https://github.com/gravity-ui/dialog-fields/compare/v4.3.4...v4.3.5) (2024-03-11)
 
 
