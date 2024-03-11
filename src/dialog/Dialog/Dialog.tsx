@@ -279,7 +279,7 @@ export interface DFDialogProps<
     };
     footerProps?: {
         hidden?: boolean;
-        textApply?: string;
+        textApply?: React.ReactNode;
         textCancel?: string;
         content?: React.ReactNode;
         propsButtonCancel?: DialogFooterProps['propsButtonCancel'];
@@ -1108,7 +1108,7 @@ class Dialog<
                             preset="default"
                             loading={formState.submitting}
                             textButtonCancel={textCancel}
-                            textButtonApply={textApply}
+                            textButtonApply={textApply as string}
                             propsButtonApply={{disabled, type: 'submit', ...propsButtonApply}}
                             propsButtonCancel={propsButtonCancel}
                             onClickButtonCancel={this.onClose}
