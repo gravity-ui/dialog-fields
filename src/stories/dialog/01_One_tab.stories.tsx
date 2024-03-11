@@ -3,6 +3,7 @@ import {DFDialog} from '../../dialog/Dialog/Dialog';
 import {StoryFn, Meta} from '@storybook/react';
 import {FormApi} from '../../index';
 import {Button} from '@gravity-ui/uikit';
+import {useSize} from '../SizeContext';
 
 interface FormValues {
     firstName: string;
@@ -66,6 +67,7 @@ function DialogDemo({
             headerProps={{
                 title: 'One tab',
             }}
+            {...useSize()}
             onClose={onClose ?? (() => {})}
             visible
             onAdd={onAdd}

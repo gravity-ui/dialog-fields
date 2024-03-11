@@ -1063,7 +1063,7 @@ class Dialog<
         form: FormApi<FormValues, InitialFormValues>,
     ) => {
         this.form = form;
-        const {waitingMessage, headerProps, footerProps, fields, formId} = this.props;
+        const {waitingMessage, headerProps, footerProps, fields, formId, size} = this.props;
         const {verticalTabs} = this.state;
         const {title, insertAfter, insertBefore} = headerProps || {};
         const {textApply: textApplyDefault, textCancel: textCancelDefault} =
@@ -1092,7 +1092,7 @@ class Dialog<
                     <CommonDialog.Body
                         className={bDialog('body', {with_vertical_tabs: Boolean(verticalTabs)})}
                     >
-                        <div className={bDialog({with_vertical_tabs: Boolean(verticalTabs)})}>
+                        <div className={bDialog({size, with_vertical_tabs: Boolean(verticalTabs)})}>
                             {isArrayOfTabs(fields) ? (
                                 this.renderTabbedFields()
                             ) : (
@@ -1137,10 +1137,10 @@ class Dialog<
         handleSubmit: () => void;
         form: FormApi<FormValues, InitialFormValues>;
     }): React.ReactNode => {
-        const {className, modal} = this.props;
+        const {className, modal, size} = this.props;
         return (
             <div className={bPage('wrapper', {modal}, className)}>
-                <div className={bPage()}>{this.renderDialogContent(handleSubmit, form)}</div>
+                <div className={bPage({size})}>{this.renderDialogContent(handleSubmit, form)}</div>
             </div>
         );
     };
