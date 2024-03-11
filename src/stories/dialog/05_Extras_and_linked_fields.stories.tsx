@@ -3,6 +3,7 @@ import {DFDialog} from '../../dialog/Dialog/Dialog';
 import {StoryFn, Meta} from '@storybook/react';
 import {FormApi} from '../../index';
 import {Button} from '@gravity-ui/uikit';
+import {useSize} from '../SizeContext';
 
 interface FormValues {
     type: Array<string>;
@@ -64,6 +65,7 @@ function DialogDemo({
             headerProps={{
                 title: 'Linked fields by value',
             }}
+            {...useSize()}
             onClose={onClose ?? (() => {})}
             visible
             onAdd={onAdd}

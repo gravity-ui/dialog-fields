@@ -1,7 +1,29 @@
 .df-dialog {
     $self: &;
 
+    &.df-dialog_size_s {
+        #{$self}__field-wrapper {
+            width: 250px;
+
+            &_type_block,
+            &_type_textarea {
+                width: 100%;
+            }
+
+            &_type_plain {
+                padding-top: 6px;
+            }
+
+            &_full-width {
+                width: 100%;
+                padding-top: 12px;
+            }
+        }
+    }
+
     &_with_vertical_tabs {
+        $selfWithVertical: &;
+
         display: flex;
 
         #{$self}__field-wrapper {
@@ -11,6 +33,18 @@
             &.df-dialog__field-wrapper_type_block,
             &_full-width {
                 width: 100%;
+            }
+        }
+
+        &.df-dialog_size_s {
+            #{$self}__field-wrapper {
+                width: 200px;
+
+                &.df-dialog__field-wrapper_type_textarea,
+                &.df-dialog__field-wrapper_type_block,
+                &_full-width {
+                    width: 100%;
+                }
             }
         }
     }
@@ -221,6 +255,10 @@
 
 .df-page-dialog {
     width: 720px;
+
+    &.df-page-dialog_size_s {
+        width: 480px;
+    }
 
     &__wrapper {
         width: 100%;
