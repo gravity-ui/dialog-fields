@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.5](https://github.com/gravity-ui/dialog-fields/compare/v4.3.4...v4.3.5) (2024-03-11)
+
+
+### Bug Fixes
+
+* better styles for size:'s' ([a2cb9d9](https://github.com/gravity-ui/dialog-fields/commit/a2cb9d9873d8dfad49117bec832217623edc68fe))
+
 ## [4.3.4](https://github.com/gravity-ui/dialog-fields/compare/v4.3.3...v4.3.4) (2024-03-07)
 
 
