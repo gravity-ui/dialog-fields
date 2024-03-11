@@ -8,6 +8,7 @@ import {MultiTextControlProps} from '../../dialog/MultiTextControl/MultiTextCont
 import {EditableListProps} from '../../dialog/EditableList/EditableList';
 import {EditableManyListsProps} from '../../dialog/EditableManyLists/EditableManyLists';
 import {SelectControlProps} from '../../dialog/SelectControl/SelectControl';
+import {useSize} from '../SizeContext';
 
 class DialogWithSelectStories extends Component {
     state = {
@@ -88,6 +89,7 @@ function DialogDemo({
             }}
             onClose={onClose ?? (() => {})}
             visible
+            {...useSize()}
             onAdd={onAdd}
             initialValues={{
                 plain: 'Some text for "plain" control',
