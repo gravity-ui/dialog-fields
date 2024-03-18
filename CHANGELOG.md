@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.7](https://github.com/gravity-ui/dialog-fields/compare/v4.3.6...v4.3.7) (2024-03-18)
+
+
+### Bug Fixes
+
+* better type for ValidatorType ([9d0bcc1](https://github.com/gravity-ui/dialog-fields/commit/9d0bcc17870e6c98e326fb7a0b379772589eafe4))
+
 ## [4.3.6](https://github.com/gravity-ui/dialog-fields/compare/v4.3.5...v4.3.6) (2024-03-11)
 
 
