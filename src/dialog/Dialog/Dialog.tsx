@@ -56,8 +56,8 @@ import {CollapsibleSection} from '../CollapsibleSection/CollapsibleSection';
 const bDialog = dfCN('dialog');
 const bPage = dfCN('page-dialog');
 
-function composeValidators<T>(...validators: Array<ValidatorType<T>>) {
-    return async (value: T, allValues: object | undefined, state?: FieldState<T>) => {
+function composeValidators<T, FormValuesT>(...validators: Array<ValidatorType<T, FormValuesT>>) {
+    return async (value: T, allValues: FormValuesT, state?: FieldState<T>) => {
         for (const validate of validators) {
             try {
                 const res = await validate(value, allValues, state);
@@ -179,7 +179,7 @@ export interface ControlField<
     tooltip?: React.ReactNode;
     warning?: React.ReactNode;
 
-    validator?: ValidatorType<V>;
+    validator?: ValidatorType<V, FormValues>;
     validateFields?: string[];
 
     subscribers?: Updates;
