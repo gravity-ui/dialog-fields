@@ -87,7 +87,7 @@ function Demo() {
                     '\n    isEmpty?: (value: V) => boolean;' +
                     '\n    getDefaultValue: () => V;' +
                     '\n    hasErrorRenderer?: boolean;' +
-                    '\n    validate?: ValidatorType<V>;' +
+                    '\n    validate?: ValidatorType<V, any>;' +
                     '\n    format?: (value: V, name: string) => any;' +
                     '\n }\n\n'}
             </code>
