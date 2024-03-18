@@ -1,8 +1,8 @@
 import type {FieldState} from 'final-form';
 
-export type ValidatorType<T> = (
+export type ValidatorType<T, FormValues> = (
     value: T,
-    allValues?: Record<string, any>,
+    allValues?: FormValues,
     fieldState?: FieldState<T>,
 ) => PromiseOrValue<string | undefined>;
 
@@ -23,7 +23,7 @@ export interface ControlStaticApi<V> {
     isEmpty?: (value: V) => boolean;
     getDefaultValue: () => V;
     hasErrorRenderer?: boolean;
-    validate?: ValidatorType<V>;
+    validate?: ValidatorType<V, any>;
     format?: (value: V, name: string) => any;
     isEqual?: (a: V, b: V) => boolean;
 
