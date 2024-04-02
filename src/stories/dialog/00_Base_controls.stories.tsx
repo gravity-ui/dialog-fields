@@ -119,7 +119,7 @@ function DialogDemo({
                         </div>
                     ),
                 }),
-                makeField('text'),
+                makeField('text', {autoFocus: true}),
                 makeField('multi-text'),
                 makeField('checkbox', {children: 'checkbox'}),
                 makeField('tumbler', {labelLeft: 'Left label', labelRight: 'Right label'}),
