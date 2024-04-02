@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.7](https://github.com/gravity-ui/dialog-fields/compare/v5.0.6...v5.0.7) (2024-04-02)
+
+
+### Bug Fixes
+
+* make autoFocus correct for text components ([6f63777](https://github.com/gravity-ui/dialog-fields/commit/6f63777f5d3e164702ef8f0972c2bbfc30de188f))
+
 ## [5.0.6](https://github.com/gravity-ui/dialog-fields/compare/v5.0.5...v5.0.6) (2024-03-11)
 
 
