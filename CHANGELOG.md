@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.0.8](https://github.com/gravity-ui/dialog-fields/compare/v5.0.7...v5.0.8) (2024-06-27)
+
+
+### Bug Fixes
+
+* better type for ValidatorType ([cc6077e](https://github.com/gravity-ui/dialog-fields/commit/cc6077ed56f3f135b35783d41ef850fb7ce03d0b))
+* minor fix for styles [YTFRONT-4132] ([09664b8](https://github.com/gravity-ui/dialog-fields/commit/09664b8ad0964a123f0f1babb46397385729409c))
+
 ## [5.0.7](https://github.com/gravity-ui/dialog-fields/compare/v5.0.6...v5.0.7) (2024-04-02)
 
 
