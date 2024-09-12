@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.9](https://github.com/gravity-ui/dialog-fields/compare/v5.0.8...v5.0.9) (2024-09-12)
+
+
+### Bug Fixes
+
+* add export of TabFieldVerticalProps (rework exports) ([681d071](https://github.com/gravity-ui/dialog-fields/commit/681d07175f5aa2e4e9128d39ddfc06e9d0201632))
+
 ## [5.0.8](https://github.com/gravity-ui/dialog-fields/compare/v5.0.7...v5.0.8) (2024-06-27)
 
 
