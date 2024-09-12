@@ -1,9 +1,9 @@
 import React from 'react';
 import {dfCN} from '../../helpers/cn';
 
-import _findIndex from 'lodash/findIndex';
+import findIndex_ from 'lodash/findIndex';
 
-import TabField, {TabFieldProps, TabItem} from './TabField';
+import {TabField, TabFieldProps, TabItem} from './TabField';
 import {List, ListProps} from '@gravity-ui/uikit';
 
 import './TabFieldVertical.scss';
@@ -25,7 +25,7 @@ export interface TabFieldVerticalProps extends TabFieldProps {
     virtualized?: boolean;
 }
 
-class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
+export class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
     static defaultProps = {
         size: 's' as Exclude<TabFieldVerticalProps['size'], undefined>,
     };
@@ -52,7 +52,7 @@ class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
     render() {
         const {className, activeTab, size, sortable, tabItems, onOrderChanged, ...rest} =
             this.props;
-        const selected = _findIndex(tabItems, ({id}) => id === activeTab);
+        const selected = findIndex_(tabItems, ({id}) => id === activeTab);
 
         return (
             <div className={block({size}, className)}>
@@ -73,5 +73,3 @@ class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
         );
     }
 }
-
-export default TabFieldVertical;

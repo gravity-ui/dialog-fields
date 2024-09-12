@@ -1,10 +1,7 @@
 import React from 'react';
 import {StoryFn, Meta} from '@storybook/react';
 
-import EditableList, {
-    EditableListItemType,
-    EditableListProps,
-} from '../dialog/EditableList/EditableList';
+import {EditableList, EditableListItemType, EditableListProps} from '../index';
 
 function genEditableListData() {
     return [

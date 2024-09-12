@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import _map from 'lodash/map';
+import map_ from 'lodash/map';
 import {RadioButton, RadioButtonProps} from '@gravity-ui/uikit';
 
 RadioButtonControl.defaultProps = {
@@ -20,7 +20,7 @@ export interface RadioButtonControlProps extends Omit<RadioButtonProps, 'onChang
     options?: Array<{value: string; label: React.ReactNode}>;
 }
 
-function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps) {
+export function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps) {
     const onRadioChange = useCallback(
         (evt: React.ChangeEvent<HTMLInputElement>) => onChange(evt.target.value),
         [onChange],
@@ -29,7 +29,7 @@ function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps
 
     return (
         <RadioButton {...rest} size={size} value={value} onChange={onRadioChange}>
-            {_map(options, ({value, label}) => (
+            {map_(options, ({value, label}) => (
                 <RadioButton.Option value={value} key={value}>
                     {label}
                 </RadioButton.Option>
@@ -37,5 +37,3 @@ function RadioButtonControl({value, onChange, ...props}: RadioButtonControlProps
         </RadioButton>
     );
 }
-
-export default RadioButtonControl;

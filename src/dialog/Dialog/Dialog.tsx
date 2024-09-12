@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
-import _reduce from 'lodash/reduce';
-import _find from 'lodash/find';
-import _findIndex from 'lodash/findIndex';
-import _isEqual from 'lodash/isEqual';
-import _get from 'lodash/get';
-import _isEmpty from 'lodash/isEmpty';
-import _map from 'lodash/map';
+import reduce_ from 'lodash/reduce';
+import find_ from 'lodash/find';
+import findIndex_ from 'lodash/findIndex';
+import isEqual_ from 'lodash/isEqual';
+import get_ from 'lodash/get';
+import isEmpty_ from 'lodash/isEmpty';
+import map_ from 'lodash/map';
 import {
     Dialog as CommonDialog,
     DialogFooterProps,
@@ -21,26 +21,29 @@ import createDecorator, {Calculation, Updates} from 'final-form-calculate';
 import {OnChange} from 'react-final-form-listeners';
 
 import {InfoIcon, TooltipIcon, WarningIcon} from '../Icon/Icon';
-import TextControl, {TextControlProps} from '../TextControl/TextControl';
-import TextAreaControl, {TextAreaControlProps} from '../TextAreaControl/TextAreaControl';
-import {SelectControl, SelectControlProps} from '../SelectControl/SelectControl';
-import TumblerControl, {TumblerControlProps} from '../TumblerControl/TumblerControl';
-import PlainText, {PlainTextProps} from '../PlainText/PlainText';
-import CheckBoxControl, {CheckBoxControlProps} from '../CheckBoxControl/CheckBoxControl';
-import Condition from '../Condition/Condition';
-import CustomBlock, {CustomBlockProps} from '../CustomBlock/CustomBlock';
-import RadioButtonControl, {
-    RadioButtonControlProps,
-} from '../RadioButtonControl/RadioButtonControl';
-import EditableList, {EditableListProps} from '../EditableList/EditableList';
-import EditableManyLists, {EditableManyListsProps} from '../EditableManyLists/EditableManyLists';
-import MultiTextControl, {MultiTextControlProps} from '../MultiTextControl/MultiTextControl';
-import TabField, {TabFieldProps, TabItem} from '../TabField/TabField';
+import {TextControl, TextControlProps} from '../TextControl';
+import {TextAreaControl, TextAreaControlProps} from '../TextAreaControl';
+import {SelectControl, SelectControlProps} from '../SelectControl';
+import {TumblerControl, TumblerControlProps} from '../TumblerControl';
+import {PlainText, PlainTextProps} from '../PlainText';
+import {CheckBoxControl, CheckBoxControlProps} from '../CheckBoxControl';
+import {Condition} from '../Condition';
+import {CustomBlock, CustomBlockProps} from '../CustomBlock';
+import {RadioButtonControl, RadioButtonControlProps} from '../RadioButtonControl';
+import {EditableList, EditableListProps} from '../EditableList';
+import {EditableManyLists, EditableManyListsProps} from '../EditableManyLists';
+import {MultiTextControl, MultiTextControlProps} from '../MultiTextControl';
+import {
+    TabField,
+    TabFieldProps,
+    TabFieldVertical,
+    TabFieldVerticalProps,
+    TabItem,
+} from '../TabField';
 import {checkTabId, getTabId, applyFunctions} from './utils';
 import {useStableEventHandler} from '../../helpers/useStableEventHendler';
 
 import './Dialog.scss';
-import TabFieldVertical, {TabFieldVerticalProps} from '../TabField/TabFieldVertical';
 
 import i18n from './i18n';
 import {
@@ -385,7 +388,7 @@ class Dialog<
     static getDefaultValues<T extends TabbedField<F>, F>(
         fields: FieldsType<T, F> = [],
     ): Record<string, any> {
-        return _reduce(
+        return reduce_(
             fields,
             (acc, item) => {
                 const field = item as ArrayElement<typeof fields>;
@@ -432,7 +435,7 @@ class Dialog<
             }
         }
 
-        return _isEmpty(res) ? null : res;
+        return isEmpty_(res) ? null : res;
     }
 
     static hasTabs<TabT extends TabbedField<FieldT>, FieldT extends ControlField>(
@@ -584,7 +587,7 @@ class Dialog<
         fields: FieldsType<TabT, FieldT>,
         dst: Array<{name: Calculation['field']; subscribers: Calculation['updates']}> = [],
     ) {
-        return _reduce(
+        return reduce_(
             fields,
             (acc, field) => {
                 const item = field as ArrayElement<typeof fields>;
@@ -906,7 +909,7 @@ class Dialog<
         if (!visibilityCondition) {
             return true;
         }
-        const value = _get(values, visibilityCondition.when);
+        const value = get_(values, visibilityCondition.when);
         return visibilityCondition.isActive(value);
     }
 
@@ -929,7 +932,7 @@ class Dialog<
             active?: boolean,
             options: {userOptions?: any} = {},
         ) => {
-            const tabSpec = _find(fields, (fieldSpec) => fieldSpec.name === fieldName);
+            const tabSpec = find_(fields, (fieldSpec) => fieldSpec.name === fieldName);
             const {onCreateTab} = tabSpec || {};
             if (!tabSpec?.multiple) {
                 return;
@@ -937,11 +940,11 @@ class Dialog<
 
             const {userOptions} = options;
 
-            const index = _findIndex(values[fieldName], this.isActiveTab);
+            const index = findIndex_(values[fieldName], this.isActiveTab);
             const {id: _id, ...srcTabData} = values[fieldName][index === -1 ? 0 : index];
             const newTabData = onCreateTab ? onCreateTab(srcTabData, {userOptions}) : srcTabData;
             if (newTabData.id === undefined) {
-                const ids = new Set(_map(values[fieldName], ({id}) => String(id)));
+                const ids = new Set(map_(values[fieldName], ({id}) => String(id)));
                 for (let i = 0; i <= ids.size; ++i) {
                     const id = String(i + 1);
                     if (!ids.has(id)) {
@@ -960,7 +963,7 @@ class Dialog<
         };
 
         const removeTab = (tabItemToDelete: TabItem) => {
-            const tabIndexToDelete = _findIndex(tabItems, (item) => item.id === tabItemToDelete.id);
+            const tabIndexToDelete = findIndex_(tabItems, (item) => item.id === tabItemToDelete.id);
             if (tabIndexToDelete < 0) {
                 return;
             }
@@ -1206,7 +1209,7 @@ class Dialog<
 
         return (
             <Form
-                initialValuesEqual={_isEqual}
+                initialValuesEqual={isEqual_}
                 keepDirtyOnReinitialize={true}
                 {...formExtras}
                 onSubmit={this.onApply}

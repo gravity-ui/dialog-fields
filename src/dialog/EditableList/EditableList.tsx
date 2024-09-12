@@ -72,7 +72,7 @@ interface State {
     showAll: boolean;
 }
 
-class EditableList<T = any> extends React.Component<EditableListProps<T>, State> {
+export class EditableList<T = any> extends React.Component<EditableListProps<T>, State> {
     static defaultProps = {
         value: [],
     };
@@ -140,5 +140,3 @@ class EditableList<T = any> extends React.Component<EditableListProps<T>, State>
         );
     }
 }
-
-export default EditableList;

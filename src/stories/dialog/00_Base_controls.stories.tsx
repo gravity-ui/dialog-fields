@@ -1,13 +1,17 @@
 import React, {Component, Fragment} from 'react';
-import {DFDialog} from '../../dialog/Dialog/Dialog';
 import {StoryFn, Meta} from '@storybook/react';
-import {FormApi} from '../../index';
 import {Button} from '@gravity-ui/uikit';
-import {RadioButtonControlProps} from '../../dialog/RadioButtonControl/RadioButtonControl';
-import {MultiTextControlProps} from '../../dialog/MultiTextControl/MultiTextControl';
-import {EditableListProps} from '../../dialog/EditableList/EditableList';
-import {EditableManyListsProps} from '../../dialog/EditableManyLists/EditableManyLists';
-import {SelectControlProps} from '../../dialog/SelectControl/SelectControl';
+
+import {
+    FormApi,
+    RadioButtonControlProps,
+    DFDialog,
+    EditableListProps,
+    EditableManyListsProps,
+    MultiTextControlProps,
+    SelectControlProps,
+} from '../../index';
+
 import {useSize} from '../SizeContext';
 
 class DialogWithSelectStories extends Component {

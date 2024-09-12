@@ -5,7 +5,7 @@ import {applyFunctions} from '../Dialog/utils';
 
 function noop() {}
 
-interface FocusBlurContainerProps {
+export interface FocusBlurContainerProps {
     children?: React.ReactNode;
     className?: string;
     onFocus?: () => void;

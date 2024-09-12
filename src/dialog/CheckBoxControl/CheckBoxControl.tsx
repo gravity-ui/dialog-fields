@@ -10,7 +10,7 @@ export interface CheckBoxControlProps
     onChange: (value: CheckBoxControlProps['value']) => void;
 }
 
-function CheckBoxControl({value, onChange, ...props}: CheckBoxControlProps) {
+export function CheckBoxControl({value, onChange, ...props}: CheckBoxControlProps) {
     const onCheckBoxChange = useCallback(() => onChange(!value), [onChange, value]);
     const {children, ...rest} = props || {};
 
@@ -28,5 +28,3 @@ CheckBoxControl.getDefaultValue = function () {
 CheckBoxControl.isEmpty = function (value: CheckBoxControlProps['value']) {
     return typeof value !== 'boolean' || !value;
 };
-
-export default CheckBoxControl;

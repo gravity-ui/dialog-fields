@@ -1,9 +1,8 @@
 import React from 'react';
-import {dfCN} from '../helpers/cn';
-import EditableManyLists, {
-    EditableManyListsProps,
-} from '../dialog/EditableManyLists/EditableManyLists';
 import {StoryFn, Meta} from '@storybook/react';
+
+import {dfCN} from '../helpers/cn';
+import {EditableManyLists, EditableManyListsProps} from '../index';
 
 import './EditableManyListsDemo.scss';
 const b = dfCN('editable-lists-control-demo');
