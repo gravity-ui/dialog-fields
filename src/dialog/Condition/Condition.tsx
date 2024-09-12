@@ -7,12 +7,10 @@ interface Props<T = any> {
     children: React.ReactNode;
 }
 
-function Condition<T>({when, isActive, children}: Props<T>) {
+export function Condition<T>({when, isActive, children}: Props<T>) {
     return (
         <Field name={when} subscription={{value: true}}>
             {({input: {value}}) => (isActive(value) ? children : null)}
         </Field>
     );
 }
-
-export default Condition;

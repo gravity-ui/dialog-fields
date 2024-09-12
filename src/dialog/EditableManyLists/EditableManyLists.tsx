@@ -1,7 +1,7 @@
 import React from 'react';
 import {dfCN} from '../../helpers/cn';
 
-import EditableList, {EditableListItemType, EditableListProps} from '../EditableList/EditableList';
+import {EditableList, EditableListItemType, EditableListProps} from '../EditableList';
 import './EditableManyLists.scss';
 
 const block = dfCN('editable-many-lists');
@@ -24,7 +24,7 @@ export interface EditableManyListsItemType<T> {
     data: Array<EditableListItemType<T>>;
 }
 
-class EditableManyLists<T> extends React.Component<EditableManyListsProps<T>> {
+export class EditableManyLists<T> extends React.Component<EditableManyListsProps<T>> {
     static getDefaultValue() {
         return [];
     }
@@ -63,5 +63,3 @@ class EditableManyLists<T> extends React.Component<EditableManyListsProps<T>> {
         );
     }
 }
-
-export default EditableManyLists;

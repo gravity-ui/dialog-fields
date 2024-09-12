@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import _find from 'lodash/find';
-import _findIndex from 'lodash/findIndex';
+import find_ from 'lodash/find';
+import findIndex_ from 'lodash/findIndex';
 import {TextInput, TextInputProps} from '@gravity-ui/uikit';
 
 import {dfCN} from '../../helpers/cn';
-import LabelsGroup from './LabelsGroup/LabelsGroup';
+import {LabelsGroup} from './LabelsGroup/LabelsGroup';
 import {FocusBlurContainer} from '../FocusBlurContainer/FocusBlurContainer';
 
 import type {ArrayElement} from '../types';
@@ -32,7 +32,7 @@ interface State {
     currentLabel: string;
 }
 
-class MultiTextControl extends Component<MultiTextControlProps, State> {
+export class MultiTextControl extends Component<MultiTextControlProps, State> {
     static ENTER = 13;
 
     static hasErrorRenderer = true;
@@ -46,7 +46,7 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
     }
 
     static remove(theItem: ItemType, items: Array<ItemType>) {
-        const index = _findIndex(items, (anItem) => theItem.name === anItem.name);
+        const index = findIndex_(items, (anItem) => theItem.name === anItem.name);
         if (index > -1) {
             const copy = [...items];
             copy.splice(index, 1);
@@ -68,7 +68,7 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
         if (currentLabel?.length > 0) {
             const {onChange, value: labels} = this.props;
 
-            if (!_find(labels, (label) => label.name === currentLabel)) {
+            if (!find_(labels, (label) => label.name === currentLabel)) {
                 onChange(labels.concat({name: currentLabel}));
             }
             this.setState({currentLabel: ''});
@@ -118,5 +118,3 @@ class MultiTextControl extends Component<MultiTextControlProps, State> {
         );
     }
 }
-
-export default MultiTextControl;

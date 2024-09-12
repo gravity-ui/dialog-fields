@@ -1,7 +1,7 @@
 import React from 'react';
 import {StoryFn, Meta} from '@storybook/react';
 
-import TumblerControl from '../dialog/TumblerControl/TumblerControl';
+import {TumblerControl} from '../index';
 
 export default {
     title: 'Components/TumblerControl',

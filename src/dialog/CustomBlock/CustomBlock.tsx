@@ -7,7 +7,7 @@ export interface CustomBlockProps {
     children: React.ReactNode;
 }
 
-class CustomBlock extends React.Component<CustomBlockProps> {
+export class CustomBlock extends React.Component<CustomBlockProps> {
     static renderLabel = () => null;
     static getDefaultValue = () => undefined;
 
@@ -15,5 +15,3 @@ class CustomBlock extends React.Component<CustomBlockProps> {
         return this.props.children || null;
     }
 }
-
-export default CustomBlock;

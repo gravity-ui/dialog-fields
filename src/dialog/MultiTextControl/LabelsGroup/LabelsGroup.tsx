@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import _map from 'lodash/map';
+import map_ from 'lodash/map';
 import {Button, Label} from '@gravity-ui/uikit';
 import {dfCN} from '../../../helpers/cn';
 import withCollapsible from '../../../hoc/withCollapsible';
@@ -9,7 +9,7 @@ import {ArrayElement} from '../../types';
 
 const block = dfCN('labels-group');
 
-type Props = {
+export type LabelGroupProps = {
     items: Array<{name: string; isDefault?: boolean}>;
     visibleCount: number;
     disabled?: boolean;
@@ -21,9 +21,9 @@ type Props = {
     renderToggler?: () => React.ReactNode;
 };
 
-type ItemType = ArrayElement<Props['items']>;
+type ItemType = ArrayElement<LabelGroupProps['items']>;
 
-class LabelsGroup extends Component<Props> {
+class LabelsGroupComponent extends Component<LabelGroupProps> {
     handleLabelClick = (label: ItemType) => {
         const {onClick} = this.props;
         if (typeof onClick === 'function') {
@@ -68,7 +68,7 @@ class LabelsGroup extends Component<Props> {
 
         return (
             <div className={block()}>
-                {_map(items, (label) => this.renderLabel(label))}
+                {map_(items, (label) => this.renderLabel(label))}
                 {renderToggler?.()}
                 {onRemoveAll && items.length > 0 && (
                     <Button
@@ -85,4 +85,4 @@ class LabelsGroup extends Component<Props> {
     }
 }
 
-export default withCollapsible(LabelsGroup);
+export const LabelsGroup = withCollapsible(LabelsGroupComponent);

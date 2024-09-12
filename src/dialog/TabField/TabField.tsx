@@ -4,7 +4,7 @@ import {Tabs} from '@gravity-ui/uikit';
 import {dfCN} from '../../helpers/cn';
 import {DangerIcon, CloseIcon} from '../Icon/Icon';
 
-import some from 'lodash/some';
+import some_ from 'lodash/some';
 
 import './TabField.scss';
 
@@ -37,7 +37,7 @@ export interface TabSpec {
     multiple?: boolean;
 }
 
-class TabField extends Component<TabFieldProps> {
+export class TabField extends Component<TabFieldProps> {
     static isTabControl = true as const;
     static isTabControlVertical = false;
 
@@ -57,7 +57,7 @@ class TabField extends Component<TabFieldProps> {
         wrapperMods = {},
     ) => {
         const hasError =
-            item.error && ('string' === typeof item.error || some(item.error, (v) => Boolean(v)));
+            item.error && ('string' === typeof item.error || some_(item.error, (v) => Boolean(v)));
         return (
             <div key={item.id} className={block('wrapper', wrapperMods)}>
                 <span className={block('name')}>
@@ -100,5 +100,3 @@ class TabField extends Component<TabFieldProps> {
         );
     }
 }
-
-export default TabField;

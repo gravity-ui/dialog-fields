@@ -9,7 +9,7 @@ const block = dfCN('text-control');
 export type TextControlProps = ControlProps<string> &
     Omit<TextInputProps, keyof ControlProps<string>>;
 
-class TextControl extends Component<TextControlProps> {
+export class TextControl extends Component<TextControlProps> {
     static defaultProps = {
         extras: {},
     };
@@ -42,5 +42,3 @@ class TextControl extends Component<TextControlProps> {
         );
     }
 }
-
-export default TextControl;

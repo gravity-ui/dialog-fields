@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
-import {DFDialog} from '../../../dialog/Dialog/Dialog';
 import {StoryFn, Meta} from '@storybook/react';
-import {FormApi} from '../../../index';
 import {Button} from '@gravity-ui/uikit';
+
+import {FormApi, DFDialog} from '../../../index';
 
 interface FormValues {
     general: {

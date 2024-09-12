@@ -6,7 +6,7 @@ import {
     RegisteredDialogField,
     DFDialogField,
     DFDialogTabField,
-} from '../../../dialog/Dialog/Dialog';
+} from '../../../index';
 import {StoryFn, Meta} from '@storybook/react';
 
 function MyControl(props: {username: string; value: unknown}) {

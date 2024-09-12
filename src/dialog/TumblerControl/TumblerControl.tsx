@@ -14,7 +14,7 @@ export type TumblerControlProps = ControlProps<boolean> &
         labelRight?: string;
     };
 
-function TumblerControl({value, onChange, ...extras}: TumblerControlProps) {
+export function TumblerControl({value, onChange, ...extras}: TumblerControlProps) {
     const onTumblerChange = useCallback(() => onChange(!value), [onChange, value]);
     const {labelLeft, labelRight, size = 'm', className, ...rest} = extras;
 
@@ -47,5 +47,3 @@ TumblerControl.getDefaultValue = function () {
 TumblerControl.isEmpty = function (value: boolean) {
     return typeof value !== 'boolean' || !value;
 };
-
-export default TumblerControl;

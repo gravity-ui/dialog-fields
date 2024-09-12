@@ -15,7 +15,7 @@ export type TextAreaControlProps = Omit<
     error?: string | undefined;
 };
 
-class TextControl extends Component<TextAreaControlProps> {
+export class TextAreaControl extends Component<TextAreaControlProps> {
     static hasErrorRenderer = true;
 
     static getDefaultValue() {
@@ -42,5 +42,3 @@ class TextControl extends Component<TextAreaControlProps> {
         );
     }
 }
-
-export default TextControl;

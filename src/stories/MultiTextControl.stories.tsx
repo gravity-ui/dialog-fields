@@ -1,5 +1,5 @@
 import React from 'react';
-import MultiTextControl, {MultiTextControlProps} from '../dialog/MultiTextControl/MultiTextControl';
+import {MultiTextControl, MultiTextControlProps} from '../index';
 import {StoryFn, Meta} from '@storybook/react';
 
 interface Props {

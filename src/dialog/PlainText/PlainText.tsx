@@ -12,7 +12,7 @@ export type PlainTextProps = {
     placeholder?: React.ReactNode;
 };
 
-class PlainText extends React.Component<PlainTextProps> {
+export class PlainText extends React.Component<PlainTextProps> {
     static getDefaultValue() {
         return '';
     }
@@ -31,5 +31,3 @@ class PlainText extends React.Component<PlainTextProps> {
         );
     }
 }
-
-export default PlainText;
