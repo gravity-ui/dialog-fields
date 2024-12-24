@@ -19,7 +19,7 @@
   - `block` — позволяет добавить `ReactNode`.
 - [Пользовательские контролы](https://preview.yandexcloud.dev/dialog-fields/?path=/story/tutorials-custom-control-registration).
 
-### Функциональные возмжоности
+### Функциональные возможности
 
 - Встроенный и модальный вид.
 - Формы с [одной вкладкой](https://preview.yandexcloud.dev/dialog-fields/?path=/story/demo-01-one-tab) и [несколькими вкладками](https://preview.yandexcloud.dev/dialog-fields/?path=/story/demo-02-several-tab--horizontal-tabs).
