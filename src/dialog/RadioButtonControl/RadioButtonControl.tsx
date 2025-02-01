@@ -2,10 +2,6 @@ import React, {useCallback} from 'react';
 import map_ from 'lodash/map';
 import {RadioButton, RadioButtonProps} from '@gravity-ui/uikit';
 
-RadioButtonControl.defaultProps = {
-    extras: {},
-};
-
 RadioButtonControl.getDefaultValue = function () {
     return '';
 };
