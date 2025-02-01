@@ -10,10 +10,6 @@ export type TextControlProps = ControlProps<string> &
     Omit<TextInputProps, keyof ControlProps<string>>;
 
 export class TextControl extends Component<TextControlProps> {
-    static defaultProps = {
-        extras: {},
-    };
-
     static hasErrorRenderer = true;
 
     static getDefaultValue() {

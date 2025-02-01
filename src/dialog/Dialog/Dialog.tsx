@@ -18,7 +18,6 @@ import {Field, FieldInputProps, FieldMetaState, Form, FormProps, FormSpy} from '
 import arrayMutators from 'final-form-arrays';
 import {FieldArray} from 'react-final-form-arrays';
 import createDecorator, {Calculation, Updates} from 'final-form-calculate';
-import {OnChange} from 'react-final-form-listeners';
 
 import {InfoIcon, TooltipIcon, WarningIcon} from '../Icon/Icon';
 import {TextControl, TextControlProps} from '../TextControl';
@@ -186,14 +185,7 @@ export interface ControlField<
     validateFields?: string[];
 
     subscribers?: Updates;
-    onChange?: (
-        value: V,
-        oldValue: V,
-        field: ControlField<T, V>,
-        fullName: string,
-        form: FormApi<any>,
-        formValues: FormState<any>,
-    ) => void;
+    onChange?: (value: V) => void;
     error?: () => void;
 }
 
@@ -686,7 +678,7 @@ class Dialog<
         const {name, type, className, warning, fullWidth} = field;
         const fieldName = fieldPrefix ? `${fieldPrefix}.${name}` : name;
 
-        const {required, validator, validateFields = [], initialValue, onChange} = field;
+        const {required, validator, validateFields = [], initialValue} = field;
         const validators = [];
 
         if (required) {
@@ -740,22 +732,6 @@ class Dialog<
                                 </div>
                             )}
                         </div>
-                        {typeof onChange === 'function' && (
-                            <OnChange name={fieldName}>
-                                {(value: unknown, oldValue: unknown) => {
-                                    if (value !== oldValue) {
-                                        onChange(
-                                            value,
-                                            oldValue,
-                                            field,
-                                            fieldName,
-                                            this.form! as any,
-                                            this.form!.getState(),
-                                        );
-                                    }
-                                }}
-                            </OnChange>
-                        )}
                     </div>
                 )}
             </Field>
@@ -1322,6 +1298,12 @@ function FieldWithExtras<FieldT extends ControlField, Value = any>({
         id: name,
         ...extras,
         ...input,
+        onChange: field.onChange
+            ? (v: any) => {
+                  input.onChange(v);
+                  setTimeout(() => field.onChange?.(v), 1);
+              }
+            : input.onChange,
         onFocus,
         onBlur,
     };
