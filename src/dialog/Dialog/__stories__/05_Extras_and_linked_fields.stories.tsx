@@ -3,13 +3,11 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
+    type: Array<string>;
+    choice: Array<string>;
 }
 
 class DialogWithSelectStories extends Component {
@@ -62,10 +60,10 @@ function DialogDemo({
     onClose?: () => void;
 }) {
     return (
-        <DFDialog<FormValues>
+        <DFDialog<FormValues, Partial<FormValues>>
             modal={modal}
             headerProps={{
-                title: 'Group of fields',
+                title: 'Linked fields by value',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -80,59 +78,54 @@ function DialogDemo({
                     extras: {
                         children: (
                             <div style={{color: 'gray'}}>
-                                It is possible to group several fields and make such groups
-                                collapsible.
+                                It is possible to provide additional properties for controls by
+                                using <b>extras</b>. Also you can make fields depending to each
+                                other by values by using this property.
                             </div>
                         ),
                     },
                 },
                 {
-                    section: 'General',
-                    fields: [
-                        {
-                            name: 'firstName',
-                            type: 'text',
-                            caption: 'First name',
-                        },
-                        {
-                            name: 'lastName',
-                            type: 'text',
-                            caption: 'Last name',
-                        },
-                    ],
+                    name: 'type',
+                    type: 'select',
+                    caption: 'Type',
+                    extras: {
+                        width: 'max',
+                        placeholder: 'Type',
+                        options: [
+                            {value: 'color', content: 'Color'},
+                            {value: 'fruit', content: 'Fruit'},
+                        ],
+                        hasClear: true,
+                    },
                 },
                 {
-                    section: 'Contacts',
-                    collapsible: true,
-                    fields: [
-                        {
-                            name: 'email',
-                            type: 'text',
-                            caption: 'Email',
-                        },
-                        {
-                            name: 'phone',
-                            type: 'text',
-                            caption: 'Phone',
-                        },
-                    ],
-                },
-                {
-                    section: 'Address',
-                    collapsible: true,
-                    initialCollapsed: true,
-                    fields: [
-                        {
-                            name: 'city',
-                            type: 'text',
-                            caption: 'City',
-                        },
-                        {
-                            name: 'street',
-                            type: 'text',
-                            caption: 'Street',
-                        },
-                    ],
+                    name: 'choice',
+                    type: 'select',
+                    caption: 'Choice',
+                    extras: ({type = []}, {input}) => {
+                        const [selectedType] = type;
+                        const values =
+                            selectedType === 'color'
+                                ? ['red', 'greed', 'blue']
+                                : ['apple', 'orange', 'pear'];
+
+                        const {value, onChange} = input;
+                        if (value?.[0] && -1 === values.indexOf(value[0])) {
+                            setTimeout(() => {
+                                onChange([]);
+                            }, 200);
+                        }
+
+                        return {
+                            width: 'max',
+                            disabled: !selectedType,
+                            placeholder: !selectedType
+                                ? 'You have to pick a "Type" to unlock the field.'
+                                : `Choose your ${selectedType}...`,
+                            options: values.map((i) => ({value: i, content: i})),
+                        };
+                    },
                 },
             ]}
         />
@@ -140,7 +133,7 @@ function DialogDemo({
 }
 
 export default {
-    title: 'Demo/03. Sections',
+    title: 'Demo/05. Extras and linked fields',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 

@@ -1,3 +1,6 @@
+export type {FormApi} from 'final-form';
+export {FORM_ERROR} from 'final-form';
+
 import React, {Component, Fragment} from 'react';
 import reduce_ from 'lodash/reduce';
 import find_ from 'lodash/find';

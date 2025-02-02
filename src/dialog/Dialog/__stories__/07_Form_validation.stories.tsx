@@ -3,18 +3,12 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {DeepPartial, DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     general: {
         firstName: string;
         lastName: string;
-        provideContacts: boolean;
-    };
-    contacts: {
-        email: string;
-        phone: string;
-        providePhone: boolean;
     };
 }
 
@@ -25,8 +19,8 @@ interface Props {
 class DialogWithSelectStories extends Component<Props> {
     state = {
         dialogVisible: true,
-        initialState: {},
-        formData: {},
+        initialState: {general: {firstName: 'John'}},
+        formData: undefined,
         showModal: false,
     };
 
@@ -34,7 +28,7 @@ class DialogWithSelectStories extends Component<Props> {
         this.setState({showModal: !this.state.showModal});
     };
 
-    onAdd = (form: FormApi<FormValues, any>) => {
+    onAdd = (form: FormApi<FormValues>) => {
         this.setState({formData: form.getState().values});
         return Promise.resolve();
     };
@@ -48,7 +42,7 @@ class DialogWithSelectStories extends Component<Props> {
                 <Button onClick={this.onToggleModal}>Show modal</Button>
                 <pre>Confirmed form values: {JSON.stringify(formData, null, 2)}</pre>
                 <DialogDemo
-                    initialValues={initialState as any}
+                    initialValues={formData || initialState}
                     onAdd={this.onAdd}
                     modal={false}
                     verticalTabs={verticalTabs}
@@ -76,8 +70,8 @@ function DialogDemo({
 }: {
     verticalTabs: boolean;
     modal: boolean;
-    initialValues?: Partial<FormValues>;
-    onAdd: (form: FormApi<FormValues, DeepPartial<FormValues>>) => Promise<void>;
+    initialValues?: DeepPartial<FormValues>;
+    onAdd: (form: FormApi<FormValues, any>) => Promise<void>;
     onClose?: () => void;
 }) {
     const tabType: any = verticalTabs ? 'tab-vertical' : 'tab';
@@ -85,7 +79,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Visibility contdition',
+                title: 'Form-level validation',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -105,8 +99,9 @@ function DialogDemo({
                             extras: {
                                 children: (
                                     <div style={{color: 'gray'}}>
-                                        Some fields might be hidden depending on value of another
-                                        field. Check <b>Provide contacts</b>
+                                        In some cases it is more convinient to use form validator.
+                                        Especially when values of fields depends to each other or
+                                        when you are using virtualized tabs.
                                     </div>
                                 ),
                             },
@@ -119,59 +114,34 @@ function DialogDemo({
                         {
                             name: 'lastName',
                             type: 'text',
-                            caption: 'LastName',
-                        },
-                        {
-                            name: 'provideContacts',
-                            type: 'checkbox',
-                            caption: 'Provide contacts',
-                            extras: {
-                                children:
-                                    'I want to provide my contacts (check to display "Contacts" tab)',
-                            },
+                            caption: 'Last name',
                         },
                     ],
-                },
-                {
-                    name: 'contacts',
-                    title: 'Contacts',
-                    type: tabType,
-                    fields: [
-                        {
-                            name: 'email',
-                            type: 'text',
-                            caption: 'Email',
-                        },
-                        {
-                            name: 'providePhone',
-                            type: 'checkbox',
-                            extras: {
-                                children:
-                                    'I want to provide my phone (check to display "Phone" field)',
-                            },
-                        },
-                        {
-                            name: 'phone',
-                            type: 'text',
-                            caption: 'Phone',
-                            visibilityCondition: {
-                                when: 'contacts.providePhone',
-                                isActive: (v) => Boolean(v),
-                            },
-                        },
-                    ],
-                    visibilityCondition: {
-                        when: 'general.provideContacts',
-                        isActive: (v) => Boolean(v),
-                    },
                 },
             ]}
+            validate={({general}) => {
+                const generalErrs: Partial<Record<keyof typeof general, string | undefined>> = {};
+                if (!general.firstName) {
+                    generalErrs.firstName = 'First name shold not be empty';
+                }
+                if (
+                    general.lastName &&
+                    general.firstName === 'John' &&
+                    general.lastName !== 'Snow'
+                ) {
+                    generalErrs.lastName = '"Snow" is better for John';
+                } else if (!general?.lastName) {
+                    generalErrs.lastName =
+                        'Last name should not be empty (also try "John" as a first name)';
+                }
+                return {general: generalErrs};
+            }}
         />
     );
 }
 
 export default {
-    title: 'Demo/04. Visibility condition',
+    title: 'Demo/07. Form validation',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 

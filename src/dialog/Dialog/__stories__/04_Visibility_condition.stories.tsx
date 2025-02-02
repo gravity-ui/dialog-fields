@@ -3,12 +3,18 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {DeepPartial, DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     general: {
         firstName: string;
         lastName: string;
+        provideContacts: boolean;
+    };
+    contacts: {
+        email: string;
+        phone: string;
+        providePhone: boolean;
     };
 }
 
@@ -20,7 +26,7 @@ class DialogWithSelectStories extends Component<Props> {
     state = {
         dialogVisible: true,
         initialState: {},
-        formData: undefined,
+        formData: {},
         showModal: false,
     };
 
@@ -28,12 +34,13 @@ class DialogWithSelectStories extends Component<Props> {
         this.setState({showModal: !this.state.showModal});
     };
 
-    onAdd = (form: FormApi<FormValues>) => {
+    onAdd = (form: FormApi<FormValues, any>) => {
         this.setState({formData: form.getState().values});
         return Promise.resolve();
     };
 
     render() {
+        const {verticalTabs} = this.props;
         const {initialState, formData, showModal} = this.state;
 
         return (
@@ -41,9 +48,10 @@ class DialogWithSelectStories extends Component<Props> {
                 <Button onClick={this.onToggleModal}>Show modal</Button>
                 <pre>Confirmed form values: {JSON.stringify(formData, null, 2)}</pre>
                 <DialogDemo
-                    initialValues={formData || initialState}
+                    initialValues={initialState as any}
                     onAdd={this.onAdd}
                     modal={false}
+                    verticalTabs={verticalTabs}
                 />
                 {showModal && (
                     <DialogDemo
@@ -51,6 +59,7 @@ class DialogWithSelectStories extends Component<Props> {
                         modal={true}
                         onAdd={this.onAdd}
                         onClose={() => this.onToggleModal()}
+                        verticalTabs={verticalTabs}
                     />
                 )}
             </Fragment>
@@ -63,17 +72,20 @@ function DialogDemo({
     onAdd,
     initialValues,
     onClose,
+    verticalTabs,
 }: {
+    verticalTabs: boolean;
     modal: boolean;
-    initialValues?: DeepPartial<FormValues>;
-    onAdd: (form: FormApi<FormValues, any>) => Promise<void>;
+    initialValues?: Partial<FormValues>;
+    onAdd: (form: FormApi<FormValues, DeepPartial<FormValues>>) => Promise<void>;
     onClose?: () => void;
 }) {
+    const tabType: any = verticalTabs ? 'tab-vertical' : 'tab';
     return (
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Clonable tabs',
+                title: 'Visibility contdition',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -85,7 +97,7 @@ function DialogDemo({
                 {
                     name: 'general',
                     title: 'General',
-                    type: 'tab-vertical',
+                    type: tabType,
                     fields: [
                         {
                             type: 'block',
@@ -93,9 +105,8 @@ function DialogDemo({
                             extras: {
                                 children: (
                                     <div style={{color: 'gray'}}>
-                                        There is ability to make clonable tabs by adding{' '}
-                                        <b>multiple</b> flag for a tab definition. Only one tab
-                                        might be clonable. Go to next tab.
+                                        Some fields might be hidden depending on value of another
+                                        field. Check <b>Provide contacts</b>
                                     </div>
                                 ),
                             },
@@ -108,44 +119,51 @@ function DialogDemo({
                         {
                             name: 'lastName',
                             type: 'text',
-                            caption: 'Last name',
+                            caption: 'LastName',
+                        },
+                        {
+                            name: 'provideContacts',
+                            type: 'checkbox',
+                            caption: 'Provide contacts',
+                            extras: {
+                                children:
+                                    'I want to provide my contacts (check to display "Contacts" tab)',
+                            },
                         },
                     ],
                 },
                 {
-                    name: 'cities',
-                    type: 'tab-vertical',
-                    title: 'City',
-                    multiple: true,
-                    getTitle: (d) => {
-                        const {city, id} = d;
-                        return city ? city : `City ${id}`;
-                    },
-                    renderControls: (_data, onCreate, onRemove) => {
-                        return (
-                            <div>
-                                <Button onClick={() => onCreate()}>Clone</Button>{' '}
-                                {onRemove && <Button onClick={onRemove}>Remove</Button>}
-                            </div>
-                        );
-                    },
+                    name: 'contacts',
+                    title: 'Contacts',
+                    type: tabType,
                     fields: [
                         {
-                            name: 'country',
+                            name: 'email',
                             type: 'text',
-                            caption: 'Country',
+                            caption: 'Email',
                         },
                         {
-                            name: 'city',
-                            type: 'text',
-                            caption: 'City/Town',
+                            name: 'providePhone',
+                            type: 'checkbox',
+                            extras: {
+                                children:
+                                    'I want to provide my phone (check to display "Phone" field)',
+                            },
                         },
                         {
-                            name: 'notice',
-                            type: 'textarea',
-                            caption: 'Notice',
+                            name: 'phone',
+                            type: 'text',
+                            caption: 'Phone',
+                            visibilityCondition: {
+                                when: 'contacts.providePhone',
+                                isActive: (v) => Boolean(v),
+                            },
                         },
                     ],
+                    visibilityCondition: {
+                        when: 'general.provideContacts',
+                        isActive: (v) => Boolean(v),
+                    },
                 },
             ]}
         />
@@ -153,7 +171,7 @@ function DialogDemo({
 }
 
 export default {
-    title: 'Demo/09. Cloneable tabs',
+    title: 'Demo/04. Visibility condition',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 

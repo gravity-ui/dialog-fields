@@ -3,7 +3,7 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     general: {

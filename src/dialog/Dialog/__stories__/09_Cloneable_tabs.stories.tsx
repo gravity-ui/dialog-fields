@@ -2,8 +2,8 @@ import React, {Component, Fragment} from 'react';
 import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
-import {DeepPartial, DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {DeepPartial, DFDialog, FormApi} from '../index';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     general: {
@@ -19,7 +19,7 @@ interface Props {
 class DialogWithSelectStories extends Component<Props> {
     state = {
         dialogVisible: true,
-        initialState: {general: {firstName: 'John'}},
+        initialState: {},
         formData: undefined,
         showModal: false,
     };
@@ -34,7 +34,6 @@ class DialogWithSelectStories extends Component<Props> {
     };
 
     render() {
-        const {verticalTabs} = this.props;
         const {initialState, formData, showModal} = this.state;
 
         return (
@@ -45,7 +44,6 @@ class DialogWithSelectStories extends Component<Props> {
                     initialValues={formData || initialState}
                     onAdd={this.onAdd}
                     modal={false}
-                    verticalTabs={verticalTabs}
                 />
                 {showModal && (
                     <DialogDemo
@@ -53,7 +51,6 @@ class DialogWithSelectStories extends Component<Props> {
                         modal={true}
                         onAdd={this.onAdd}
                         onClose={() => this.onToggleModal()}
-                        verticalTabs={verticalTabs}
                     />
                 )}
             </Fragment>
@@ -66,20 +63,17 @@ function DialogDemo({
     onAdd,
     initialValues,
     onClose,
-    verticalTabs,
 }: {
-    verticalTabs: boolean;
     modal: boolean;
     initialValues?: DeepPartial<FormValues>;
     onAdd: (form: FormApi<FormValues, any>) => Promise<void>;
     onClose?: () => void;
 }) {
-    const tabType: any = verticalTabs ? 'tab-vertical' : 'tab';
     return (
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Form-level validation',
+                title: 'Clonable tabs',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -91,7 +85,7 @@ function DialogDemo({
                 {
                     name: 'general',
                     title: 'General',
-                    type: tabType,
+                    type: 'tab-vertical',
                     fields: [
                         {
                             type: 'block',
@@ -99,9 +93,9 @@ function DialogDemo({
                             extras: {
                                 children: (
                                     <div style={{color: 'gray'}}>
-                                        In some cases it is more convinient to use form validator.
-                                        Especially when values of fields depends to each other or
-                                        when you are using virtualized tabs.
+                                        There is ability to make clonable tabs by adding{' '}
+                                        <b>multiple</b> flag for a tab definition. Only one tab
+                                        might be clonable. Go to next tab.
                                     </div>
                                 ),
                             },
@@ -118,30 +112,48 @@ function DialogDemo({
                         },
                     ],
                 },
+                {
+                    name: 'cities',
+                    type: 'tab-vertical',
+                    title: 'City',
+                    multiple: true,
+                    getTitle: (d) => {
+                        const {city, id} = d;
+                        return city ? city : `City ${id}`;
+                    },
+                    renderControls: (_data, onCreate, onRemove) => {
+                        return (
+                            <div>
+                                <Button onClick={() => onCreate()}>Clone</Button>{' '}
+                                {onRemove && <Button onClick={onRemove}>Remove</Button>}
+                            </div>
+                        );
+                    },
+                    fields: [
+                        {
+                            name: 'country',
+                            type: 'text',
+                            caption: 'Country',
+                        },
+                        {
+                            name: 'city',
+                            type: 'text',
+                            caption: 'City/Town',
+                        },
+                        {
+                            name: 'notice',
+                            type: 'textarea',
+                            caption: 'Notice',
+                        },
+                    ],
+                },
             ]}
-            validate={({general}) => {
-                const generalErrs: Partial<Record<keyof typeof general, string | undefined>> = {};
-                if (!general.firstName) {
-                    generalErrs.firstName = 'First name shold not be empty';
-                }
-                if (
-                    general.lastName &&
-                    general.firstName === 'John' &&
-                    general.lastName !== 'Snow'
-                ) {
-                    generalErrs.lastName = '"Snow" is better for John';
-                } else if (!general?.lastName) {
-                    generalErrs.lastName =
-                        'Last name should not be empty (also try "John" as a first name)';
-                }
-                return {general: generalErrs};
-            }}
         />
     );
 }
 
 export default {
-    title: 'Demo/07. Form validation',
+    title: 'Demo/09. Cloneable tabs',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 

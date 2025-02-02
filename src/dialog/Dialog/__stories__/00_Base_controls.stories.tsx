@@ -12,7 +12,7 @@ import {
     SelectControlProps,
 } from '../../index';
 
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 class DialogWithSelectStories extends Component {
     state = {

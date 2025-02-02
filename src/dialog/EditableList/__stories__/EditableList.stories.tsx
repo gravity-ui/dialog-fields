@@ -43,7 +43,6 @@ class EditableListDemoItem extends React.Component<EditableListProps> {
                     {this.state.data.reduce((acc, item) => {
                         return acc + JSON.stringify(item) + ',\n';
                     }, '')}
-                    ]
                 </div>
             </React.Fragment>
         );
