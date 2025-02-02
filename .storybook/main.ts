@@ -7,7 +7,7 @@ const config: StorybookConfig = {
         {name: '@storybook/addon-essentials', options: {backgrounds: false}},
         '@storybook/addon-interactions',
         '@storybook/preset-scss',
-        '@storybook/addon-webpack5-compiler-babel'
+        '@storybook/addon-webpack5-compiler-babel',
     ],
 
     framework: {
@@ -16,11 +16,20 @@ const config: StorybookConfig = {
     },
 
     docs: {
-        defaultName: 'Docs'
+        defaultName: 'Docs',
     },
-
     typescript: {
-        reactDocgen: 'react-docgen-typescript'
-    }
+        check: true,
+        checkOptions: {},
+        reactDocgen: 'react-docgen-typescript',
+        reactDocgenTypescriptOptions: {
+            setDisplayName: false,
+            shouldExtractLiteralValuesFromEnum: true,
+            compilerOptions: {
+                allowSyntheticDefaultImports: true,
+                esModuleInterop: true,
+            },
+        },
+    },
 };
 export default config;
