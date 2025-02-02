@@ -1,4 +1,7 @@
 {
     "extends": ["@gravity-ui/eslint-config", "@gravity-ui/eslint-config/prettier"],
-    "root": true
+    "root": true,
+    "rules": {
+        "no-implicit-globals":"off"
+    }
 }

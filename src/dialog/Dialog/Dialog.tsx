@@ -1299,6 +1299,7 @@ function FieldWithExtras<FieldT extends ControlField, Value = any>({
 
     const controlProps: any = {
         id: name,
+        qa: `df-field:${type}:${name}`,
         ...extras,
         ...input,
         onChange: field.onChange

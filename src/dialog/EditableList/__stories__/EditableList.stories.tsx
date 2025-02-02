@@ -1,5 +1,7 @@
 import React from 'react';
-import {StoryFn, Meta} from '@storybook/react';
+import {StoryObj, Meta} from '@storybook/react';
+
+import {Text} from '@gravity-ui/uikit';
 
 import {EditableList, EditableListItemType, EditableListProps} from '../index';
 
@@ -38,12 +40,12 @@ class EditableListDemoItem extends React.Component<EditableListProps> {
                         onChange={this.onChange}
                     />
                 </div>
-                <div style={{whiteSpace: 'pre-wrap'}}>
+                <Text className={'value-as-json'} style={{whiteSpace: 'pre-wrap'}}>
                     {'\n\n[\n'}
                     {this.state.data.reduce((acc, item) => {
                         return acc + JSON.stringify(item) + ',\n';
                     }, '')}
-                </div>
+                </Text>
             </React.Fragment>
         );
     }
@@ -52,29 +54,36 @@ class EditableListDemoItem extends React.Component<EditableListProps> {
 export default {
     title: 'Components/EditableList',
     component: EditableListDemoItem,
-} as Meta<typeof EditableListDemoItem>;
+    argTypes: {},
+} as Meta<typeof EditableList>;
 
-const Template: StoryFn<typeof EditableListDemoItem> = (args) => <EditableListDemoItem {...args} />;
-
-export const Frozen = Template.bind({});
-Frozen.args = {
-    frozen: true,
-    value: genEditableListData(),
+export const Frozen: StoryObj<EditableListProps<any>> = {
+    render: (args) => <EditableListDemoItem {...args} />,
+    args: {
+        frozen: true,
+        value: genEditableListData(),
+    },
 };
 
-export const WithMaxVisibleCount = Template.bind({});
-WithMaxVisibleCount.args = {
-    maxVisibleCount: 3,
-    value: genEditableListData(),
+export const WithMaxVisibleCount: StoryObj<typeof EditableList> = {
+    ...Frozen,
+    args: {
+        maxVisibleCount: 3,
+        value: genEditableListData(),
+    },
 };
 
-export const WithItemRenderer = Template.bind({});
-WithItemRenderer.args = {
-    value: genEditableListData(),
-    itemRenderer(item) {
-        const {title, removed} = item;
-        return (
-            <span style={{textDecoration: removed ? 'line-through' : 'underline'}}>{title}</span>
-        );
+export const WithItemRenderer: StoryObj<typeof EditableList> = {
+    ...Frozen,
+    args: {
+        value: genEditableListData(),
+        itemRenderer(item) {
+            const {title, removed} = item;
+            return (
+                <span style={{textDecoration: removed ? 'line-through' : 'underline'}}>
+                    {title}
+                </span>
+            );
+        },
     },
 };
