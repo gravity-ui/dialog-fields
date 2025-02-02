@@ -3,7 +3,7 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     firstName: string;
@@ -65,7 +65,7 @@ function DialogDemo({
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'One tab',
+                title: 'Group of fields',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -75,24 +75,64 @@ function DialogDemo({
             pristineSubmittable
             fields={[
                 {
-                    name: 'firstName',
-                    type: 'text',
-                    caption: 'First name',
+                    type: 'block',
+                    name: 'block',
+                    extras: {
+                        children: (
+                            <div style={{color: 'gray'}}>
+                                It is possible to group several fields and make such groups
+                                collapsible.
+                            </div>
+                        ),
+                    },
                 },
                 {
-                    name: 'lastName',
-                    type: 'text',
-                    caption: 'Last name',
+                    section: 'General',
+                    fields: [
+                        {
+                            name: 'firstName',
+                            type: 'text',
+                            caption: 'First name',
+                        },
+                        {
+                            name: 'lastName',
+                            type: 'text',
+                            caption: 'Last name',
+                        },
+                    ],
                 },
                 {
-                    name: 'email',
-                    type: 'text',
-                    caption: 'Email',
+                    section: 'Contacts',
+                    collapsible: true,
+                    fields: [
+                        {
+                            name: 'email',
+                            type: 'text',
+                            caption: 'Email',
+                        },
+                        {
+                            name: 'phone',
+                            type: 'text',
+                            caption: 'Phone',
+                        },
+                    ],
                 },
                 {
-                    name: 'phone',
-                    type: 'text',
-                    caption: 'Phone',
+                    section: 'Address',
+                    collapsible: true,
+                    initialCollapsed: true,
+                    fields: [
+                        {
+                            name: 'city',
+                            type: 'text',
+                            caption: 'City',
+                        },
+                        {
+                            name: 'street',
+                            type: 'text',
+                            caption: 'Street',
+                        },
+                    ],
                 },
             ]}
         />
@@ -100,7 +140,7 @@ function DialogDemo({
 }
 
 export default {
-    title: 'Demo/01. One tab',
+    title: 'Demo/03. Sections',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 

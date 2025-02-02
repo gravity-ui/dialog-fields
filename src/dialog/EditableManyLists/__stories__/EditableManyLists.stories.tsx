@@ -1,7 +1,7 @@
 import React from 'react';
 import {StoryFn, Meta} from '@storybook/react';
 
-import {dfCN} from '../helpers/cn';
+import {dfCN} from '../../../helpers/cn';
 import {EditableManyLists, EditableManyListsProps} from '../index';
 
 import './EditableManyListsDemo.scss';

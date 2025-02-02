@@ -2,17 +2,13 @@ import React, {Component, Fragment} from 'react';
 import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
-import {DFDialog, FormApi} from '../../index';
-import {useSize} from '../SizeContext';
+import {DeepPartial, DFDialog, FormApi} from '../../index';
+import {useSize} from '../../../stories/SizeContext';
 
 interface FormValues {
     general: {
         firstName: string;
         lastName: string;
-    };
-    contacts: {
-        email: string;
-        phone: string;
     };
 }
 
@@ -24,7 +20,7 @@ class DialogWithSelectStories extends Component<Props> {
     state = {
         dialogVisible: true,
         initialState: {},
-        formData: {},
+        formData: undefined,
         showModal: false,
     };
 
@@ -38,7 +34,6 @@ class DialogWithSelectStories extends Component<Props> {
     };
 
     render() {
-        const {verticalTabs} = this.props;
         const {initialState, formData, showModal} = this.state;
 
         return (
@@ -46,10 +41,9 @@ class DialogWithSelectStories extends Component<Props> {
                 <Button onClick={this.onToggleModal}>Show modal</Button>
                 <pre>Confirmed form values: {JSON.stringify(formData, null, 2)}</pre>
                 <DialogDemo
-                    initialValues={initialState}
+                    initialValues={formData || initialState}
                     onAdd={this.onAdd}
                     modal={false}
-                    verticalTabs={verticalTabs}
                 />
                 {showModal && (
                     <DialogDemo
@@ -57,7 +51,6 @@ class DialogWithSelectStories extends Component<Props> {
                         modal={true}
                         onAdd={this.onAdd}
                         onClose={() => this.onToggleModal()}
-                        verticalTabs={verticalTabs}
                     />
                 )}
             </Fragment>
@@ -70,20 +63,17 @@ function DialogDemo({
     onAdd,
     initialValues,
     onClose,
-    verticalTabs,
 }: {
-    verticalTabs: boolean;
     modal: boolean;
-    initialValues?: Partial<FormValues>;
+    initialValues?: DeepPartial<FormValues>;
     onAdd: (form: FormApi<FormValues, any>) => Promise<void>;
     onClose?: () => void;
 }) {
-    const tabType: any = verticalTabs ? 'tab-vertical' : 'tab';
     return (
         <DFDialog<FormValues>
             modal={modal}
             headerProps={{
-                title: 'Several tabs',
+                title: 'Virtualized tabs',
             }}
             {...useSize()}
             onClose={onClose ?? (() => {})}
@@ -95,7 +85,7 @@ function DialogDemo({
                 {
                     name: 'general',
                     title: 'General',
-                    type: tabType,
+                    type: 'tab-vertical',
                     fields: [
                         {
                             type: 'block',
@@ -103,9 +93,13 @@ function DialogDemo({
                             extras: {
                                 children: (
                                     <div style={{color: 'gray'}}>
-                                        There is ability to create forms with several tabs. By
-                                        default tabs are horizontally oriented, but it is possible
-                                        to make them vertically oriented.
+                                        In rare cases it might be required to handle hundreds of
+                                        tabs and it will affect the performance. It is reasonable to
+                                        use virtualized tabs for such cases. But when virtualization
+                                        is enabled then only fields of active tab are mounted and as
+                                        result field-level validation will work correctly only for
+                                        current tab. In case of virtualization it is recommended to
+                                        use form-level validation.
                                     </div>
                                 ),
                             },
@@ -123,29 +117,48 @@ function DialogDemo({
                     ],
                 },
                 {
-                    name: 'contacts',
-                    title: 'Contacts',
-                    type: tabType,
+                    name: 'cities',
+                    type: 'tab-vertical',
+                    title: 'City',
+                    multiple: true,
+                    getTitle: (d) => {
+                        const {city, id} = d;
+                        return city ? city : `City ${id}`;
+                    },
+                    renderControls: (_data, onCreate, onRemove) => {
+                        return (
+                            <div>
+                                <Button onClick={() => onCreate()}>Clone</Button>{' '}
+                                {onRemove && <Button onClick={onRemove}>Remove</Button>}
+                            </div>
+                        );
+                    },
                     fields: [
                         {
-                            name: 'email',
+                            name: 'country',
                             type: 'text',
-                            caption: 'Email',
+                            caption: 'Country',
                         },
                         {
-                            name: 'phone',
+                            name: 'city',
                             type: 'text',
-                            caption: 'Phone',
+                            caption: 'City/Town',
+                        },
+                        {
+                            name: 'notice',
+                            type: 'textarea',
+                            caption: 'Notice',
                         },
                     ],
                 },
             ]}
+            virtualized
         />
     );
 }
 
 export default {
-    title: 'Demo/02. Several tab',
+    title: 'Demo/08. Virtualized tabs',
     component: DialogWithSelectStories,
 } as Meta<typeof DialogWithSelectStories>;
 
@@ -153,10 +166,5 @@ const Template: StoryFn<typeof DialogWithSelectStories> = (args) => (
     <DialogWithSelectStories {...args} />
 );
 
-export const HorizontalTabs = Template.bind({});
-HorizontalTabs.args = {};
-
-export const VerticalTabs = Template.bind({});
-VerticalTabs.args = {
-    verticalTabs: true,
-};
+export const Primary = Template.bind({});
+Primary.args = {};
