@@ -39,6 +39,7 @@
     "playwright:docker": "./playwright/docker-run.sh npm run playwright",
     "playwright:docker:clear": "./playwright/docker-run.sh clear-cache",
     "playwright:docker:update": "npm run playwright:docker -- -- -u",
+    "test": "",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
