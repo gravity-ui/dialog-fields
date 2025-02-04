@@ -3,6 +3,7 @@ import {StoryFn, Meta} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {FormApi, DFDialog} from '../../../index';
+import {ConfirmedFormValues} from '../../../../stories/ConfirmedFormValues';
 
 interface FormValues {
     general: {
@@ -43,7 +44,7 @@ class DialogWithSelectStories extends Component<Props> {
         return (
             <Fragment>
                 <Button onClick={this.onToggleModal}>Show modal</Button>
-                <pre>Confirmed form values: {JSON.stringify(formData, null, 2)}</pre>
+                <ConfirmedFormValues data={formData} />
                 <DialogDemo
                     initialValues={initialState}
                     onAdd={this.onAdd}

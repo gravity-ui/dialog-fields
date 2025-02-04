@@ -13,6 +13,7 @@ import {
 } from '../../index';
 
 import {useSize} from '../../../stories/SizeContext';
+import {ConfirmedFormValues} from '../../../stories/ConfirmedFormValues';
 
 class DialogWithSelectStories extends Component {
     state = {
@@ -37,7 +38,7 @@ class DialogWithSelectStories extends Component {
         return (
             <Fragment>
                 <Button onClick={this.onToggleModal}>Show modal</Button>
-                <pre>Confirmed form values: {JSON.stringify(formData, null, 2)}</pre>
+                <ConfirmedFormValues data={formData} />
                 <DialogDemo onAdd={this.onAdd} modal={false} />
                 {showModal && (
                     <DialogDemo

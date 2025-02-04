@@ -65,7 +65,7 @@
     "@gravity-ui/prettier-config": "^1.0.1",
     "@gravity-ui/stylelint-config": "^2.0.0",
     "@gravity-ui/tsconfig": "^1.0.0",
-    "@gravity-ui/uikit": "^6.42.0",
+    "@gravity-ui/uikit": "^7.0.0-beta.6",
     "@playwright/experimental-ct-core": "1.50",
     "@playwright/experimental-ct-react": "1.50",
     "@playwright/test": "1.50",
@@ -97,7 +97,7 @@
   "peerDependencies": {
     "@bem-react/classname": "^1.6.0",
     "@gravity-ui/icons": "^2.0.0",
-    "@gravity-ui/uikit": "^6.1.0"
+    "@gravity-ui/uikit": "^7.0.0 || >=7.0.0-beta.6"
   },
   "nano-staged": {
     "*.{scss}": [
