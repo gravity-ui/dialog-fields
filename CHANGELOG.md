@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.0.0](https://github.com/gravity-ui/dialog-fields/compare/v5.0.9...v6.0.0) (2025-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* udpate @gravity-ui/uikit v7
+* **ControlField:** callback onChange should take only one parameter now
+
+### Features
+
+* **ControlField:** callback onChange should take only one parameter now ([b18ac78](https://github.com/gravity-ui/dialog-fields/commit/b18ac78ce5a659ff7abb1ed84dc6d86b9eec14dd))
+* udpate @gravity-ui/uikit v7 ([aaaaa67](https://github.com/gravity-ui/dialog-fields/commit/aaaaa67228ec8be6d8e0b6637dcba952442dfb12))
+
 ## [5.0.9](https://github.com/gravity-ui/dialog-fields/compare/v5.0.8...v5.0.9) (2024-09-12)
 
 
