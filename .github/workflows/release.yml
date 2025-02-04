@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - release/v*
+      - next
 
 jobs:
   release:
@@ -18,3 +19,4 @@ jobs:
           node-version: 18
           default-branch: ${{ github.ref_name != 'main' && github.ref_name || null }}
           npm-dist-tag: ${{ github.ref_name != 'main' && github.ref_name || 'latest' }}
+          prerelease: ${{ github.ref_name == 'next' && true || null }}
