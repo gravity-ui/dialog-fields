@@ -20,8 +20,7 @@ run_command() {
     $CONTAINER_TOOL run --rm --network host -it -w /work \
         -v $(pwd):/work \
         -v "$NODE_MODULES_CACHE_DIR/node_modules:/work/node_modules" \
-        -v "$NODE_MODULES_CACHE_DIR/playwright/.cache:/work/playwright/.cache" \
-        -e IS_DOCKER=1 \
+        -v "$NODE_MODULES_CACHE_DIR/.cache-playwright:/work/.cache-playwright" \
         "$IMAGE_NAME:$IMAGE_TAG" \
         /bin/bash -c "umask 0000; $toRun"
 }
@@ -62,7 +61,7 @@ if
         ! test -d "${NODE_MODULES_CACHE_DIR}"
 then
     mkdir -p "$NODE_MODULES_CACHE_DIR/node_modules"
-    mkdir -p "$NODE_MODULES_CACHE_DIR/playwright/.cache"
+    mkdir -p "$NODE_MODULES_CACHE_DIR/.cache-playwright"
 
     run_command 'npm ci'
     shasum ./package-lock.json >"${checksumFile}"
