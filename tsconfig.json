@@ -4,10 +4,16 @@
     "outDir": "build",
     "module": "esnext",
     "jsx": "react",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "declaration": true
+    "baseUrl": ".",
+    "isolatedModules": true,
+    "paths": {
+      "~playwright/*": ["playwright/*"]
+    },
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationDir": "types"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "build", "storybook-static", "src/stories"]
+  "exclude": ["node_modules", "build", "storybook-static"]
 }
