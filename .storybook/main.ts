@@ -31,5 +31,10 @@ const config: StorybookConfig = {
             },
         },
     },
+    build: {
+        test: {
+            disableSourcemaps: false,
+        },
+    },
 };
 export default config;

@@ -17,6 +17,7 @@ temp/
 # storybook
 .cache
 build/
+types/
 storybook-static/
 
 # package

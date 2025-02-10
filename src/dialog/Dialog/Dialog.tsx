@@ -269,7 +269,7 @@ export interface DFDialogProps<
     initialValues?: InitialFormValues;
     modal?: boolean;
     pristineSubmittable?: boolean;
-    isApplyDisabled?: (values: FormState<FormValues>) => boolean;
+    isApplyDisabled?: (values: FormState<FormValues, InitialFormValues>) => boolean;
     headerProps?: {
         title?: React.ReactNode;
         insertAfter?: React.ReactNode;
@@ -380,7 +380,7 @@ class Dialog<
         return isEmpty(value);
     }
 
-    static getDefaultValues<T extends TabbedField<F>, F>(
+    static getDefaultValues<T extends TabbedField<F>, F extends ControlField>(
         fields: FieldsType<T, F> = [],
     ): Record<string, any> {
         return reduce_(
