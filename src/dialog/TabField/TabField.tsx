@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Tabs} from '@gravity-ui/uikit';
+import {TabList, Tab} from '@gravity-ui/uikit';
 
 import {dfCN} from '../../helpers/cn';
 import {DangerIcon, CloseIcon} from '../Icon/Icon';
@@ -49,19 +49,19 @@ export class TabField extends Component<TabFieldProps> {
         return tabSpec.multiple ? !value.length : !Object.keys(value).length;
     }
 
-    static wrapTabItem = (
-        onRemoveTab: TabFieldProps['onRemoveTab'],
-        _onCreateTab: TabFieldProps['onCreateTab'],
-        item: TabItem,
-        tabNode: React.ReactNode,
-        wrapperMods = {},
-    ) => {
+    static wrapTabItem = (props: {
+        onRemoveTab: TabFieldProps['onRemoveTab'];
+        onCreateTab: TabFieldProps['onCreateTab'];
+        item: TabItem;
+        wrapperClassName?: string;
+    }) => {
+        const {onRemoveTab, item, wrapperClassName} = props;
         const hasError =
             item.error && ('string' === typeof item.error || some_(item.error, (v) => Boolean(v)));
         return (
-            <div key={item.id} className={block('wrapper', wrapperMods)}>
+            <div key={item.id} className={block('wrapper', wrapperClassName)}>
                 <span className={block('name')}>
-                    <span className={block('name-text')}>{tabNode}</span>
+                    <span className={block('name-text')}>{item.title ?? item.name}</span>
                     {hasError && (
                         <span
                             className={block('warning-icon')}
@@ -76,7 +76,7 @@ export class TabField extends Component<TabFieldProps> {
                         className={block('remove-icon')}
                         onClick={(e) => {
                             e.stopPropagation();
-                            onRemoveTab!(item);
+                            onRemoveTab?.(item);
                         }}
                     >
                         <CloseIcon />
@@ -90,13 +90,23 @@ export class TabField extends Component<TabFieldProps> {
         const {className, tabItems, activeTab, setActiveTab, onRemoveTab, onCreateTab} = this.props;
 
         return (
-            <Tabs
+            <TabList
+                value={activeTab}
+                onUpdate={setActiveTab}
                 className={block('control', className)}
-                items={tabItems}
-                activeTab={activeTab}
-                onSelectTab={setActiveTab}
-                wrapTo={TabField.wrapTabItem.bind(null, onRemoveTab, onCreateTab)}
-            />
+            >
+                {tabItems.map((item) => {
+                    return (
+                        <Tab key={item.id} value={item.id}>
+                            {TabField.wrapTabItem({
+                                onRemoveTab,
+                                onCreateTab,
+                                item,
+                            })}
+                        </Tab>
+                    );
+                })}
+            </TabList>
         );
     }
 }
