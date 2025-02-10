@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/gravity-ui/dialog-fields/compare/v6.0.0...v6.0.1) (2025-02-10)
+
+
+### Bug Fixes
+
+* **TabField:** use TabList, Tab ([2eafde1](https://github.com/gravity-ui/dialog-fields/commit/2eafde17c2cd60ac7bd70d431e9106b51ed206a3))
+
 ## [6.0.0](https://github.com/gravity-ui/dialog-fields/compare/v5.0.9...v6.0.0) (2025-02-04)
 
 
