@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.3](https://github.com/gravity-ui/dialog-fields/compare/v6.0.2...v6.0.3) (2025-02-10)
+
+
+### Bug Fixes
+
+* **Dialog:** minor fixes for typescript v5 ([6cb74dd](https://github.com/gravity-ui/dialog-fields/commit/6cb74ddabf4add53238456b9568c9739e96d49f3))
+
 ## [6.0.2](https://github.com/gravity-ui/dialog-fields/compare/v6.0.1...v6.0.2) (2025-02-10)
 
 
