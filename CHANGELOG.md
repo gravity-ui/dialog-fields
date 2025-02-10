@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.2](https://github.com/gravity-ui/dialog-fields/compare/v6.0.1...v6.0.2) (2025-02-10)
+
+
+### Bug Fixes
+
+* add export of FormApi from 'final-form' ([e72b64d](https://github.com/gravity-ui/dialog-fields/commit/e72b64d0864ff62effd8b27a7ebb4424b6d99315))
+
 ## [6.0.1](https://github.com/gravity-ui/dialog-fields/compare/v6.0.0...v6.0.1) (2025-02-10)
 
 
