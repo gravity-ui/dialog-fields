@@ -34,7 +34,7 @@
     "lint:styles:fix": "stylelint 'src/**/*.scss' --fix",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
-    "playwright": "playwright test -c playwright.config.ts",
+    "playwright": "playwright test -c ./playwright.config.ts",
     "playwright:update": "npm run playwright -- -u",
     "playwright:docker": "./playwright/docker-run.sh npm run playwright",
     "playwright:docker:clear": "./playwright/docker-run.sh clear-cache",

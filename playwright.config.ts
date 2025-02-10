@@ -26,6 +26,7 @@ export default defineConfig({
         trace: 'on-first-retry',
         headless: true,
         testIdAttribute: 'data-qa',
+        ctCacheDir: __dirname + '/.cache-playwright',
     },
 
     /* Configure projects for major browsers */
