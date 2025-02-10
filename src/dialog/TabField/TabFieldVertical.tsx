@@ -43,8 +43,11 @@ export class TabFieldVertical extends React.Component<TabFieldVerticalProps> {
 
     renderItem = (item: TabItem) => {
         const {onRemoveTab, onCreateTab, wrapTo} = this.props;
-        const node = TabField.wrapTabItem(onRemoveTab, onCreateTab, item, item.title, {
-            vertical: true,
+        const node = TabField.wrapTabItem({
+            onRemoveTab,
+            onCreateTab,
+            item,
+            wrapperClassName: block('wrapper'),
         });
         return wrapTo ? wrapTo(node, item) : node;
     };
