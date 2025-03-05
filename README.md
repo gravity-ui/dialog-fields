@@ -34,15 +34,13 @@ It supports several predefined types of fields but user can extend it by registe
 
 ## Install
 
-```
+```bash
 $ npm install @gravity-ui/dialog-fields
+# Use required version of react/react-dom in case you haven't installed them yet
+$ npm install @gravity-ui/dialog-fields react@18 react-dom@18
 ```
 
-Also you have to install all required peer-dependencies
-
-```
-$ npm install -D  @gravity-ui/uikit@^5 @bem-react/classname@1.6 react@^17
-```
+Depending on your package manager you may need to install `peerDependencies` manually.
 
 ## Usage
 
