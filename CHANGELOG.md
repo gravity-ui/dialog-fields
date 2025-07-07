@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.10](https://github.com/gravity-ui/dialog-fields/compare/v5.0.9...v5.0.10) (2025-07-07)
+
+
+### Bug Fixes
+
+* **Dialog:** better warning of Field ([8e70b6a](https://github.com/gravity-ui/dialog-fields/commit/8e70b6a9e8ccb5c0c975a8f58dcec5cbb43db237))
+
 ## [5.0.9](https://github.com/gravity-ui/dialog-fields/compare/v5.0.8...v5.0.9) (2024-09-12)
 
 
