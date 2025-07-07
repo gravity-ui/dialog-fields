@@ -733,7 +733,7 @@ class Dialog<
                             {Dialog.renderField(field, input, meta)}
                             {warning && (
                                 <div className={bDialog('field-warning')}>
-                                    <WarningIcon />
+                                    <WarningIcon className={bDialog('field-warning-icon')} />
                                     <span className={bDialog('field-warning-content')}>
                                         {warning}
                                     </span>
