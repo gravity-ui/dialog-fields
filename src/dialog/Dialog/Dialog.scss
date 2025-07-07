@@ -168,6 +168,7 @@
     }
 
     &__field-warning {
+        display: flex;
         margin-top: 2px; /* top offset of warning text from a control */
         color: var(--g-color-text-secondary);
 
@@ -178,6 +179,10 @@
         .yc-field-wrapper_state_error + & {
             margin-top: 19px;
         }
+    }
+
+    &__field-warning-icon {
+        flex-shrink: 0;
     }
 
     &__field-warning-content {
