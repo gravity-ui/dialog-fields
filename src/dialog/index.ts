@@ -10,3 +10,4 @@ export * from './TabField';
 export * from './TextAreaControl';
 export * from './TextControl';
 export * from './TumblerControl';
+export type {ControlStaticApi, TabControlStaticApi} from './types';
