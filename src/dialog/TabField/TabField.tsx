@@ -6,6 +6,8 @@ import {DangerIcon, CloseIcon} from '../Icon/Icon';
 
 import some_ from 'lodash/some';
 
+import i18n from './i18n';
+
 import './TabField.scss';
 
 const block = dfCN('dialog-tab');
@@ -65,7 +67,7 @@ export class TabField extends Component<TabFieldProps> {
                     {hasError && (
                         <span
                             className={block('warning-icon')}
-                            title="Some fields in this tab are not valid"
+                            title={i18n('tab:validation-error')}
                         >
                             <DangerIcon />
                         </span>
