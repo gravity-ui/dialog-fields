@@ -47,7 +47,6 @@ import {useStableEventHandler} from '../../helpers/useStableEventHendler';
 
 import './Dialog.scss';
 
-import i18n from './i18n';
 import {
     ArrayElement,
     ControlProps,
@@ -57,6 +56,8 @@ import {
     ValidatorType,
 } from '../types';
 import {CollapsibleSection} from '../CollapsibleSection/CollapsibleSection';
+
+import i18n from './i18n';
 
 const bDialog = dfCN('dialog');
 const bPage = dfCN('page-dialog');
@@ -322,18 +323,6 @@ class Dialog<
     TabT extends TabbedField<FieldT> = any,
     FieldT extends ControlField = never,
 > extends Component<DFDialogProps<FormValues, InitialFormValues, TabT, FieldT>, State<FormValues>> {
-    static defaultProps = {
-        pristineSubmittable: false,
-        modal: true,
-        size: 'm',
-        headerProps: {},
-        footerProps: {
-            textApply: 'Confirm',
-            textCancel: 'Cancel',
-        },
-        onClose: () => {},
-    };
-
     static FINAL_FORM_SUBSCRIPTIONS = {
         submitting: true,
         pristine: true,
@@ -341,6 +330,14 @@ class Dialog<
         dirtySinceLastSubmit: true,
         hasValidationErrors: true,
         hasSubmitErrors: true,
+    };
+
+    static defaultProps = {
+        pristineSubmittable: false,
+        modal: true,
+        size: 'm',
+        headerProps: {},
+        onClose: () => {},
     };
 
     /**
@@ -1048,11 +1045,10 @@ class Dialog<
         const {waitingMessage, headerProps, footerProps, fields, formId, size} = this.props;
         const {verticalTabs} = this.state;
         const {title, insertAfter, insertBefore} = headerProps || {};
-        const {textApply: textApplyDefault, textCancel: textCancelDefault} =
-            Dialog.defaultProps.footerProps;
+
         const {
-            textApply = textApplyDefault,
-            textCancel = textCancelDefault,
+            textApply = i18n('button:confirm'),
+            textCancel = i18n('button:cancel'),
             content,
             propsButtonCancel = {},
             propsButtonApply = {},

@@ -2,4 +2,4 @@ import {makeKeyset} from '../../../i18n';
 import ru from './ru.json';
 import en from './en.json';
 
-export default makeKeyset('dialog-fields', {ru, en});
+export default makeKeyset('dialog-fields:editable-list', {ru, en});

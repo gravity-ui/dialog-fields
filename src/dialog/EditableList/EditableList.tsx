@@ -3,6 +3,8 @@ import {dfCN} from '../../helpers/cn';
 
 import {RepeatIcon, CloseIcon} from '../Icon/Icon';
 
+import i18n from './i18n';
+
 import './EditableList.scss';
 
 const block = dfCN('editable-list');
@@ -113,7 +115,7 @@ export class EditableList<T = any> extends React.Component<EditableListProps<T>,
 
     renderShowAll() {
         const {showAll} = this.state;
-        const text = showAll ? 'Hide' : 'Show all';
+        const text = showAll ? i18n('editable-list:hide') : i18n('editable-list:show-all');
         return (
             <span className={block('show-all')} onClick={this.onShowAll}>
                 {text}

@@ -1,3 +1,5 @@
 {
-  "validator:value-required": "Value is required"
+  "validator:value-required": "Value is required",
+  "button:confirm": "Confirm",
+  "button:cancel": "Cancel"
 }
