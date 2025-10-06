@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.0.5](https://github.com/gravity-ui/dialog-fields/compare/v6.0.4...v6.0.5) (2025-10-06)
+
+
+### Bug Fixes
+
+* improve i18n ([3a32b52](https://github.com/gravity-ui/dialog-fields/commit/3a32b523c5c2a8a3731607647bf72c1c993dec1e))
+* improve internalization ([#85](https://github.com/gravity-ui/dialog-fields/issues/85)) ([3a32b52](https://github.com/gravity-ui/dialog-fields/commit/3a32b523c5c2a8a3731607647bf72c1c993dec1e))
+
 ## [6.0.4](https://github.com/gravity-ui/dialog-fields/compare/v6.0.3...v6.0.4) (2025-07-07)
 
 
