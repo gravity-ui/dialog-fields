@@ -509,7 +509,7 @@ class Dialog<
                             closeDelay={150}
                             placement={['bottom', 'top', 'right']}
                         >
-                            <div>
+                            <div className={bDialog('tooltip-q-icon-wrapper')}>
                                 <TooltipIcon className={bDialog('q-icon')} />
                             </div>
                         </Tooltip>
