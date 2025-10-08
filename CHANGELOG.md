@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.0.6](https://github.com/gravity-ui/dialog-fields/compare/v6.0.5...v6.0.6) (2025-10-08)
+
+
+### Bug Fixes
+
+* tooltip content displaying ([#88](https://github.com/gravity-ui/dialog-fields/issues/88)) ([7081554](https://github.com/gravity-ui/dialog-fields/commit/708155458cd70fae7f5b40eacaed69c5f01c3ced))
+* tooltip cursor ([#90](https://github.com/gravity-ui/dialog-fields/issues/90)) ([266530b](https://github.com/gravity-ui/dialog-fields/commit/266530b19d2671cf3480d8823e18ea0e6b2902fb))
+
 ## [6.0.5](https://github.com/gravity-ui/dialog-fields/compare/v6.0.4...v6.0.5) (2025-10-06)
 
 
