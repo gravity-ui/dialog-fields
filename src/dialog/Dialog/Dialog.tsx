@@ -13,7 +13,7 @@ import {
     Dialog as CommonDialog,
     DialogFooterProps,
     ModalCloseReason,
-    Popover,
+    Tooltip,
 } from '@gravity-ui/uikit';
 import {dfCN} from '../../helpers/cn';
 import {Decorator, FORM_ERROR, FormApi, FormState, ValidationErrors, FieldState} from 'final-form';
@@ -506,14 +506,16 @@ class Dialog<
                 <div className={bDialog('label-text', {required})}>{caption}</div>
                 {Boolean(tooltip) && (
                     <div>
-                        <Popover
+                        <Tooltip
                             content={tooltip}
                             openDelay={150}
                             closeDelay={150}
                             placement={['bottom', 'top', 'right']}
                         >
-                            <TooltipIcon className={bDialog('q-icon')} />
-                        </Popover>
+                            <div>
+                                <TooltipIcon className={bDialog('q-icon')} />
+                            </div>
+                        </Tooltip>
                     </div>
                 )}
             </label>
