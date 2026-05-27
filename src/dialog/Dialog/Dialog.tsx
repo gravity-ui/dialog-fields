@@ -198,7 +198,7 @@ export type TabbedField<FieldT, TabData = any, K extends string = string> = {
     type: K;
     fields: Array<DialogField<FieldT>>;
     size?: string;
-    title?: string;
+    title?: React.ReactNode | string;
     getTitle?: (data: TabData) => string;
     isRemovable?: (position: number) => boolean;
     renderControls?: (
@@ -311,7 +311,7 @@ interface OperateTabInfo {
     name: string;
     multiple?: boolean;
     index: number;
-    title: string;
+    title: React.ReactNode | string;
     isRemovable: (position: number) => boolean;
     renderControls?: TabbedField<any>['renderControls'];
     visibilityCondition?: TabbedField<any>['visibilityCondition'];

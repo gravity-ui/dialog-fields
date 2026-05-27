@@ -29,7 +29,7 @@ export interface TabFieldProps {
 export interface TabItem {
     id: string;
     name: string;
-    title: string;
+    title: React.ReactNode | string;
     multiple?: boolean;
     removable?: boolean;
     error?: string | object;
