@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.0](https://github.com/gravity-ui/dialog-fields/compare/v6.0.6...v6.1.0) (2026-05-29)
+
+
+### Features
+
+* **TabField:** add tooltip to TabField in dialog ([77b9788](https://github.com/gravity-ui/dialog-fields/commit/77b978824d166b28d1068e3da806af4224a5f06f))
+
 ## [6.0.6](https://github.com/gravity-ui/dialog-fields/compare/v6.0.5...v6.0.6) (2025-10-08)
 
 
