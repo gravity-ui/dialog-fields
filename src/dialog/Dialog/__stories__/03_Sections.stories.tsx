@@ -80,7 +80,7 @@ function DialogDemo({
                     name: 'block',
                     extras: {
                         children: (
-                            <div style={{color: 'gray'}}>
+                            <div style={{color: 'var(--g-color-text-secondary)'}}>
                                 It is possible to group several fields and make such groups
                                 collapsible.
                             </div>

@@ -103,13 +103,13 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         Every field might be marked with <b>required</b> flag and in
                                         addition you can provide <b>validator</b> function. The
                                         function should return a string with error if current value
                                         is wrong or <i>undefined</i> otherwise. <b>Confirm</b>{' '}
                                         button will be disabeld until all values are correct.
-                                        <div style={{color: 'darkorange'}}>
+                                        <div style={{color: 'var(--g-color-text-warning)'}}>
                                             Do not use field validators for virtualized tabs.
                                         </div>
                                     </div>

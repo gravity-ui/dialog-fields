@@ -78,7 +78,7 @@ function DialogDemo({
                     name: 'block',
                     extras: {
                         children: (
-                            <div style={{color: 'gray'}}>
+                            <div style={{color: 'var(--g-color-text-secondary)'}}>
                                 It is possible to provide additional properties for controls by
                                 using <b>extras</b>. Also you can make fields depending to each
                                 other by values by using this property.

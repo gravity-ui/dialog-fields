@@ -93,7 +93,7 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         There is ability to make clonable tabs by adding{' '}
                                         <b>multiple</b> flag for a tab definition. Only one tab
                                         might be clonable. Go to next tab.

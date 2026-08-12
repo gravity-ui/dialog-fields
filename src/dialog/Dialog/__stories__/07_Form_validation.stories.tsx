@@ -99,7 +99,7 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         In some cases it is more convinient to use form validator.
                                         Especially when values of fields depends to each other or
                                         when you are using virtualized tabs.

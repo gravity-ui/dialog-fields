@@ -103,7 +103,7 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         There is ability to create forms with several tabs. By
                                         default tabs are horizontally oriented, but it is possible
                                         to make them vertically oriented.
