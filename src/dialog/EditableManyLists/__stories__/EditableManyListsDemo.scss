@@ -3,7 +3,7 @@
         color: var(--g-color-text-secondary);
     }
     &__coral {
-        color: lightcoral; // stylelint-disable-line color-named
+        color: var(--g-color-text-danger);
     }
 
     &__add {

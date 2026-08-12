@@ -93,7 +93,7 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         In rare cases it might be required to handle hundreds of
                                         tabs and it will affect the performance. It is reasonable to
                                         use virtualized tabs for such cases. But when virtualization

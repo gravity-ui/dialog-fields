@@ -117,7 +117,12 @@ function DialogDemo({
                 makeField('block', {
                     children: (
                         <div>
-                            <div style={{color: 'gray', paddingBottom: '20px'}}>
+                            <div
+                                style={{
+                                    color: 'var(--g-color-text-secondary)',
+                                    paddingBottom: '20px',
+                                }}
+                            >
                                 This page demonstrates base set of registered field types.
                             </div>
                             <b>block</b> is used for custom content

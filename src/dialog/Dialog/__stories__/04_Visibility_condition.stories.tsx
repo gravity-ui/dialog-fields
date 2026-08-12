@@ -105,7 +105,7 @@ function DialogDemo({
                             name: 'block',
                             extras: {
                                 children: (
-                                    <div style={{color: 'gray'}}>
+                                    <div style={{color: 'var(--g-color-text-secondary)'}}>
                                         Some fields might be hidden depending on value of another
                                         field. Check <b>Provide contacts</b>
                                     </div>
