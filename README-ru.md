@@ -84,4 +84,30 @@ function MyForm() {
 }
 ```
 
+### Условная видимость
+
+Поля и вкладки поддерживают `visibilityCondition`. Если `when` — строка,
+`isActive` получает значение одного поля:
+
+```ts
+visibilityCondition: {
+  when: 'register',
+  isActive: (value) => Boolean(value),
+}
+```
+
+Для зависимости от нескольких полей передайте массив имён. `isActive` получит
+значения отдельными аргументами в том же порядке, что и имена в `when`:
+
+```ts
+visibilityCondition: {
+  when: ['multiConsumer', 'register'],
+  isActive: (multiConsumer, register) => Boolean(multiConsumer && register),
+}
+```
+
+Имена задаются путями от корня формы, включая префиксы вкладок, например
+`general.register`. Видимость пересчитывается при изменении любого указанного поля.
+Скрытое по условию поле размонтируется, а не просто скрывается визуально.
+
 C дополнительными примерами можно ознакомиться в [Storybook](https://preview.yandexcloud.dev/dialog-fields).

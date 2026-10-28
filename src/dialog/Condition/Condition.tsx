@@ -1,16 +1,29 @@
 import React from 'react';
 import {Field} from 'react-final-form';
 
-interface Props<T = any> {
-    when: string;
-    isActive: (value: T) => boolean;
-    children: React.ReactNode;
-}
+export type VisibilityCondition = {
+    when: string | Array<string>;
+    isActive: (...values: Array<any>) => boolean;
+};
 
-export function Condition<T>({when, isActive, children}: Props<T>) {
-    return (
-        <Field name={when} subscription={{value: true}}>
-            {({input: {value}}) => (isActive(value) ? children : null)}
-        </Field>
-    );
+type Props = VisibilityCondition & {
+    children: React.ReactNode;
+};
+
+export function Condition({when, isActive, children}: Props) {
+    const names = Array.isArray(when) ? when : [when];
+
+    function renderCondition(values: Array<any>): React.ReactNode {
+        if (values.length === names.length) {
+            return isActive(...values) ? children : null;
+        }
+
+        return (
+            <Field name={names[values.length]} subscription={{value: true}}>
+                {({input: {value}}) => renderCondition([...values, value])}
+            </Field>
+        );
+    }
+
+    return renderCondition([]);
 }

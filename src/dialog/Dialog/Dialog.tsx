@@ -30,6 +30,7 @@ import {TumblerControl, TumblerControlProps} from '../TumblerControl';
 import {PlainText, PlainTextProps} from '../PlainText';
 import {CheckBoxControl, CheckBoxControlProps} from '../CheckBoxControl';
 import {Condition} from '../Condition';
+import type {VisibilityCondition} from '../Condition';
 import {CustomBlock, CustomBlockProps} from '../CustomBlock';
 import {RadioButtonControl, RadioButtonControlProps} from '../RadioButtonControl';
 import {EditableList, EditableListProps} from '../EditableList';
@@ -147,8 +148,6 @@ function checkFieldsSpec(props: {fields: Array<any>}) {
     }
 }
 
-type FieldName = string;
-
 export interface ControlField<
     T extends string = string,
     V = any,
@@ -174,10 +173,7 @@ export interface ControlField<
           ) => E);
     touched?: boolean;
 
-    visibilityCondition?: {
-        when: FieldName;
-        isActive: (v: any) => boolean;
-    };
+    visibilityCondition?: VisibilityCondition;
 
     className?: string;
     required?: boolean;
@@ -206,10 +202,7 @@ export type TabbedField<FieldT, TabData = any, K extends string = string> = {
         onCreate: (active?: boolean) => void,
         onRemove?: () => void,
     ) => React.ReactNode;
-    visibilityCondition?: {
-        when: any;
-        isActive: (v: any) => boolean;
-    };
+    visibilityCondition?: VisibilityCondition;
 
     subscribers?: undefined;
 } & MultipleTabField<TabData>;
@@ -887,8 +880,9 @@ class Dialog<
         if (!visibilityCondition) {
             return true;
         }
-        const value = get_(values, visibilityCondition.when);
-        return visibilityCondition.isActive(value);
+        const {when} = visibilityCondition;
+        const names = Array.isArray(when) ? when : [when];
+        return visibilityCondition.isActive(...names.map((name) => get_(values, name)));
     }
 
     prepareTabs(
