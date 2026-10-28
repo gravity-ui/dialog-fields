@@ -5,7 +5,7 @@ import {defineConfig, devices} from '@playwright/experimental-ct-react';
  */
 export default defineConfig({
     testDir: './src',
-    testMatch: '**/__tests__/*.visual.test.tsx',
+    testMatch: '**/__tests__/*.{visual,component}.test.tsx',
     snapshotPathTemplate:
         '{testDir}/{testFileDir}/../__snapshots__/{testFileName}-snapshots/{arg}{-projectName}-linux{ext}',
     /* Maximum time one test can run for. */

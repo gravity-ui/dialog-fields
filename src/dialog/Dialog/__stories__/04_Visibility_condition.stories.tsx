@@ -182,3 +182,73 @@ const Template: StoryFn<typeof DialogWithSelectStories> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {};
+
+export const MultipleFields: StoryFn = () => (
+    <DFDialog<FormValues>
+        {...useSize()}
+        visible
+        modal={false}
+        pristineSubmittable
+        headerProps={{title: 'Visibility depending on multiple fields'}}
+        onAdd={() => Promise.resolve()}
+        fields={[
+            {
+                name: 'general',
+                title: 'General',
+                type: 'tab',
+                fields: [
+                    {
+                        name: 'firstName',
+                        type: 'text',
+                        caption: 'First name',
+                    },
+                    {
+                        name: 'provideContacts',
+                        type: 'checkbox',
+                        extras: {
+                            children: 'I want to provide my contacts',
+                        },
+                    },
+                ],
+            },
+            {
+                name: 'contacts',
+                title: 'Contacts',
+                type: 'tab',
+                visibilityCondition: {
+                    when: ['general.firstName', 'general.provideContacts'],
+                    isActive: (firstName, provideContacts) =>
+                        typeof firstName === 'string' &&
+                        firstName.length > 0 &&
+                        Boolean(provideContacts),
+                },
+                fields: [
+                    {
+                        name: 'email',
+                        type: 'text',
+                        caption: 'Email',
+                    },
+                    {
+                        name: 'providePhone',
+                        type: 'checkbox',
+                        extras: {
+                            children: 'I want to provide my phone',
+                        },
+                    },
+                    {
+                        name: 'phone',
+                        type: 'text',
+                        caption: 'Phone',
+                        visibilityCondition: {
+                            when: ['contacts.email', 'contacts.providePhone'],
+                            isActive: (email, providePhone) =>
+                                typeof email === 'string' &&
+                                email.includes('@') &&
+                                Boolean(providePhone),
+                        },
+                    },
+                ],
+            },
+        ]}
+    />
+);
