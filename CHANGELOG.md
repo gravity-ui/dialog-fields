@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.2.0](https://github.com/gravity-ui/dialog-fields/compare/v6.1.0...v6.2.0) (2026-10-28)
+
+
+### Features
+
+* **Dialog:** support multiple visibility dependencies [YTFRONT-6109] ([f5ccb86](https://github.com/gravity-ui/dialog-fields/commit/f5ccb86d71265ba5c4b3ad7fdcc029a0bd77a1f8))
+
+
+### Bug Fixes
+
+* **PlainText:** inherit font weight ([a5ab14a](https://github.com/gravity-ui/dialog-fields/commit/a5ab14a7d56f7356b7da61dc78d9f41c905672dc))
+* **storybook:** use Gravity UI color variables ([2452e27](https://github.com/gravity-ui/dialog-fields/commit/2452e2744cbfd57ca0d8a973cd9510ee800fa0b8))
+
 ## [6.1.0](https://github.com/gravity-ui/dialog-fields/compare/v6.0.6...v6.1.0) (2026-05-29)
 
 
