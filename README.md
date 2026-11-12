@@ -42,6 +42,11 @@ $ npm install @gravity-ui/dialog-fields react@18 react-dom@18
 
 Depending on your package manager you may need to install `peerDependencies` manually.
 
+This version requires UIKit 8 and React 18. Install `@hello-pangea/dnd@^18`
+and `@tanstack/react-virtual@^3` alongside UIKit: vertical tabs use the drag-and-drop
+and virtualization entry points, and Select controls virtualize lists of 50 or more options.
+Wrap your application in UIKit's `Provider` and import `@gravity-ui/uikit/styles/styles.css`.
+
 ## Usage
 
 ```ts

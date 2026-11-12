@@ -9,12 +9,7 @@ import isEqual_ from 'lodash/isEqual';
 import get_ from 'lodash/get';
 import isEmpty_ from 'lodash/isEmpty';
 import map_ from 'lodash/map';
-import {
-    Dialog as CommonDialog,
-    DialogFooterProps,
-    ModalCloseReason,
-    Tooltip,
-} from '@gravity-ui/uikit';
+import {Dialog as CommonDialog, DialogFooterProps, Tooltip} from '@gravity-ui/uikit';
 import {dfCN} from '../../helpers/cn';
 import {Decorator, FORM_ERROR, FormApi, FormState, ValidationErrors, FieldState} from 'final-form';
 import {Field, FieldInputProps, FieldMetaState, Form, FormProps, FormSpy} from 'react-final-form';
@@ -618,11 +613,7 @@ class Dialog<
         }
     }
 
-    onClose = (_event?: unknown, reason?: ModalCloseReason | 'closeButtonClick') => {
-        if (reason === 'outsideClick') {
-            return;
-        }
-
+    onClose = () => {
         this.setState({activeTabId: undefined});
 
         const {onClose = Dialog.defaultProps.onClose, disableFormReset} = this.props;
@@ -632,6 +623,12 @@ class Dialog<
             window.setTimeout(() => {
                 this.form!.reset();
             }, 0);
+        }
+    };
+
+    onOpenChange = (open: boolean) => {
+        if (!open) {
+            this.onClose();
         }
     };
 
@@ -1134,8 +1131,10 @@ class Dialog<
                     className={className}
                     open
                     hasCloseButton
-                    size={size}
-                    onClose={this.onClose}
+                    maxWidth={size}
+                    fullWidth
+                    disableOutsideClick
+                    onOpenChange={this.onOpenChange}
                 >
                     {this.renderDialogContent(handleSubmit, form)}
                 </CommonDialog>
