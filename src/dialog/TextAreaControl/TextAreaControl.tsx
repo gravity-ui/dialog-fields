@@ -27,7 +27,7 @@ export class TextAreaControl extends Component<TextAreaControlProps> {
     }
 
     render() {
-        const {value, onChange, ...rest} = this.props;
+        const {value, onChange, error, errorMessage, validationState, ...rest} = this.props;
 
         return (
             <TextArea
@@ -36,6 +36,8 @@ export class TextAreaControl extends Component<TextAreaControlProps> {
                 hasClear
                 rows={4}
                 {...rest}
+                errorMessage={errorMessage || error}
+                validationState={error ? 'invalid' : validationState}
                 value={value}
                 onUpdate={onChange}
             />
