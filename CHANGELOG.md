@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.0.0](https://github.com/gravity-ui/dialog-fields/compare/v6.2.0...v7.0.0) (2026-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to UIKit 8
+
+### Features
+
+* migrate to UIKit 8 ([2a0ce31](https://github.com/gravity-ui/dialog-fields/commit/2a0ce31eb099f45f4c349205b650a4bce9f9f65e))
+
 ## [6.2.0](https://github.com/gravity-ui/dialog-fields/compare/v6.1.0...v6.2.0) (2026-10-28)
 
 
