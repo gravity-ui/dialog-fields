@@ -39,20 +39,62 @@ npm install @gravity-ui/dialog-fields
 ```
 
 В зависимости от пакетного менеджера может потребоваться установить `peerDependencies`
-вручную. Эта версия требует UIKit 8 и React 18:
-
-```
-npm install @gravity-ui/uikit@^8 @hello-pangea/dnd@^18 @tanstack/react-virtual@^3 react@^18 react-dom@^18
-```
+вручную.
 
 Вертикальные вкладки используют точки входа для сортировки и виртуализации, а Select
 виртуализирует списки из 50 и более опций. Оберните приложение в `Provider` из UIKit
 и подключите `@gravity-ui/uikit/styles/styles.css`.
 
+## Миграция на UIKit 8
+
+Замените корневые `ThemeProvider` и `MobileProvider` приложения на `Provider`.
+Перенесите их пропсы в `Provider`, кроме удалённого `__experimentalMobileModals`:
+
+```diff
+-import {ThemeProvider, MobileProvider} from '@gravity-ui/uikit';
++import {Provider} from '@gravity-ui/uikit';
+
+-<ThemeProvider theme="light">
+-  <MobileProvider>
+-    <App />
+-  </MobileProvider>
+-</ThemeProvider>
++<Provider theme="light">
++  <App />
++</Provider>
+```
+
+Если приложение уже использует `Provider`, дополнительная обёртка вокруг `DFDialog`
+не нужна. У `DFDialog` сохранены пропсы `visible`, `size` и `onClose`: переход UIKit
+на `Dialog.open`, `maxWidth` и `onOpenChange` выполнен внутри библиотеки.
+
+Проверьте собственные стили и скриншотные эталоны:
+
+- Изменились отступы заголовка, содержимого и футера как модальных, так и встроенных форм.
+- Кнопки футера на десктопе теперь имеют ширину по содержимому вместо минимальных 128px.
+  Чтобы вернуть прежнюю ширину, передайте `{width: 'max', className: 'form-action'}`
+  через `footerProps.propsButtonApply` и `footerProps.propsButtonCancel`, а в стилях задайте
+  `.form-action { min-width: 128px; }`.
+- У checkbox размера `l` шрифт подписи уменьшился с 15 до 13px, а индикатор увеличился
+  с 17 до 18px. Оттенки темы также немного изменились.
+- Вертикальные вкладки используют новый `List` без Legacy-компонентов. Собственные
+  селекторы для прежней разметки `.g-list__item` нужно пересмотреть.
+  Колбэк `onOrderChanged({oldIndex, newIndex})` сохранён.
+
+Для собственных контролов и пропсов UIKit, передаваемых через описания полей, используйте
+[гайд миграции UIKit](https://github.com/gravity-ui/uikit/blob/main/docs/migration-to-v8-ru.md).
+В частности, `Select` больше не принимает `virtualizationThreshold`: встроенный контрол
+`select` использует `ListVirtualizer` с порогом в 50 опций.
+
 ## Использование
 
-```ts
-import {DFDialog, FormApi} from '@gravity-ui/dialog-fields';
+Пример включает провайдер приложения. Если на корне приложения уже есть `Provider`,
+добавлять показанную здесь обёртку повторно не нужно.
+
+```tsx
+import {DFDialog} from '@gravity-ui/dialog-fields';
+import {Provider} from '@gravity-ui/uikit';
+import '@gravity-ui/uikit/styles/styles.css';
 
 interface FormValues {
   firstName: string;
@@ -61,30 +103,32 @@ interface FormValues {
 
 function MyForm() {
   return (
-    <DFDialog<FormValues>
-      visible={true}
-      headerProps={{
-        title: 'My form',
-      }}
-      onAdd={(form) => {
-        console.log(form.getState().values);
-        return Promise.resolve();
-      }}
-      fields={[
-        {
-          name: 'firstName',
-          type: 'text',
-          caption: 'First name',
-          tooltip: 'Description for first name field',
-        },
-        {
-          name: 'lastName',
-          type: 'text',
-          caption: 'LastName',
-          tooltip: 'Description for last name field',
-        },
-      ]}
-    />
+    <Provider theme="light">
+      <DFDialog<FormValues>
+        visible={true}
+        headerProps={{
+          title: 'My form',
+        }}
+        onAdd={(form) => {
+          console.log(form.getState().values);
+          return Promise.resolve();
+        }}
+        fields={[
+          {
+            name: 'firstName',
+            type: 'text',
+            caption: 'First name',
+            tooltip: 'Description for first name field',
+          },
+          {
+            name: 'lastName',
+            type: 'text',
+            caption: 'LastName',
+            tooltip: 'Description for last name field',
+          },
+        ]}
+      />
+    </Provider>
   );
 }
 ```
