@@ -76,7 +76,7 @@ test('Virtualized tabs render a window and allow selecting an offscreen tab', as
     const grid = page.getByRole('grid');
     const lastTab = page.getByRole('row', {name: 'Tab 199', exact: true});
     await expect(page.getByRole('row', {name: 'Tab 0', exact: true})).toBeVisible();
-    expect(await page.getByRole('row').count()).toBeLessThan(30);
+    await expect.poll(() => page.getByRole('row').count()).toBeLessThan(30);
     await expect(lastTab).toHaveCount(0);
 
     await grid.hover();
@@ -84,5 +84,5 @@ test('Virtualized tabs render a window and allow selecting an offscreen tab', as
     await lastTab.click();
 
     await expect.poll(() => selected).toEqual(['tab-199']);
-    expect(await page.getByRole('row').count()).toBeLessThan(30);
+    await expect.poll(() => page.getByRole('row').count()).toBeLessThan(30);
 });
