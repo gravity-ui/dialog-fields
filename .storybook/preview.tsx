@@ -3,20 +3,18 @@ import React from 'react';
 import type {Preview, Decorator} from '@storybook/react';
 import '@gravity-ui/uikit/styles/styles.scss';
 
-import {ThemeProvider, MobileProvider, configure as uikitConfigure} from '@gravity-ui/uikit';
+import {Provider, configure as uikitConfigure} from '@gravity-ui/uikit';
 import {configure} from '../src/configure';
 import {SizeProvider} from '../src/stories/SizeContext';
 
 export const withContextProvider: Decorator = (StoryItem, context) => {
     return (
         <React.StrictMode>
-            <ThemeProvider theme={context.globals.theme}>
-                <MobileProvider>
-                    <SizeProvider value={context.globals.size}>
-                        <StoryItem {...context} />
-                    </SizeProvider>
-                </MobileProvider>
-            </ThemeProvider>
+            <Provider theme={context.globals.theme}>
+                <SizeProvider value={context.globals.size}>
+                    <StoryItem {...context} />
+                </SizeProvider>
+            </Provider>
         </React.StrictMode>
     );
 };

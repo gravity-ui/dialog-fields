@@ -1,3 +1,4 @@
 {
-  "tab:validation-error": "Some fields in this tab are not valid"
+  "tab:validation-error": "Some fields in this tab are not valid",
+  "label_tabs": "Tabs"
 }

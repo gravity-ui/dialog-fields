@@ -38,11 +38,16 @@
 npm install @gravity-ui/dialog-fields
 ```
 
-Необходимо установить все обязательные peer-зависимости:
+В зависимости от пакетного менеджера может потребоваться установить `peerDependencies`
+вручную. Эта версия требует UIKit 8 и React 18:
 
 ```
-npm install -D  @gravity-ui/uikit@^5 @bem-react/classname@1.6 react@^17
+npm install @gravity-ui/uikit@^8 @hello-pangea/dnd@^18 @tanstack/react-virtual@^3 react@^18 react-dom@^18
 ```
+
+Вертикальные вкладки используют точки входа для сортировки и виртуализации, а Select
+виртуализирует списки из 50 и более опций. Оберните приложение в `Provider` из UIKit
+и подключите `@gravity-ui/uikit/styles/styles.css`.
 
 ## Использование
 

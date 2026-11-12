@@ -1,5 +1,6 @@
 import React from 'react';
 import {Select, SelectProps} from '@gravity-ui/uikit';
+import {ListVirtualizer} from '@gravity-ui/uikit/virtualizer';
 
 export type SelectControlProps = Omit<SelectProps, 'onUpdate' | 'onChange'> & {
     onChange: (value: SelectControlProps['value']) => void;
@@ -7,7 +8,11 @@ export type SelectControlProps = Omit<SelectProps, 'onUpdate' | 'onChange'> & {
 
 export function SelectControl(props: SelectControlProps) {
     const {onChange, ...rest} = props;
-    return <Select {...rest} onUpdate={onChange} />;
+    return (
+        <ListVirtualizer minItemsCount={50}>
+            <Select {...rest} onUpdate={onChange} />
+        </ListVirtualizer>
+    );
 }
 
 SelectControl.getDefaultValue = () => {

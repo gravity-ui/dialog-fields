@@ -1,28 +1,46 @@
 .df-tab-field-vertical {
     display: flex;
     flex-direction: column;
+    min-height: 0;
     font-size: 14px;
 
+    --g-list-item-view-border-radius: 0;
+    --g-list-item-view-padding-inline: 1em;
+    --g-list-item-view-padding-block: 0;
+    --g-list-item-view-line-height: 100%;
+    --g-list-item-view-text-color: var(--g-color-text-secondary);
+
     &_size_s {
+        --g-list-item-view-min-height: 28px;
         font-size: 13px;
     }
 
     &_size_m {
+        --g-list-item-view-min-height: 36px;
         font-size: 15px;
     }
 
     &_size_l {
+        --g-list-item-view-min-height: 48px;
         font-size: 18px;
     }
 
-    .g-list__item {
-        line-height: 100%;
-        padding-left: 1em;
+    &__list {
+        flex: 1;
+        min-height: 0;
+    }
+
+    &__cell {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__item {
+        font-size: inherit;
         border-left: 4px solid rgba(0, 0, 0, 0);
-        color: var(--g-color-text-secondary);
 
         &_selected {
-            color: var(--g-color-text-primary);
+            --g-list-item-view-text-color: var(--g-color-text-primary);
             border-color: var(--g-color-text-primary);
         }
     }
@@ -33,5 +51,6 @@
 
     &__wrapper {
         flex-grow: 1;
+        min-height: var(--g-list-item-view-min-height);
     }
 }
