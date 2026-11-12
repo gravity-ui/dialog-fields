@@ -91,7 +91,17 @@ export class MultiTextControl extends Component<MultiTextControlProps, State> {
     };
 
     render() {
-        const {value: labels, onChange: _onChange, onBlur, onFocus, disabled, ...rest} = this.props;
+        const {
+            value: labels,
+            onChange: _onChange,
+            onBlur,
+            onFocus,
+            disabled,
+            error,
+            errorMessage,
+            validationState,
+            ...rest
+        } = this.props;
 
         return (
             <FocusBlurContainer className={block()} onBlur={onBlur} onFocus={onFocus}>
@@ -102,6 +112,8 @@ export class MultiTextControl extends Component<MultiTextControlProps, State> {
                     hasClear
                     disabled={disabled}
                     {...rest}
+                    errorMessage={errorMessage || error}
+                    validationState={error ? 'invalid' : validationState}
                     onUpdate={this.updateLabel}
                     onKeyDown={this.handleAdd}
                     {...{onBlur: this.confirmText}}

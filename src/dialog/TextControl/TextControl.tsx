@@ -21,7 +21,7 @@ export class TextControl extends Component<TextControlProps> {
     }
 
     render() {
-        const {value, onChange, ...rest} = this.props;
+        const {value, onChange, error, errorMessage, validationState, ...rest} = this.props;
 
         const empty = TextControl.isEmpty(value);
 
@@ -30,6 +30,8 @@ export class TextControl extends Component<TextControlProps> {
                 <TextInput
                     hasClear
                     {...rest}
+                    errorMessage={errorMessage || error}
+                    validationState={error ? 'invalid' : validationState}
                     autoComplete={false}
                     onUpdate={onChange}
                     value={value}
