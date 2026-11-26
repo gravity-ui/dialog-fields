@@ -1,13 +1,13 @@
 import React from 'react';
 import {
     DFDialog,
-    DFDialogProps,
-    registerDialogControl,
-    RegisteredDialogField,
     DFDialogField,
+    DFDialogProps,
     DFDialogTabField,
+    RegisteredDialogField,
+    registerDialogControl,
 } from '../../../index';
-import {StoryFn, Meta} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 
 function MyControl(props: {username: string; value: unknown}) {
     return <div>Hello, {props.username}!</div>;

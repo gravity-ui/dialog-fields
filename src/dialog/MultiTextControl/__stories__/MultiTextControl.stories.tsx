@@ -1,6 +1,6 @@
 import React from 'react';
 import {MultiTextControl, MultiTextControlProps} from '../index';
-import {StoryFn, Meta} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 
 interface Props {
     initialValue: MultiTextControlProps['value'];

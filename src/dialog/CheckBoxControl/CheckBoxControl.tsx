@@ -4,8 +4,10 @@ import {Checkbox, CheckboxProps} from '@gravity-ui/uikit';
 
 import './CheckBoxControl.scss';
 
-export interface CheckBoxControlProps
-    extends Omit<CheckboxProps, 'value' | 'view' | 'checked' | 'onUpdate' | 'onChange'> {
+export interface CheckBoxControlProps extends Omit<
+    CheckboxProps,
+    'value' | 'view' | 'checked' | 'onUpdate' | 'onChange'
+> {
     value: boolean;
     onChange: (value: CheckBoxControlProps['value']) => void;
 }

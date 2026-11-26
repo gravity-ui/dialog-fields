@@ -1,5 +1,5 @@
 import React from 'react';
-import {StoryFn, Meta} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 
 import {TumblerControl} from '../index';
 
@@ -15,5 +15,5 @@ Primary.args = {
     labelLeft: 'Left',
     labelRight: 'Right',
     value: true,
-    onChange: console.log,
+    onChange: console.info,
 };

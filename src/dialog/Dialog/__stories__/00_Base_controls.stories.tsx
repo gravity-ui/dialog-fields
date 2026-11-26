@@ -1,14 +1,14 @@
 import React, {Component, Fragment} from 'react';
-import {StoryFn, Meta} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 import {Button} from '@gravity-ui/uikit';
 
 import {
-    FormApi,
-    RadioButtonControlProps,
     DFDialog,
     EditableListProps,
     EditableManyListsProps,
+    FormApi,
     MultiTextControlProps,
+    RadioButtonControlProps,
     SelectControlProps,
 } from '../../index';
 

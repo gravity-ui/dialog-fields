@@ -11,7 +11,7 @@ import isEmpty_ from 'lodash/isEmpty';
 import map_ from 'lodash/map';
 import {Dialog as CommonDialog, DialogFooterProps, Tooltip} from '@gravity-ui/uikit';
 import {dfCN} from '../../helpers/cn';
-import {Decorator, FORM_ERROR, FormApi, FormState, ValidationErrors, FieldState} from 'final-form';
+import {Decorator, FORM_ERROR, FieldState, FormApi, FormState, ValidationErrors} from 'final-form';
 import {Field, FieldInputProps, FieldMetaState, Form, FormProps, FormSpy} from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import {FieldArray} from 'react-final-form-arrays';
@@ -38,7 +38,7 @@ import {
     TabFieldVerticalProps,
     TabItem,
 } from '../TabField';
-import {checkTabId, getTabId, applyFunctions} from './utils';
+import {applyFunctions, checkTabId, getTabId} from './utils';
 import {useStableEventHandler} from '../../helpers/useStableEventHendler';
 
 import './Dialog.scss';
@@ -232,8 +232,7 @@ type SeparatorType = {separator: boolean; type?: never; name?: never; subscriber
 type DialogField<FieldT> = FieldT | SectionType<FieldT> | SeparatorType;
 
 type FieldsType<TabT extends TabbedField<FieldT>, FieldT> =
-    | Array<TabT>
-    | Array<DialogField<FieldT>>;
+    Array<TabT> | Array<DialogField<FieldT>>;
 
 export type DeepPartial<T> = T extends object ? {[K in keyof T]?: DeepPartial<T[K]>} : T;
 

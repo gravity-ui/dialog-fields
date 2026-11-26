@@ -1,7 +1,7 @@
 import React from 'react';
 import {dfCN} from '../../helpers/cn';
 
-import {RepeatIcon, CloseIcon} from '../Icon/Icon';
+import {CloseIcon, RepeatIcon} from '../Icon/Icon';
 
 import i18n from './i18n';
 
