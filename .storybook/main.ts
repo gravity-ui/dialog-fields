@@ -4,8 +4,7 @@ const config: StorybookConfig = {
 
     addons: [
         '@storybook/addon-links',
-        {name: '@storybook/addon-essentials', options: {backgrounds: false}},
-        '@storybook/addon-interactions',
+        '@storybook/addon-docs',
         '@storybook/preset-scss',
         '@storybook/addon-webpack5-compiler-babel',
     ],
