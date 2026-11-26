@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type {Preview, Decorator} from '@storybook/react';
+import type {Decorator, Preview} from '@storybook/react';
 import '@gravity-ui/uikit/styles/styles.scss';
 
 import {Provider, configure as uikitConfigure} from '@gravity-ui/uikit';
@@ -30,6 +30,7 @@ export const withLang: Decorator = (StoryItem, context) => {
 const preview: Preview = {
     decorators: [withContextProvider, withLang],
     parameters: {
+        backgrounds: {disable: true},
         actions: {argTypesRegex: '^on[A-Z].*'},
         controls: {
             matchers: {
@@ -38,10 +39,14 @@ const preview: Preview = {
             },
         },
     },
+    initialGlobals: {
+        lang: 'ru',
+        theme: 'light',
+        size: 'm',
+    },
     globalTypes: {
         lang: {
             name: 'Language',
-            defaultValue: 'ru',
             toolbar: {
                 icon: 'globe',
                 items: [
@@ -52,7 +57,6 @@ const preview: Preview = {
         },
         theme: {
             name: 'Theme',
-            defaultValue: 'light',
             toolbar: {
                 icon: 'mirror',
                 items: [
@@ -65,7 +69,6 @@ const preview: Preview = {
         },
         size: {
             name: 'Size',
-            defaultValue: 'm',
             toolbar: {
                 icon: 'apple',
                 items: [
