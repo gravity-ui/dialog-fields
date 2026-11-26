@@ -10,8 +10,10 @@ RadioButtonControl.isEmpty = function (value: RadioButtonControlProps['value']) 
     return typeof value !== 'string' || !value;
 };
 
-export interface RadioButtonControlProps
-    extends Omit<SegmentedRadioGroupProps, 'onChange' | 'value'> {
+export interface RadioButtonControlProps extends Omit<
+    SegmentedRadioGroupProps,
+    'onChange' | 'value'
+> {
     value: SegmentedRadioGroupProps['value'];
     onChange: (value: RadioButtonControlProps['value']) => void;
     options?: Array<{value: string; label: React.ReactNode}>;

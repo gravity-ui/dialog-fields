@@ -1,5 +1,5 @@
 import React from 'react';
-import {StoryObj, Meta} from '@storybook/react';
+import {Meta, StoryObj} from '@storybook/react';
 
 import {Text} from '@gravity-ui/uikit';
 

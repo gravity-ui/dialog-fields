@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {TabList, Tab} from '@gravity-ui/uikit';
+import {Tab, TabList} from '@gravity-ui/uikit';
 
 import {dfCN} from '../../helpers/cn';
-import {DangerIcon, CloseIcon} from '../Icon/Icon';
+import {CloseIcon, DangerIcon} from '../Icon/Icon';
 
 import some_ from 'lodash/some';
 

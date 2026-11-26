@@ -2,10 +2,11 @@
   "extends": "@gravity-ui/tsconfig/tsconfig",
   "compilerOptions": {
     "outDir": "build",
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "module": "esnext",
     "jsx": "react",
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "isolatedModules": true,
     "paths": {
       "~playwright/*": ["playwright/*"]
