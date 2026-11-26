@@ -10,9 +10,10 @@ import type {
     PlaywrightWorkerArgs,
     PlaywrightWorkerOptions,
     TestFixture,
+    TestType,
 } from '@playwright/test';
 
-interface ComponentFixtures {
+export interface ComponentFixtures {
     mount<HooksConfig>(
         component: React.JSX.Element,
         options?: MountOptions<HooksConfig> & {
@@ -22,9 +23,13 @@ interface ComponentFixtures {
     ): Promise<MountResult>;
 }
 
-type PlaywrightTestFixtures = PlaywrightTestArgs & PlaywrightTestOptions & ComponentFixtures;
+// Component tests mount React elements, not stories via Playwright's built-in mount fixture.
+type PlaywrightTestFixtures = Omit<PlaywrightTestArgs, 'mount'> &
+    PlaywrightTestOptions &
+    ComponentFixtures;
 type PlaywrightWorkerFixtures = PlaywrightWorkerArgs & PlaywrightWorkerOptions;
 type PlaywrightFixtures = PlaywrightTestFixtures & PlaywrightWorkerFixtures;
+export type ComponentTest = TestType<PlaywrightTestFixtures, PlaywrightWorkerFixtures>;
 export type PlaywrightFixture<T> = TestFixture<T, PlaywrightFixtures>;
 
 export type Fixtures = {

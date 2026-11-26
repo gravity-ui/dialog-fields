@@ -2,9 +2,11 @@ import {test as base} from '@playwright/experimental-ct-react';
 
 import {expectScreenshotFixture} from './expectScreenshotFixture';
 import {mountFixture} from './mountFixture';
-import type {Fixtures} from './types';
+import type {ComponentTest, Fixtures} from './types';
 
-export const test = base.extend<Fixtures>({
+const componentTest: ComponentTest = base;
+
+export const test = componentTest.extend<Fixtures>({
     mount: mountFixture,
     expectScreenshot: expectScreenshotFixture,
 });
