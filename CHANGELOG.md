@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.2](https://github.com/gravity-ui/dialog-fields/compare/v7.0.1...v7.0.2) (2026-11-26)
+
+
+### Bug Fixes
+
+* **deps:** restore react-virtual peer compatibility ([48a07e8](https://github.com/gravity-ui/dialog-fields/commit/48a07e89a459ab5bbad19d03334eee8d9602d829))
+
 ## [7.0.1](https://github.com/gravity-ui/dialog-fields/compare/v7.0.0...v7.0.1) (2026-11-26)
 
 
