@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.1](https://github.com/gravity-ui/dialog-fields/compare/v7.0.0...v7.0.1) (2026-11-26)
+
+
+### Bug Fixes
+
+* **deps:** update compatible dependencies for React 18 ([b2b9d6f](https://github.com/gravity-ui/dialog-fields/commit/b2b9d6f81bcba4f3ce5ee11fee7118131b713d0c))
+
 ## [7.0.0](https://github.com/gravity-ui/dialog-fields/compare/v6.2.0...v7.0.0) (2026-11-12)
 
 
