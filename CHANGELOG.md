@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.3](https://github.com/gravity-ui/dialog-fields/compare/v7.0.2...v7.0.3) (2026-11-27)
+
+
+### Bug Fixes
+
+* **Dialog:** refresh Apply state when form values change ([3528a55](https://github.com/gravity-ui/dialog-fields/commit/3528a5511e4ade455f3f10f990ca918cb0debc25)), closes [#102](https://github.com/gravity-ui/dialog-fields/issues/102)
+
 ## [7.0.2](https://github.com/gravity-ui/dialog-fields/compare/v7.0.1...v7.0.2) (2026-11-26)
 
 
