@@ -1029,25 +1029,43 @@ class Dialog<
         return Dialog.hasTabs(this.props.fields);
     }
 
-    renderDialogContent = (
-        handleSubmit: () => void,
-        form: FormApi<FormValues, InitialFormValues>,
-    ) => {
-        this.form = form;
-        const {waitingMessage, headerProps, footerProps, fields, formId, size} = this.props;
-        const {verticalTabs} = this.state;
-        const {title, insertAfter, insertBefore} = headerProps || {};
-
+    renderFooter(form: FormApi<FormValues, InitialFormValues>) {
+        const {footerProps} = this.props;
         const {
             textApply = i18n('button:confirm'),
             textCancel = i18n('button:cancel'),
             content,
             propsButtonCancel = {},
             propsButtonApply = {},
-            hidden,
         } = footerProps || {};
         const formState = form.getState();
         const disabled = this.isApplyDisabled(formState);
+
+        return (
+            <CommonDialog.Footer
+                preset="default"
+                loading={formState.submitting}
+                textButtonCancel={textCancel}
+                textButtonApply={textApply as string}
+                propsButtonApply={{disabled, type: 'submit', ...propsButtonApply}}
+                propsButtonCancel={propsButtonCancel}
+                onClickButtonCancel={this.onClose}
+                onClickButtonApply={noop}
+            >
+                <div className={bDialog('footer-controls')}>{content}</div>
+            </CommonDialog.Footer>
+        );
+    }
+
+    renderDialogContent = (
+        handleSubmit: () => void,
+        form: FormApi<FormValues, InitialFormValues>,
+    ) => {
+        this.form = form;
+        const {waitingMessage, headerProps, footerProps, fields, formId, size, isApplyDisabled} =
+            this.props;
+        const {verticalTabs} = this.state;
+        const {title, insertAfter, insertBefore} = headerProps || {};
 
         return (
             <Fragment>
@@ -1073,20 +1091,15 @@ class Dialog<
                             )}
                         </div>
                     </CommonDialog.Body>
-                    {!hidden && (
-                        <CommonDialog.Footer
-                            preset="default"
-                            loading={formState.submitting}
-                            textButtonCancel={textCancel}
-                            textButtonApply={textApply as string}
-                            propsButtonApply={{disabled, type: 'submit', ...propsButtonApply}}
-                            propsButtonCancel={propsButtonCancel}
-                            onClickButtonCancel={this.onClose}
-                            onClickButtonApply={noop}
-                        >
-                            <div className={bDialog('footer-controls')}>{content}</div>
-                        </CommonDialog.Footer>
-                    )}
+                    {!footerProps?.hidden &&
+                        (typeof isApplyDisabled === 'function' ? (
+                            <FormSpy
+                                subscription={{...Dialog.FINAL_FORM_SUBSCRIPTIONS, values: true}}
+                                render={() => this.renderFooter(form)}
+                            />
+                        ) : (
+                            this.renderFooter(form)
+                        ))}
                 </form>
                 {waitingMessage && (
                     <div className={bDialog('waiting-message')}>
